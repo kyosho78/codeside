@@ -16,21 +16,45 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
+/* Apply global styles only to body links, excluding navbar */
 body a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
 }
+
 body a:hover {
   color: #535bf2;
 }
 
-/* Allow Tailwind styles for Navbar links */
-nav a {
-
-  color: inherit;
+.nav-link {
+  position: relative;
+  color: #56afe6 !important; /* Ensures Tailwind doesn't override */
+  transition: color 0.3s ease-in-out;
+  text-decoration: none;
 }
+
+.nav-link:hover {
+  color: #3b82f6 !important; /* Tailwind's blue-600 */
+}
+
+/* Underline animation effect */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: #3b82f6; /* Tailwind's blue-500 */
+  transition: all 0.6s ease-in-out;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+  left: 0;
+}
+
 
 /* Ensure buttons use Tailwind styles */
 button {
@@ -44,9 +68,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -73,9 +99,11 @@ h1 {
     color: #213547;
     background-color: #ffffff;
   }
+
   body a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }
