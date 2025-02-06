@@ -5,7 +5,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed w-full bg-black bg-opacity-90 p-4">
+    <nav className="fixed w-full bg-black bg-opacity-90 p-2">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4">
         {/* Left Section: Logo */}
         <Link to="/" className="p-2 flex-shrink-0">

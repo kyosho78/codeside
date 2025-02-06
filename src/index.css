@@ -55,6 +55,18 @@ body a:hover {
   left: 0;
 }
 
+/* Fix: Allow Hover Colors */
+nav a {
+  color: #56afe6 !important;  /* Ensure default navbar links use this color */
+  transition: color 0.3s ease-in-out;
+}
+
+nav a:hover {
+  color: inherit !important; /* Let Tailwind control hover */
+}
+
+
+
 
 /* Ensure buttons use Tailwind styles */
 button {
