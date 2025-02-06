@@ -16,7 +16,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Apply global styles only to body links, excluding navbar */
+
 body a {
   font-weight: 500;
   color: #646cff;
