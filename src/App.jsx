@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import MatrixRainingCode from "./components/MatrixRainingEffect.jsx";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import Navbar from "./Components/Navbar.jsx";
+import MatrixRainingCode from "./Components/MatrixRainingEffect.jsx.jsx";
+import Home from "./staticpages/Home.jsx";
+import Login from "./Login.jsx";
+import Signup from "./Signup.jsx";
 import backgroundVideo from "./assets/background.mp4";
 
 function App() {
