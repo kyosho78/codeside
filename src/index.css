@@ -35,11 +35,11 @@ body a:hover {
 }
 
 .nav-link:hover {
-  color: #3b82f6 !important;
+  color: white !important;
 }
 
 /* Underline animation effect */
-.nav-link::after {
+/* .nav-link::after {
   content: "";
   position: absolute;
   bottom: -4px;
@@ -48,7 +48,7 @@ body a:hover {
   height: 2px;
   background-color: #3b82f6;
   transition: all 0.6s ease-in-out;
-}
+} */
 
 .nav-link:hover::after {
   width: 100%;

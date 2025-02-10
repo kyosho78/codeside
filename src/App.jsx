@@ -28,15 +28,25 @@ function AppWrapper() {
   const location = useLocation();
   const showMatrixAndVideo = location.pathname === "/";
 
-  // Musta tausta sivuille
-  const blackBackgroundPages = [
-    "/about",         // Ohjelmointi
-    "/services",      // Alustat
-    "/forum",         // Forum
-    "/dictionary",    // Sanakirja
-    "/notes",         // Muistiinpanot
-    "/login",       // Login  
-    "/signup",      // Signup
+  // List of pages that should have a black background
+  const blackBackgroundPages = [   
+    "/csharp",
+    "/javascript",
+    "/html",
+    "/sql",
+    "/python",
+    "/css",
+    "/visual-studio",
+    "/vscode",
+    "/git",
+    "/dotnet",
+    "/django",
+    "/azure",
+    "/forum",         
+    "/dictionary",    
+    "/notes",         
+    "/login",       
+    "/signup",      
   ];
 
   const isBlackBackground = blackBackgroundPages.includes(location.pathname);

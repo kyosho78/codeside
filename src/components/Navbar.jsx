@@ -9,11 +9,15 @@ const Navbar = () => {
   const [isMobileOhjelmointiOpen, setIsMobileOhjelmointiOpen] = useState(false);
 
   return (
-    <nav className="fixed w-full bg-black bg-opacity-90 p-2">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-4">
+    <nav className="fixed w-full bg-black bg-opacity-90">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-0">
         {/* Left Section: Logo */}
-        <Link to="/" className="p-2 flex-shrink-0">
-          <img src="/coding.svg" alt="Logo" className="w-10 h-10" />
+        <Link to="/" className="p-2 flex-shrink-0 group">
+          <img
+            src="/coding.svg"
+            alt="Logo"
+            className="w-10 h-10 transition duration-300 ease-in-out group-hover:filter group-hover:brightness-200"
+          />
         </Link>
 
         {/* Mobile Menu Button */}
@@ -46,7 +50,7 @@ const Navbar = () => {
             {/* Dropdown Menu - Two Columns with Icons */}
             {isOhjelmointiOpen && (
               <div
-                className="absolute top-full left-0 mt-0 w-64 bg-black shadow-lg rounded-lg p-3 dropdown-menu"
+                className="absolute top-full left-0 mt-0 w-64 bg-gray-800 bg-opacity-80 border border-gray-500 shadow-md rounded-lg p-3 dropdown-menu transition-opacity duration-300 opacity-90"
                 onMouseEnter={() => setIsOhjelmointiOpen(true)}
                 onMouseLeave={() => setIsOhjelmointiOpen(false)}
               >
@@ -122,7 +126,7 @@ const Navbar = () => {
             {/* Dropdown Menu - Two Columns with Icons */}
             {isAlustatOpen && (
               <div
-                className="absolute top-full left-0 mt-0 w-64 bg-black shadow-lg rounded-lg p-3 dropdown-menu"
+                className="absolute top-full left-0 mt-0 w-64 bg-gray-800 bg-opacity-80 border border-gray-500 shadow-md rounded-lg p-3 dropdown-menu transition-opacity duration-300 opacity-90"
                 onMouseEnter={() => setIsAlustatOpen(true)}
                 onMouseLeave={() => setIsAlustatOpen(false)}
               >
