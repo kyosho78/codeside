@@ -35,7 +35,7 @@ body a:hover {
 }
 
 .nav-link:hover {
-  color: #3b82f6 !important; /* Tailwind's blue-600 */
+  color: #3b82f6 !important;
 }
 
 /* Underline animation effect */
@@ -46,7 +46,7 @@ body a:hover {
   left: 50%;
   width: 0;
   height: 2px;
-  background-color: #3b82f6; /* Tailwind's blue-500 */
+  background-color: #3b82f6;
   transition: all 0.6s ease-in-out;
 }
 
@@ -92,11 +92,9 @@ button:focus-visible {
 
 /* Layout & Structure */
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  display: block !important;
+  align-items: unset !important;
+  justify-content: unset !important;
 }
 
 /* Headings */
