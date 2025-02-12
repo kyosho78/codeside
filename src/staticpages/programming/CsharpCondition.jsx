@@ -154,7 +154,7 @@ class Program
           <div className="mt-6 text-center">
             <Link
               to="/csharp"
-              className="text-blue-400 underline hover:text-blue-500 mr-6"
+              className="text-blue-400 underline hover:text-blue-500 mr-4"
               onClick={scrollToTop}
             >
               ⬅ Takaisin C# Ohjelmointiin
@@ -162,7 +162,7 @@ class Program
   
             <Link
               to="/csharp-loop"
-              className="text-blue-400 underline hover:text-blue-500 ml-6"
+              className="text-blue-400 underline hover:text-blue-500 ml-4"
               onClick={scrollToTop}
             >
               Silmukat ➡
