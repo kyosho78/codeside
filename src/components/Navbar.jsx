@@ -9,10 +9,10 @@ const Navbar = () => {
   const [isMobileOhjelmointiOpen, setIsMobileOhjelmointiOpen] = useState(false);
 
   return (
-    <nav className="fixed w-full bg-black bg-opacity-90">
+    <nav className="fixed w-full bg-black bg-opacity-100">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-0">
         {/* Left Section: Logo */}
-        <Link to="/" className="p-2 flex-shrink-0 group">
+        <Link to="/" className="p-2 flex-shrink-0 group" onClick={() => setIsOpen(false)}> 
           <img
             src="/coding.svg"
             alt="Logo"
@@ -35,10 +35,7 @@ const Navbar = () => {
             className="relative"
             onMouseEnter={() => setIsOhjelmointiOpen(true)}
             onMouseLeave={(e) => {
-              if (
-                !e.relatedTarget ||
-                !e.relatedTarget.closest(".dropdown-menu")
-              ) {
+              if (!e.relatedTarget || !(e.relatedTarget instanceof Element) || !e.relatedTarget.closest(".dropdown-menu")) {
                 setIsOhjelmointiOpen(false);
               }
             }}
@@ -50,7 +47,7 @@ const Navbar = () => {
             {/* Dropdown Menu - Two Columns with Icons */}
             {isOhjelmointiOpen && (
               <div
-                className="absolute top-full left-0 mt-0 w-64 bg-gray-800 bg-opacity-80 border border-gray-500 shadow-md rounded-lg p-3 dropdown-menu transition-opacity duration-300 opacity-90"
+                className="absolute top-full left-0 mt-0 w-64 bg-gray-800 bg-opacity-90 border border-gray-500 shadow-md rounded-lg p-3 dropdown-menu transition-opacity duration-300 opacity-90"
                 onMouseEnter={() => setIsOhjelmointiOpen(true)}
                 onMouseLeave={() => setIsOhjelmointiOpen(false)}
               >
@@ -111,11 +108,8 @@ const Navbar = () => {
             className="relative"
             onMouseEnter={() => setIsAlustatOpen(true)}
             onMouseLeave={(e) => {
-              if (
-                !e.relatedTarget ||
-                !e.relatedTarget.closest(".dropdown-menu")
-              ) {
-                setIsAlustatOpen(false);
+              if (!e.relatedTarget || !(e.relatedTarget instanceof Element) || !e.relatedTarget.closest(".dropdown-menu")) {
+                setIsOhjelmointiOpen(false);
               }
             }}
           >
@@ -126,7 +120,7 @@ const Navbar = () => {
             {/* Dropdown Menu - Two Columns with Icons */}
             {isAlustatOpen && (
               <div
-                className="absolute top-full left-0 mt-0 w-64 bg-gray-800 bg-opacity-80 border border-gray-500 shadow-md rounded-lg p-3 dropdown-menu transition-opacity duration-300 opacity-90"
+                className="absolute top-full left-0 mt-0 w-64 bg-gray-800 bg-opacity-100 border border-gray-500 shadow-md rounded-lg p-3 dropdown-menu transition-opacity duration-300 opacity-90"
                 onMouseEnter={() => setIsAlustatOpen(true)}
                 onMouseLeave={() => setIsAlustatOpen(false)}
               >
@@ -228,7 +222,11 @@ const Navbar = () => {
               <Link
                 to="/csharp"
                 className="flex items-center justify-center gap-2 p-2 text-white hover:bg-gray-700 rounded"
-                onClick={() => setIsMobileOhjelmointiOpen(false)}
+                onClick={() => {
+                  setIsMobileOhjelmointiOpen(false)
+                  setIsOpen(false)  
+                }}
+                
               >
                 <img src="/csharp.svg" alt="VS" className="w-5 h-5" />
                 C#
@@ -236,7 +234,10 @@ const Navbar = () => {
               <Link
                 to="/javascript"
                 className="flex items-center justify-center gap-2 p-2 text-white hover:bg-gray-700 rounded"
-                onClick={() => setIsMobileOhjelmointiOpen(false)}
+                onClick={() => {
+                  setIsMobileOhjelmointiOpen(false)
+                  setIsOpen(false)  
+                }}
               >
                 <img src="/javascript.svg" alt="VS Code" className="w-5 h-5" />
                 JavaScript
@@ -244,7 +245,10 @@ const Navbar = () => {
               <Link
                 to="/html"
                 className="flex items-center justify-center gap-2 p-2 text-white hover:bg-gray-700 rounded"
-                onClick={() => setIsMobileOhjelmointiOpen(false)}
+                onClick={() => {
+                  setIsMobileOhjelmointiOpen(false)
+                  setIsOpen(false)  
+                }}
               >
                 <img src="/html.svg" alt="Git" className="w-5 h-5" />
                 HTML
@@ -252,7 +256,10 @@ const Navbar = () => {
               <Link
                 to="/sql"
                 className="flex items-center justify-center gap-2 p-2 text-white hover:bg-gray-700 rounded"
-                onClick={() => setIsMobileOhjelmointiOpen(false)}
+                onClick={() => {
+                  setIsMobileOhjelmointiOpen(false)
+                  setIsOpen(false)  
+                }}
               >
                 <img src="/sql.svg" alt=".NET" className="w-5 h-5" />
                 SQL
@@ -260,7 +267,10 @@ const Navbar = () => {
               <Link
                 to="/python"
                 className="flex items-center justify-center gap-2 p-2 text-white hover:bg-gray-700 rounded"
-                onClick={() => setIsMobileOhjelmointiOpen(false)}
+                onClick={() => {
+                  setIsMobileOhjelmointiOpen(false)
+                  setIsOpen(false)  
+                }}
               >
                 <img src="/python.svg" alt="Django" className="w-5 h-5" />
                 Python
@@ -268,7 +278,10 @@ const Navbar = () => {
               <Link
                 to="/css"
                 className="flex items-center justify-center gap-2 p-2 text-white hover:bg-gray-700 rounded"
-                onClick={() => setIsMobileOhjelmointiOpen(false)}
+                onClick={() => {
+                  setIsMobileOhjelmointiOpen(false)
+                  setIsOpen(false)  
+                }}
               >
                 <img src="/css.svg" alt="Azure" className="w-5 h-5" />
                 CSS
@@ -290,7 +303,10 @@ const Navbar = () => {
               <Link
                 to="/visual-studio"
                 className="flex items-center justify-center gap-2 p-2 text-white hover:bg-gray-700 rounded"
-                onClick={() => setIsMobileAlustatOpen(false)}
+                onClick={() => {
+                  setIsMobileOhjelmointiOpen(false)
+                  setIsOpen(false)  
+                }}
               >
                 <img src="/visualstudio.svg" alt="VS" className="w-5 h-5" />
                 Visual Studio
@@ -298,7 +314,10 @@ const Navbar = () => {
               <Link
                 to="/vscode"
                 className="flex items-center justify-center gap-2 p-2 text-white hover:bg-gray-700 rounded"
-                onClick={() => setIsMobileAlustatOpen(false)}
+                onClick={() => {
+                  setIsMobileOhjelmointiOpen(false)
+                  setIsOpen(false)  
+                }}
               >
                 <img src="/vscode.svg" alt="VS Code" className="w-5 h-5" />
                 VS Code
@@ -306,7 +325,10 @@ const Navbar = () => {
               <Link
                 to="/git"
                 className="flex items-center justify-center gap-2 p-2 text-white hover:bg-gray-700 rounded"
-                onClick={() => setIsMobileAlustatOpen(false)}
+                onClick={() => {
+                  setIsMobileOhjelmointiOpen(false)
+                  setIsOpen(false)  
+                }}
               >
                 <img src="/git.svg" alt="Git" className="w-5 h-5" />
                 Git
@@ -314,7 +336,10 @@ const Navbar = () => {
               <Link
                 to="/dotnet"
                 className="flex items-center justify-center gap-2 p-2 text-white hover:bg-gray-700 rounded"
-                onClick={() => setIsMobileAlustatOpen(false)}
+                onClick={() => {
+                  setIsMobileOhjelmointiOpen(false)
+                  setIsOpen(false)  
+                }}
               >
                 <img src="/dotnet.svg" alt=".NET" className="w-5 h-5" />
                 .NET
@@ -322,7 +347,10 @@ const Navbar = () => {
               <Link
                 to="/django"
                 className="flex items-center justify-center gap-2 p-2 text-white hover:bg-gray-700 rounded"
-                onClick={() => setIsMobileAlustatOpen(false)}
+                onClick={() => {
+                  setIsMobileOhjelmointiOpen(false)
+                  setIsOpen(false)  
+                }}
               >
                 <img src="/django.svg" alt="Django" className="w-5 h-5" />
                 Django
@@ -330,7 +358,10 @@ const Navbar = () => {
               <Link
                 to="/azure"
                 className="flex items-center justify-center gap-2 p-2 text-white hover:bg-gray-700 rounded"
-                onClick={() => setIsMobileAlustatOpen(false)}
+                onClick={() => {
+                  setIsMobileOhjelmointiOpen(false)
+                  setIsOpen(false)  
+                }}
               >
                 <img src="/azure.svg" alt="Azure" className="w-5 h-5" />
                 Azure

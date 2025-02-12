@@ -4,6 +4,10 @@ import MatrixRainingCode from "./Components/MatrixRainingEffect.jsx";
 import Home from "./Staticpages/Home.jsx";
 import Login from "./Login.jsx";
 import Signup from "./Signup.jsx";
+import Csharp from "./Staticpages/programming/csharp.jsx";
+import AsyncProgramming from "./Staticpages/programming/AsyncProgramming.jsx";
+import CsharpCondition from "./Staticpages/programming/CsharpCondition.jsx";
+import CsharpLoop from "./Staticpages/programming/CsharpLoop.jsx";
 import backgroundVideo from "./Assets/background.mp4";
 
 function BackgroundVideo() {
@@ -30,7 +34,6 @@ function AppWrapper() {
 
   // List of pages that should have a black background
   const blackBackgroundPages = [   
-    "/csharp",
     "/javascript",
     "/html",
     "/sql",
@@ -62,6 +65,10 @@ function AppWrapper() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/csharp" element={<Csharp />} />
+          <Route path="/async-programming" element={<AsyncProgramming />} />
+          <Route path="/csharp-condition" element={<CsharpCondition />} />
+          <Route path="/csharp-loop" element={<CsharpLoop />} />
           {/* Add other pages as needed */}
         </Routes>
       </div>

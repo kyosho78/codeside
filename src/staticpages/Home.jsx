@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -15,10 +16,10 @@ const Home = () => {
         Täällä saat perus ymmäryksen koodauksen saloista.
       </p>
       <div className="mt-6">
-        <button className="px-6 py-3 hover:bg-blue-500 mr-4 text-blue-500">
-          Aloitetaan
+        <button className="px-6 py-3 mr-4">
+          <Link to="/csharp">Aloitetaan</Link>
         </button>
-        <button className="px-6 py-3 hover:bg-gray-600 text-blue-500">
+        <button className="px-6 py-3">
           Forumiin
         </button>
       </div>
