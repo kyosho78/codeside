@@ -10,6 +10,8 @@ import CsharpCondition from "./Staticpages/programming/CsharpCondition.jsx";
 import CsharpLoop from "./Staticpages/programming/CsharpLoop.jsx";
 import backgroundVideo from "./Assets/background.mp4";
 
+
+// Background Video Component
 function BackgroundVideo() {
   return (
     <video
@@ -43,6 +45,7 @@ function App() {
             </>
           } />
 
+            
           {/* Other Pages with Navbar */}
           <Route path="/login" element={<><Navbar /><Login /></>} />
           <Route path="/signup" element={<><Navbar /><Signup /></>} />
