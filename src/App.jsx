@@ -5,6 +5,7 @@ import Home from "./Staticpages/Home.jsx";
 import Login from "./Login.jsx";
 import Signup from "./Signup.jsx";
 import backgroundVideo from "./Assets/background.mp4";
+import Notes from "./Notes/notes.jsx"; 
 
 function BackgroundVideo() {
   return (
@@ -52,6 +53,7 @@ function AppWrapper() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/notes" element={<Notes />} /> 
           {/* Add other pages as needed */}
         </Routes>
       </div>
