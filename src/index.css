@@ -19,12 +19,12 @@
 /* Apply global styles only to body links, excluding navbar */
 body a {
   font-weight: 500;
-  color: #646cff;
+  color: #56afe6;
   text-decoration: inherit;
 }
 
 body a:hover {
-  color: #535bf2;
+  color: #56afe6;
 }
 
 .nav-link {
@@ -35,11 +35,11 @@ body a:hover {
 }
 
 .nav-link:hover {
-  color: #3b82f6 !important;
+  color: white !important;
 }
 
 /* Underline animation effect */
-.nav-link::after {
+/* .nav-link::after {
   content: "";
   position: absolute;
   bottom: -4px;
@@ -48,7 +48,7 @@ body a:hover {
   height: 2px;
   background-color: #3b82f6;
   transition: all 0.6s ease-in-out;
-}
+} */
 
 .nav-link:hover::after {
   width: 100%;
@@ -82,7 +82,7 @@ button {
 }
 
 button:hover {
-  border-color: #646cff;
+  border-color: #56afe6;
 }
 
 button:focus,
@@ -111,7 +111,7 @@ h1 {
   }
 
   body a:hover {
-    color: #747bff;
+    color: #56afe6;
   }
 
   button {

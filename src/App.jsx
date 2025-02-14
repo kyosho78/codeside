@@ -1,12 +1,18 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar.jsx";
 import MatrixRainingCode from "./Components/MatrixRainingEffect.jsx";
 import Home from "./Staticpages/Home.jsx";
 import Login from "./Login.jsx";
 import Signup from "./Signup.jsx";
+import Csharp from "./Staticpages/programming/csharp.jsx";
+import AsyncProgramming from "./Staticpages/programming/AsyncProgramming.jsx";
+import CsharpCondition from "./Staticpages/programming/CsharpCondition.jsx";
+import CsharpLoop from "./Staticpages/programming/CsharpLoop.jsx";
 import backgroundVideo from "./Assets/background.mp4";
 import Notes from "./Notes/notes.jsx"; 
 
+
+// Background Video Component
 function BackgroundVideo() {
   return (
     <video
@@ -25,46 +31,33 @@ function BackgroundVideo() {
   );
 }
 
-function AppWrapper() {
-  const location = useLocation();
-  const showMatrixAndVideo = location.pathname === "/";
-
-  // Musta tausta sivuille
-  const blackBackgroundPages = [
-    "/about",         // Ohjelmointi
-    "/services",      // Alustat
-    "/forum",         // Forum
-    "/dictionary",    // Sanakirja
-    "/notes",         // Muistiinpanot
-    "/login",       // Login  
-    "/signup",      // Signup
-  ];
-
-  const isBlackBackground = blackBackgroundPages.includes(location.pathname);
-
+function App() {
   return (
-    <div className={`min-h-screen ${isBlackBackground ? "bg-black text-white" : ""}`}>
-      {showMatrixAndVideo && <MatrixRainingCode className="absolute inset-0" />}
-      {showMatrixAndVideo && <BackgroundVideo />}
-      
-      <Navbar />
-      <div className={`flex flex-col ${isBlackBackground ? "bg-black text-white" : ""}`}>
+    <Router>
+      <div className="min-h-screen">
+        {/* Show Matrix & Background Video on Home Page */}
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/" element={
+            <>
+              <MatrixRainingCode className="absolute inset-0" />
+              <BackgroundVideo />
+              <Navbar />
+              <Home />
+            </>
+          } />
+
+            
+          {/* Other Pages with Navbar */}
+          <Route path="/login" element={<><Navbar /><Login /></>} />
+          <Route path="/signup" element={<><Navbar /><Signup /></>} />
+          <Route path="/csharp" element={<><Navbar /><Csharp /></>} />
+          <Route path="/async-programming" element={<><Navbar /><AsyncProgramming /></>} />
+          <Route path="/csharp-condition" element={<><Navbar /><CsharpCondition /></>} />
+          <Route path="/csharp-loop" element={<><Navbar /><CsharpLoop /></>} />
           <Route path="/notes" element={<Notes />} /> 
           {/* Add other pages as needed */}
         </Routes>
       </div>
-    </div>
-  );
-}
-
-function App() {
-  return (
-    <Router>
-      <AppWrapper />
     </Router>
   );
 }
