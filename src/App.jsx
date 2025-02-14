@@ -1,9 +1,13 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar.jsx";
 import MatrixRainingCode from "./Components/MatrixRainingEffect.jsx";
 import Home from "./Staticpages/Home.jsx";
 import Login from "./Login.jsx";
 import Signup from "./Signup.jsx";
+import Csharp from "./Staticpages/programming/csharp.jsx";
+import AsyncProgramming from "./Staticpages/programming/AsyncProgramming.jsx";
+import CsharpCondition from "./Staticpages/programming/CsharpCondition.jsx";
+import CsharpLoop from "./Staticpages/programming/CsharpLoop.jsx";
 import backgroundVideo from "./Assets/background.mp4";
 
 
@@ -41,10 +45,14 @@ function App() {
             </>
           } />
 
-          {/* Other Pages, remeber to add Navbar to every page  */}
+            
+          {/* Other Pages with Navbar */}
           <Route path="/login" element={<><Navbar /><Login /></>} />
           <Route path="/signup" element={<><Navbar /><Signup /></>} />
-
+          <Route path="/csharp" element={<><Navbar /><Csharp /></>} />
+          <Route path="/async-programming" element={<><Navbar /><AsyncProgramming /></>} />
+          <Route path="/csharp-condition" element={<><Navbar /><CsharpCondition /></>} />
+          <Route path="/csharp-loop" element={<><Navbar /><CsharpLoop /></>} />
         </Routes>
       </div>
     </Router>
