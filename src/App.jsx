@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar.jsx";
 import MatrixRainingCode from "./Components/MatrixRainingEffect.jsx";
 import Home from "./Staticpages/Home.jsx";
@@ -28,58 +28,30 @@ function BackgroundVideo() {
   );
 }
 
-function AppWrapper() {
-  const location = useLocation();
-  const showMatrixAndVideo = location.pathname === "/";
-
-  // List of pages that should have a black background
-  const blackBackgroundPages = [   
-    "/javascript",
-    "/html",
-    "/sql",
-    "/python",
-    "/css",
-    "/visual-studio",
-    "/vscode",
-    "/git",
-    "/dotnet",
-    "/django",
-    "/azure",
-    "/forum",         
-    "/dictionary",    
-    "/notes",         
-    "/login",       
-    "/signup",      
-  ];
-
-  const isBlackBackground = blackBackgroundPages.includes(location.pathname);
-
-  return (
-    <div className={`min-h-screen ${isBlackBackground ? "bg-black text-white" : ""}`}>
-      {showMatrixAndVideo && <MatrixRainingCode className="absolute inset-0" />}
-      {showMatrixAndVideo && <BackgroundVideo />}
-      
-      <Navbar />
-      <div className={`flex flex-col ${isBlackBackground ? "bg-black text-white" : ""}`}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/csharp" element={<Csharp />} />
-          <Route path="/async-programming" element={<AsyncProgramming />} />
-          <Route path="/csharp-condition" element={<CsharpCondition />} />
-          <Route path="/csharp-loop" element={<CsharpLoop />} />
-          {/* Add other pages as needed */}
-        </Routes>
-      </div>
-    </div>
-  );
-}
-
 function App() {
   return (
     <Router>
-      <AppWrapper />
+      <div className="min-h-screen">
+        {/* Show Matrix & Background Video on Home Page */}
+        <Routes>
+          <Route path="/" element={
+            <>
+              <MatrixRainingCode className="absolute inset-0" />
+              <BackgroundVideo />
+              <Navbar />
+              <Home />
+            </>
+          } />
+
+          {/* Other Pages with Navbar */}
+          <Route path="/login" element={<><Navbar /><Login /></>} />
+          <Route path="/signup" element={<><Navbar /><Signup /></>} />
+          <Route path="/csharp" element={<><Navbar /><Csharp /></>} />
+          <Route path="/async-programming" element={<><Navbar /><AsyncProgramming /></>} />
+          <Route path="/csharp-condition" element={<><Navbar /><CsharpCondition /></>} />
+          <Route path="/csharp-loop" element={<><Navbar /><CsharpLoop /></>} />
+        </Routes>
+      </div>
     </Router>
   );
 }
