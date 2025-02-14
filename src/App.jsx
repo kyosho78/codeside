@@ -6,6 +6,8 @@ import Login from "./Login.jsx";
 import Signup from "./Signup.jsx";
 import backgroundVideo from "./Assets/background.mp4";
 
+
+// Background Video Component
 function BackgroundVideo() {
   return (
     <video
@@ -24,45 +26,27 @@ function BackgroundVideo() {
   );
 }
 
-function AppWrapper() {
-  const location = useLocation();
-  const showMatrixAndVideo = location.pathname === "/";
-
-  // Musta tausta sivuille
-  const blackBackgroundPages = [
-    "/about",         // Ohjelmointi
-    "/services",      // Alustat
-    "/forum",         // Forum
-    "/dictionary",    // Sanakirja
-    "/notes",         // Muistiinpanot
-    "/login",       // Login  
-    "/signup",      // Signup
-  ];
-
-  const isBlackBackground = blackBackgroundPages.includes(location.pathname);
-
-  return (
-    <div className={`min-h-screen ${isBlackBackground ? "bg-black text-white" : ""}`}>
-      {showMatrixAndVideo && <MatrixRainingCode className="absolute inset-0" />}
-      {showMatrixAndVideo && <BackgroundVideo />}
-      
-      <Navbar />
-      <div className={`flex flex-col ${isBlackBackground ? "bg-black text-white" : ""}`}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          {/* Add other pages as needed */}
-        </Routes>
-      </div>
-    </div>
-  );
-}
-
 function App() {
   return (
     <Router>
-      <AppWrapper />
+      <div className="min-h-screen">
+        {/* Show Matrix & Background Video on Home Page */}
+        <Routes>
+          <Route path="/" element={
+            <>
+              <MatrixRainingCode className="absolute inset-0" />
+              <BackgroundVideo />
+              <Navbar />
+              <Home />
+            </>
+          } />
+
+          {/* Other Pages, remeber to add Navbar to every page  */}
+          <Route path="/login" element={<><Navbar /><Login /></>} />
+          <Route path="/signup" element={<><Navbar /><Signup /></>} />
+
+        </Routes>
+      </div>
     </Router>
   );
 }
