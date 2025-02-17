@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const Notes = () => {
   const [notes, setNotes] = useState([]);
+  const [searchTerm, setSearchTerm] = useState(""); // Hakutermi
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const baseUrl = "https://codesitebe-efgshggehucfdvhq.swedencentral-01.azurewebsites.net/api/Notes/";
@@ -32,29 +33,37 @@ const Notes = () => {
     }
   };
 
-  const handleDelete = async (id) => {
-    if (window.confirm("Haluatko varmasti poistaa muistiinpanon?")) {
-      try {
-        const response = await fetch(`${baseUrl}${id}`, {
-          method: "DELETE",
-          mode: "cors",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+      // Muokkaa muistiinpanoa (navigoi muokkaussivulle)
+      const handleEdit = (id) => {
+        navigate(`/edit-note/${id}`);
+    };
 
-        if (!response.ok) throw new Error("Virhe poistettaessa muistiinpanoa");
+    // Poistaa muistiinpanon
+    const handleDelete = async (id) => {
+        if (!window.confirm("Haluatko varmasti poistaa tämän muistiinpanon?")) return;
 
-        setNotes(notes.filter((note) => note.id !== id));
-      } catch (error) {
-        console.error("Virhe poistettaessa muistiinpanoa:", error);
-      }
-    }
-  };
+        try {
+            const response = await fetch(`${baseUrl}${id}/`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
 
-  const handleEdit = (id) => {
-    navigate(`/edit-note/${id}`);
-  };
+            if (!response.ok) throw new Error(`Virhe poistossa: ${response.status}`);
+
+            // Poistetaan muistiinpano tilasta ilman uutta API-pyyntöä
+            setNotes(notes.filter(note => note.id !== id));
+        } catch (error) {
+            console.error("Muistiinpanon poistaminen epäonnistui:", error);
+        }
+    };
+
+  // Filtteröidään muistiinpanot hakusanan perusteella
+  const filteredNotes = notes.filter(note =>
+    note.header.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    note.content.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   if (loading) {
     return <p className="text-center text-gray-300">Ladataan muistiinpanoja...</p>;
@@ -62,11 +71,20 @@ const Notes = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white p-4 md:p-8">
-      {/* Otsikko + Uusi muistiinpano -nappi */}
+      {/* Hakukenttä & Uusi muistiinpano -nappi */}
       <div className="flex flex-col md:flex-row justify-between items-center mb-4 md:mb-6">
         <h2 className="text-xl md:text-2xl font-semibold mb-2 md:mb-0">
           Muistiinpanot
         </h2>
+
+        <input
+          type="text"
+          placeholder="🔍 Hae muistiinpanoista..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="bg-gray-700 text-white border border-gray-600 rounded-md p-2 md:w-1/3 w-full"
+        />
+
         <button
           onClick={() => navigate("/add-note")}
           className="bg-green-500 text-black px-3 py-1 md:px-4 md:py-2 rounded text-sm md:text-base hover:bg-green-600 shadow-md"
@@ -88,15 +106,13 @@ const Notes = () => {
             </tr>
           </thead>
           <tbody>
-            {notes.length > 0 ? (
-              notes.map((note) => (
+            {filteredNotes.length > 0 ? (
+              filteredNotes.map((note) => (
                 <tr key={note.id} className="border-t border-gray-600 even:bg-gray-700">
                   <td className="p-2 md:p-3">{note.header}</td>
-                  {/* <td className="p-2 md:p-3">{note.content}</td> */}
                   <td className="p-2 md:p-3 break-words whitespace-normal max-w-xs md:max-w-md">
                     {note.content}
                   </td>
-
                   <td className="p-2 md:p-3">{new Date(note.created).toLocaleString("fi-FI")}</td>
                   <td className="p-2 md:p-3">{new Date(note.updated).toLocaleString("fi-FI")}</td>
                   <td className="p-2 md:p-3 flex gap-1 md:gap-2">
@@ -106,6 +122,7 @@ const Notes = () => {
                     >
                       ✏️ Muokkaa
                     </button>
+
                     <button
                       onClick={() => handleDelete(note.id)}
                       className="bg-red-500 text-black px-2 py-1 md:px-3 md:py-1.5 text-xs md:text-sm rounded hover:bg-red-600 shadow-md"
@@ -118,7 +135,7 @@ const Notes = () => {
             ) : (
               <tr>
                 <td colSpan="5" className="p-2 md:p-3 text-center text-gray-400">
-                  Ei muistiinpanoja.
+                  Ei hakutuloksia.
                 </td>
               </tr>
             )}
