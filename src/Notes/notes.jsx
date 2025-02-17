@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+
 const Notes = () => {
   const [notes, setNotes] = useState([]);
   const [searchTerm, setSearchTerm] = useState(""); // Hakutermi
@@ -33,31 +34,31 @@ const Notes = () => {
     }
   };
 
-      // Muokkaa muistiinpanoa (navigoi muokkaussivulle)
-      const handleEdit = (id) => {
-        navigate(`/edit-note/${id}`);
-    };
+  // Muokkaa muistiinpanoa (navigoi muokkaussivulle)
+  const handleEdit = (id) => {
+    navigate(`/edit-note/${id}`);
+  };
 
-    // Poistaa muistiinpanon
-    const handleDelete = async (id) => {
-        if (!window.confirm("Haluatko varmasti poistaa tämän muistiinpanon?")) return;
+  // Poistaa muistiinpanon
+  const handleDelete = async (id) => {
+    if (!window.confirm("Haluatko varmasti poistaa tämän muistiinpanon?")) return;
 
-        try {
-            const response = await fetch(`${baseUrl}${id}/`, {
-                method: "DELETE",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            });
+    try {
+      const response = await fetch(`${baseUrl}${id}/`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-            if (!response.ok) throw new Error(`Virhe poistossa: ${response.status}`);
+      if (!response.ok) throw new Error(`Virhe poistossa: ${response.status}`);
 
-            // Poistetaan muistiinpano tilasta ilman uutta API-pyyntöä
-            setNotes(notes.filter(note => note.id !== id));
-        } catch (error) {
-            console.error("Muistiinpanon poistaminen epäonnistui:", error);
-        }
-    };
+      // Poistetaan muistiinpano tilasta ilman uutta API-pyyntöä
+      setNotes(notes.filter(note => note.id !== id));
+    } catch (error) {
+      console.error("Muistiinpanon poistaminen epäonnistui:", error);
+    }
+  };
 
   // Filtteröidään muistiinpanot hakusanan perusteella
   const filteredNotes = notes.filter(note =>
@@ -72,25 +73,40 @@ const Notes = () => {
   return (
     <div className="min-h-screen bg-gray-900 text-white p-4 md:p-8">
       {/* Hakukenttä & Uusi muistiinpano -nappi */}
-      <div className="flex flex-col md:flex-row justify-between items-center mb-4 md:mb-6">
-        <h2 className="text-xl md:text-2xl font-semibold mb-2 md:mb-0">
-          Muistiinpanot
-        </h2>
+      <div className="flex flex-col md:flex-row justify-between items-center mb-4 md:mb-6 space-y-2 md:space-y-0">
+        {/* Buttonit vasemmalla, hakukenttä keskellä */}
+        <div className="flex gap-2">
+          <button
+            onClick={() => navigate("/")}
+            className="bg-gray-500 text-black px-1 py-1 text-xs rounded hover:bg-gray-600 shadow-md"
+            style={{ backgroundColor: "#f3f4f6", color: "#000000" }}
+          >
+            🏠 Koti
+          </button>
 
-        <input
-          type="text"
-          placeholder="🔍 Hae muistiinpanoista..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="bg-gray-700 text-white border border-gray-600 rounded-md p-2 md:w-1/3 w-full"
-        />
+          <button
+            onClick={() => navigate("/add-note")}
+            
+            className="bg-gray-500 text-black px-1 py-1 text-xs rounded hover:bg-gray-600 shadow-md"
+            style={{ backgroundColor: "#f3f4f6", color: "#000000" }}
+          >
+            ➕ Uusi muistiinpano
+          </button>
+        </div>
 
-        <button
-          onClick={() => navigate("/add-note")}
-          className="bg-green-500 text-black px-3 py-1 md:px-4 md:py-2 rounded text-sm md:text-base hover:bg-green-600 shadow-md"
-        >
-          ➕ Uusi muistiinpano
-        </button>
+        {/* Hakukenttä keskelle */}
+        <div className="w-full flex justify-center">
+          <div className="w-full md:w-1/3">
+            <input
+              type="text"
+              placeholder="🔍 Hae muistiinpanoista..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="bg-gray-700 text-white border border-gray-600 rounded-md p-2 w-full"
+            />
+          </div>
+        </div>
+
       </div>
 
       {/* Taulukko */}
@@ -118,14 +134,16 @@ const Notes = () => {
                   <td className="p-2 md:p-3 flex gap-1 md:gap-2">
                     <button
                       onClick={() => handleEdit(note.id)}
-                      className="bg-blue-500 text-black px-2 py-1 md:px-3 md:py-1.5 text-xs md:text-sm rounded hover:bg-blue-600 shadow-md"
+                      className="bg-gray-500 text-black px-1 py-1 text-xs rounded hover:bg-gray-600 shadow-md"
+                      style={{ backgroundColor: "#f3f4f6", color: "#000000" }}
                     >
                       ✏️ Muokkaa
                     </button>
 
                     <button
                       onClick={() => handleDelete(note.id)}
-                      className="bg-red-500 text-black px-2 py-1 md:px-3 md:py-1.5 text-xs md:text-sm rounded hover:bg-red-600 shadow-md"
+                      className="bg-gray-500 text-black px-1 py-1 text-xs rounded hover:bg-gray-600 shadow-md"
+                      style={{ backgroundColor: "#f3f4f6", color: "#000000" }}
                     >
                       ❌ Poista
                     </button>
@@ -143,7 +161,7 @@ const Notes = () => {
         </table>
       </div>
     </div>
-  );
-};
-
+  );//return
+}
 export default Notes;
+

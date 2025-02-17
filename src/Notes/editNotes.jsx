@@ -88,12 +88,14 @@ const EditNotes = () => {
                           type="button"
                           onClick={() => navigate("/notes")}
                           className="bg-gray-500 text-black px-4 py-2 rounded-md hover:bg-gray-600 hover:bg-opacity-80 transition"
+                          style={{ backgroundColor: "#f3f4f6", color: "#000000" }}
                       >
                           ❌ Peruuta
                       </button>
                       <button
                           type="submit"
                           className="bg-blue-500 text-black px-4 py-2 rounded-md hover:bg-blue-600 hover:bg-opacity-80 transition"
+                          style={{ backgroundColor: "#f3f4f6", color: "#000000" }}
                       >
                           💾 Tallenna
                       </button>
