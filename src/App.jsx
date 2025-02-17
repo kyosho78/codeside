@@ -10,6 +10,11 @@ import CsharpCondition from "./Staticpages/programming/CsharpCondition.jsx";
 import CsharpLoop from "./Staticpages/programming/CsharpLoop.jsx";
 import backgroundVideo from "./Assets/background.mp4";
 import Notes from "./Notes/notes.jsx"; 
+import EditNotes from "./Notes/editNotes";
+import AddNote from "./Notes/addNote";
+
+
+
 
 
 // Background Video Component
@@ -54,7 +59,9 @@ function App() {
           <Route path="/async-programming" element={<><Navbar /><AsyncProgramming /></>} />
           <Route path="/csharp-condition" element={<><Navbar /><CsharpCondition /></>} />
           <Route path="/csharp-loop" element={<><Navbar /><CsharpLoop /></>} />
-          <Route path="/notes" element={<Notes />} /> 
+          <Route path="/notes" element={<Notes />} />
+          <Route path="/edit-note/:id" element={<EditNotes />} />
+          <Route path="/add-note" element={<AddNote />} /> 
           {/* Add other pages as needed */}
         </Routes>
       </div>

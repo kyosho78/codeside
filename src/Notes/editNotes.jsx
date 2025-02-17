@@ -1,64 +1,108 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-//import './LoginUser.css';
 
-const EditNote = () => {
-  const { noteId } = useParams(); // Hakee ID:n URL:stä
-  const [noteContent, setNoteContent] = useState(""); // Tilamuuttuja muistiinpanolle
-  const navigate = useNavigate();
+const EditNotes = () => {
+    const { id } = useParams(); // Haetaan id URL:sta
+    const navigate = useNavigate();
+    const baseUrl = "https://codesitebe-efgshggehucfdvhq.swedencentral-01.azurewebsites.net/api/Notes/";
 
-  // Haetaan muistiinpano ID:n perusteella
-  useEffect(() => {
-    const fetchNote = async () => {
-      try {
-        const response = await fetch(`https://codesitebe-efgshggehucfdvhq.swedencentral-01.azurewebsites.net/api/Notes/${noteId}/`);
+    const [note, setNote] = useState({ header: "", content: "" });
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-        if (!response.ok) throw new Error("Muistiinpanon haku epäonnistui");
-        const data = await response.json();
-        setNoteContent(data.content); // Tallennetaan sisältö stateen
-      } catch (error) {
-        console.error(error);
-        alert("Muistiinpanon haku epäonnistui.");
-      }
+    // Haetaan muokattava muistiinpano
+    useEffect(() => {
+        const fetchNote = async () => {
+            try {
+                const response = await fetch(`${baseUrl}${id}`, {
+                    method: "GET",
+                    mode: "cors",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
+
+                if (!response.ok) throw new Error(`Virhe haettaessa muistiinpanoa: ${response.status}`);
+
+                const data = await response.json();
+                setNote(data);
+            } catch (error) {
+                console.error(error);
+                setError("Muistiinpanon haku epäonnistui.");
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchNote();
+    }, [id]);
+
+    // Käsitellään muokkauksen tallennus
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch(`${baseUrl}${id}`, {
+                method: "PUT",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(note),
+            });
+
+            if (!response.ok) throw new Error("Virhe tallennettaessa muistiinpanoa.");
+
+            navigate("/notes"); // Palataan takaisin muistiinpanojen listaukseen
+        } catch (error) {
+            console.error(error);
+            setError("Tallennus epäonnistui.");
+        }
     };
 
-    fetchNote();
-  }, [noteId]); // Suoritetaan vain kun noteId muuttuu
+    if (loading) return <p className="text-center text-gray-600">Ladataan muistiinpanoa...</p>;
+    if (error) return <p className="text-center text-red-500">{error}</p>;
 
-  // Funktio, joka tallentaa muokatun muistiinpanon
-  const handleSaveNote = async () => {
-    try {
-      const accessToken = localStorage.getItem('accessToken'); // Haetaan JWT-token
-      const response = await fetch(`https://codesitebe-efgshggehucfdvhq.swedencentral-01.azurewebsites.net/api/Notes/${noteId}/`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`,
-        },
-        body: JSON.stringify({ content: noteContent }), // Lähetetään muokattu sisältö
-      });
-
-      if (!response.ok) throw new Error("Muistiinpanon tallennus epäonnistui");
-      alert("Muistiinpano tallennettu!");
-      navigate('/notes'); // Ohjataan takaisin Notes-listaan
-    } catch (error) {
-      console.error(error);
-      alert("Muistiinpanon tallennus epäonnistui.");
-    }
-  };
-
-  return (
-    <div>
-      <h2>Muokkaa muistiinpanoa</h2>
-      <textarea
-        value={noteContent}
-        onChange={(e) => setNoteContent(e.target.value)}
-        rows={5}
-        cols={50}
-      />
-      <button onClick={handleSaveNote}>Tallenna</button>
-    </div>
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white p-6">
+          <div className="w-full max-w-lg bg-gray-800 shadow-lg rounded-md p-6">
+              <h2 className="text-2xl font-semibold mb-4 text-center">Muokkaa muistiinpanoa</h2>
+              <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+                  
+                  <label className="font-medium">Otsikko:</label>
+                  <input
+                      type="text"
+                      value={note.header}
+                      onChange={(e) => setNote({ ...note, header: e.target.value })}
+                      className="border border-gray-600 bg-gray-700 text-white p-2 rounded-md w-full focus:ring-2 focus:ring-blue-500"
+                  />
+  
+                  <label className="font-medium">Sisältö:</label>
+                  <textarea
+                      value={note.content}
+                      onChange={(e) => setNote({ ...note, content: e.target.value })}
+                      className="border border-gray-600 bg-gray-700 text-white p-2 rounded-md w-full h-32 focus:ring-2 focus:ring-blue-500"
+                  />
+  
+                  <div className="flex justify-between mt-4">
+                      <button
+                          type="button"
+                          onClick={() => navigate("/notes")}
+                          className="bg-gray-500 text-black px-4 py-2 rounded-md hover:bg-gray-600 hover:bg-opacity-80 transition"
+                      >
+                          ❌ Peruuta
+                      </button>
+                      <button
+                          type="submit"
+                          className="bg-blue-500 text-black px-4 py-2 rounded-md hover:bg-blue-600 hover:bg-opacity-80 transition"
+                      >
+                          💾 Tallenna
+                      </button>
+                  </div>
+              </form>
+          </div>
+      </div>
   );
+  
 };
 
-export default EditNote;
+export default EditNotes;
