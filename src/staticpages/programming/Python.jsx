@@ -1,19 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const JavaScript = () => {
+const Python = () => {
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
   return (
     <div className="min-h-screen bg-black text-white p-4 sm:p-6 pt-20 md:pt-32 lg:pt-20">
       <div className="max-w-7xl mx-auto bg-gray-800 p-6 sm:p-8 rounded-lg border border-gray-600 shadow-lg">
-        <h1 className="text-3xl text-center font-bold mb-4">JavaScript</h1>
+        <h1 className="text-3xl text-center font-bold mb-4">Python</h1>
 
         <p className="text-lg leading-loose">
-        JavaScript on monipuolinen ja suosittu ohjelmointikieli, joka mahdollistaa verkkosivujen dynaamisen toiminnallisuuden.
-        Sitä käytetään sekä selainympäristöissä että palvelinpuolella (Node.js). 
-        JavaScript on yksi kolmesta peruskielistä, joiden avulla voit luoda modernia verkkosivua (HTML ja CSS kanssa).
+        Python on yleiskäyttöinen, korkean tason ohjelmointikieli, 
+        joka tunnetaan selkeästä syntaksistaan ja laajasta käyttökohteidensa kirjosta. 
+        Se soveltuu niin aloittelijoille kuin kokeneille kehittäjille.
         </p>
 
         <div className="px-4 sm:px-6 md:px-10">
@@ -22,23 +22,22 @@ const JavaScript = () => {
           </h2>
           <ul className="text-lg leading-relaxed text-center md:text-left mt-4 space-y-2">
             <li>
-              <strong>Dynaaminen ja tapahtumapohjainen:</strong> Voit luoda interaktiivisia verkkosivustoja,
-                kuten lomakkeiden validointeja, animaatioita ja reaaliaikaista dataa.
+              <strong>Selkeä syntaksi:</strong>  Helppolukuinen ja helposti opittava, mikä tekee siitä suositun ensimmäisenä ohjelmointikielenä.
             </li>
             <li>
-              <strong>Selainten natiivikieli:</strong> JavaScript toimii kaikissa moderneissa selaimissa ilman lisäosia.
+              <strong>Monipuolisuus:</strong> Soveltuu moniin tarkoituksiin, kuten web-kehitykseen, datatieteeseen, tekoälyyn, automaatioon ja pelinkehitykseen.
             </li>
             <li>
-              <strong>Täydentää HTML:ää ja CSS:ää:</strong> Mahdollistaa verkkosivujen logiikan ja käyttäjävuorovaikutuksen.
+              <strong>Laaja kirjastoekosysteemi:</strong> Sisältää tuhansia valmiita kirjastoja ja moduuleja, kuten NumPy (datatiede), Django (web-kehitys) ja TensorFlow (tekoäly).
             </li>
             <li>
-              <strong>Monipuolinen ekosysteemi:</strong> Laaja valikoima kirjastoja ja kehyksiä, kuten React, Vue ja Angular, tehostaa kehitystyötä.
+              <strong>Tulkattu kieli:</strong> Python-koodi ajetaan suoraan tulkilla ilman erillistä kääntämistä, mikä nopeuttaa kehitystä.
             </li>
             <li>
-              <strong>Nopea suorituskyky:</strong> Nykyiset JavaScript-moottorit, kuten Google V8, tekevät siitä erittäin nopean.
+              <strong>Ristiinplatformisuus::</strong> Toimii useimmissa käyttöjärjestelmissä, kuten Windows, macOS ja Linux.
             </li>
             <li>
-              <strong>Asynkroninen ohjelmointi: </strong> Tuki Promises, async/await ja Callbacks-toiminnoille helpottaa rinnakkaisia operaatioita.
+              <strong>Yhteisö ja tuki:</strong>  Pythonilla on valtava ja aktiivinen kehittäjäyhteisö, joka tarjoaa jatkuvaa tukea ja resursseja.
             </li>
           </ul>
         </div>
@@ -52,22 +51,25 @@ const JavaScript = () => {
             </h2>
             <ul className="text-lg leading-relaxed text-center md:text-left mt-4 space-y-2">
               <li>
-                <strong>Web-sovellukset: </strong>  Interaktiiviset käyttöliittymät ja verkkopalvelut.
+                <strong>Web-kehitys: </strong>  Kehykset kuten Django ja Flask.
               </li>
               <li>
-                <strong>Palvelinpuolen kehitys: </strong> Node.js mahdollistaa skaalautuvien palveluiden luomisen.
+                <strong>Datatiede ja analytiikka:</strong> Työkalut kuten Pandas, NumPy ja Matplotlib.
               </li>
               <li>
-                <strong>Mobiilisovellukset:</strong> Hyödyntää alustoja, kuten React Native ja Ionic.
+                <strong>Koneoppiminen ja tekoäly:</strong> Kirjastot kuten TensorFlow ja PyTorch.
               </li>
               <li>
-                <strong>Pelit ja visualisoinnit: </strong> Pelinkehitys (esim. Phaser) ja datavisualisointi (esim. D3.js).
+                <strong>Skriptit ja automaatio:</strong> Päivittäisten tehtävien automatisointi.
               </li>
               <li>
-                <Link to="/javascript-condition"onClick={scrollToTop}>Esimerkki ehtolausekkeesta</Link>
+                <strong>Sovellukset ja pelit: </strong> Graafiset käyttöliittymät (Tkinter) ja pelinkehitys (Pygame).
               </li>
               <li>
-                <Link to="/csharp-loop"onClick={scrollToTop}>Esimerkki silmukasta</Link>
+                <Link to="/python-condition"onClick={scrollToTop}>Esimerkki ehtolausekkeesta</Link>
+              </li>
+              <li>
+                <Link to="/python-loop"onClick={scrollToTop}>Esimerkki silmukasta</Link>
               </li>
             </ul>
           </div>
@@ -82,20 +84,20 @@ const JavaScript = () => {
               <br /> Rekisteröityminen on ilmaista.
             </p>
             <a
-              href="https://www.w3schools.com/js/default.asp"
+              href="https://www.w3schools.com/python/default.asp"
               target="_blank"
               rel="noreferrer noopener"
               className="block mt-4 underline text-blue-500"
             >
-              Siirry W3Schoolsin JavaScript-oppaaseen
+              Siirry W3Schoolsin Python-oppaaseen
             </a>
             <a
-              href="https://javascript.info/"
+              href="https://www.python.org/"
               target="_blank"
               rel="noreferrer noopener"
               className="block mt-2 underline text-blue-500"
             >
-              Siirry JavaScript-kotisivut
+              Siirry Python-kotisivut
             </a>
           </div>
         </div>
@@ -104,4 +106,4 @@ const JavaScript = () => {
   );
 };
 
-export default JavaScript;
+export default Python;

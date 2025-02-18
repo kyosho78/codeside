@@ -70,11 +70,11 @@ const Navbar = () => {
                     JavaScript
                   </Link>
                   <Link
-                    to="/html"
+                    to="/python"
                     className="flex items-center gap-2 p-2 text-white hover:bg-gray-700 rounded"
                   >
-                    <img src="/html.svg" alt="HTML" className="w-5 h-5" />
-                    HTML
+                    <img src="/python.svg" alt="Python" className="w-5 h-5" />
+                    Python
                   </Link>
                   <Link
                     to="/sql"
@@ -84,11 +84,11 @@ const Navbar = () => {
                     SQL
                   </Link>
                   <Link
-                    to="/python"
+                    to="/html"
                     className="flex items-center gap-2 p-2 text-white hover:bg-gray-700 rounded"
                   >
-                    <img src="/python.svg" alt="Python" className="w-5 h-5" />
-                    Python
+                    <img src="/html.svg" alt="HTML" className="w-5 h-5" />
+                    HTML
                   </Link>
                   <Link
                     to="/css"

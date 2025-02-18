@@ -11,6 +11,9 @@ import CsharpLoop from "./Staticpages/programming/CsharpLoop.jsx";
 import JavaScript from "./Staticpages/programming/JavaScript.jsx";
 import JavaScriptCondition from "./Staticpages/programming/JavaScriptCondition.jsx";
 import JavaScriptLoop from "./Staticpages/programming/JavaScriptLoop.jsx";
+import Python from "./Staticpages/programming/Python.jsx";
+import PythonCondition from "./Staticpages/programming/PythonCondition.jsx";
+import PythonLoop from "./Staticpages/programming/PythonLoop.jsx";
 import backgroundVideo from "./Assets/background.mp4";
 
 function BackgroundVideo() {
@@ -56,6 +59,9 @@ function App() {
           <Route path="/javascript" element={<><Navbar /><JavaScript /></>} />
           <Route path="/javascript-condition" element={<><Navbar /><JavaScriptCondition /></>} />
           <Route path="/javascript-loop" element={<><Navbar /><JavaScriptLoop /></>} />
+          <Route path="/python" element={<><Navbar /><Python /></>} />
+          <Route path="/python-condition" element={<><Navbar /><PythonCondition /></>} />
+          <Route path="/python-loop" element={<><Navbar /><PythonLoop /></>} />
         </Routes>
       </div>
     </Router>
