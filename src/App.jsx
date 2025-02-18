@@ -16,6 +16,8 @@ import PythonCondition from "./Staticpages/programming/PythonCondition.jsx";
 import PythonLoop from "./Staticpages/programming/PythonLoop.jsx";
 import Sql from "./Staticpages/programming/Sql.jsx";
 import SqlCondition from "./Staticpages/programming/SqlCondition.jsx";
+import Html from "./Staticpages/programming/Html.jsx";
+import Css from "./Staticpages/programming/Css.jsx";
 import backgroundVideo from "./Assets/background.mp4";
 
 function BackgroundVideo() {
@@ -66,6 +68,8 @@ function App() {
           <Route path="/python-loop" element={<><Navbar /><PythonLoop /></>} />
           <Route path="/sql" element={<><Navbar /><Sql /></>} />
           <Route path="/sql-condition" element={<><Navbar /><SqlCondition /></>} />
+          <Route path="/html" element={<><Navbar /><Html /></>} />
+          <Route path="/css" element={<><Navbar /><Css /></>} />
         </Routes>
       </div>
     </Router>
