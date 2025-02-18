@@ -34,7 +34,7 @@ const Python = () => {
               <strong>Tulkattu kieli:</strong> Python-koodi ajetaan suoraan tulkilla ilman erillistä kääntämistä, mikä nopeuttaa kehitystä.
             </li>
             <li>
-              <strong>Ristiinplatformisuus::</strong> Toimii useimmissa käyttöjärjestelmissä, kuten Windows, macOS ja Linux.
+              <strong>Ristiinplatformisuus:</strong> Toimii useimmissa käyttöjärjestelmissä, kuten Windows, macOS ja Linux.
             </li>
             <li>
               <strong>Yhteisö ja tuki:</strong>  Pythonilla on valtava ja aktiivinen kehittäjäyhteisö, joka tarjoaa jatkuvaa tukea ja resursseja.
@@ -97,7 +97,7 @@ const Python = () => {
               rel="noreferrer noopener"
               className="block mt-2 underline text-blue-500"
             >
-              Siirry Python-kotisivut
+              Siirry Pythonin kotisivuille
             </a>
           </div>
         </div>

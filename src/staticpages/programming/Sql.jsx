@@ -1,19 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const JavaScript = () => {
+const Sql = () => {
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
   return (
     <div className="min-h-screen bg-black text-white p-4 sm:p-6 pt-20 md:pt-32 lg:pt-20">
       <div className="max-w-7xl mx-auto bg-gray-800 p-6 sm:p-8 rounded-lg border border-gray-600 shadow-lg">
-        <h1 className="text-3xl text-center font-bold mb-4">JavaScript</h1>
+        <h1 className="text-3xl text-center font-bold mb-4">SQL</h1>
 
         <p className="text-lg leading-loose">
-        JavaScript on monipuolinen ja suosittu ohjelmointikieli, joka mahdollistaa verkkosivujen dynaamisen toiminnallisuuden.
-        Sitä käytetään sekä selainympäristöissä että palvelinpuolella (Node.js). 
-        JavaScript on yksi kolmesta peruskielistä, joiden avulla voit luoda modernia verkkosivua (HTML ja CSS kanssa).
+        SQL (Structured Query Language) on standardoitu ohjelmointikieli, jota käytetään tietokantojen hallintaan ja tietojen käsittelyyn. 
+        SQL mahdollistaa tietojen tallentamisen, hakemisen, päivittämisen ja poistamisen tietokannoista.
         </p>
 
         <div className="px-4 sm:px-6 md:px-10">
@@ -22,23 +21,19 @@ const JavaScript = () => {
           </h2>
           <ul className="text-lg leading-relaxed text-center md:text-left mt-4 space-y-2">
             <li>
-              <strong>Dynaaminen ja tapahtumapohjainen:</strong> Voit luoda interaktiivisia verkkosivustoja,
-                kuten lomakkeiden validointeja, animaatioita ja reaaliaikaista dataa.
+              <strong>Tietojen käsittely:</strong>  SQL tarjoaa tehokkaat työkalut tietojen hakemiseen (SELECT), lisäämiseen (INSERT), päivittämiseen (UPDATE) ja poistamiseen (DELETE).
             </li>
             <li>
-              <strong>Selainten natiivikieli:</strong> JavaScript toimii kaikissa moderneissa selaimissa ilman lisäosia.
+              <strong>MTietokantojen hallinta:</strong>  Mahdollisuus luoda ja muokata tietokannan rakenteita (CREATE, ALTER, DROP).
             </li>
             <li>
-              <strong>Täydentää HTML:ää ja CSS:ää:</strong> Mahdollistaa verkkosivujen logiikan ja käyttäjävuorovaikutuksen.
+              <strong>Standardoitu kieli:</strong> SQL on ANSI- ja ISO-standardi, mutta tietokantakohtaiset laajennukset, kuten T-SQL (Microsoft SQL Server) ja PL/pgSQL (PostgreSQL), laajentavat sen toiminnallisuutta.
             </li>
             <li>
-              <strong>Monipuolinen ekosysteemi:</strong> Laaja valikoima kirjastoja ja kehyksiä, kuten React, Vue ja Angular, tehostaa kehitystyötä.
+              <strong>Tietojen yhdistäminen:</strong> SQL mahdollistaa tietojen yhdistämisen useista tauluista (JOIN-operaattorit).
             </li>
             <li>
-              <strong>Nopea suorituskyky:</strong> Nykyiset JavaScript-moottorit, kuten Google V8, tekevät siitä erittäin nopean.
-            </li>
-            <li>
-              <strong>Asynkroninen ohjelmointi: </strong> Tuki Promises, async/await ja Callbacks-toiminnoille helpottaa rinnakkaisia operaatioita.
+              <strong>Ehdollisuus:</strong> Tuki loogisille ehdoille (WHERE, HAVING) ja tietojen ryhmittelylle (GROUP BY).
             </li>
           </ul>
         </div>
@@ -52,22 +47,19 @@ const JavaScript = () => {
             </h2>
             <ul className="text-lg leading-relaxed text-center md:text-left mt-4 space-y-2">
               <li>
-                <strong>Web-sovellukset: </strong>  Interaktiiviset käyttöliittymät ja verkkopalvelut.
+                <strong>Raportointi ja analytiikka:  </strong>  Tietokannassa olevien tietojen analysointi ja raporttien luominen.
               </li>
               <li>
-                <strong>Palvelinpuolen kehitys: </strong> Node.js mahdollistaa skaalautuvien palveluiden luomisen.
+                <strong>Sovellusten tukeminen:</strong> Käytetään taustajärjestelmien tiedonhallinnassa web-, mobiili- ja työpöytäsovelluksissa.
               </li>
               <li>
-                <strong>Mobiilisovellukset:</strong> Hyödyntää alustoja, kuten React Native ja Ionic.
+                <strong>Tietojen hallinta:</strong>  Suuret yritykset, kuten pankit ja verkkokaupat, käyttävät SQL:ää kriittisten tietojen hallintaan.
               </li>
               <li>
-                <strong>Pelit ja visualisoinnit: </strong> Pelinkehitys (esim. Phaser) ja datavisualisointi (esim. D3.js).
+                <strong>Tietojen integrointi:</strong> Mahdollistaa tiedonvaihdon eri järjestelmien välillä.
               </li>
               <li>
-                <Link to="/javascript-condition"onClick={scrollToTop}>Esimerkki ehtolausekkeesta</Link>
-              </li>
-              <li>
-                <Link to="/csharp-loop"onClick={scrollToTop}>Esimerkki silmukasta</Link>
+                <Link to="/sql-condition"onClick={scrollToTop}>Esimerkki ehtolausekkeesta</Link>
               </li>
             </ul>
           </div>
@@ -82,20 +74,20 @@ const JavaScript = () => {
               <br /> Rekisteröityminen on ilmaista.
             </p>
             <a
-              href="https://www.w3schools.com/js/default.asp"
+              href="https://www.w3schools.com/sql/default.asp"
               target="_blank"
               rel="noreferrer noopener"
               className="block mt-4 underline text-blue-500"
             >
-              Siirry W3Schoolsin JavaScript-oppaaseen
+              Siirry W3Schoolsin Sql-oppaaseen
             </a>
             <a
-              href="https://javascript.info/"
+              href="https://learn.microsoft.com/en-us/sql/?view=sql-server-ver16/"
               target="_blank"
               rel="noreferrer noopener"
               className="block mt-2 underline text-blue-500"
             >
-              Siirry JavaScriptin kotisivuille
+              Siirry Sql-oppaaseen
             </a>
           </div>
         </div>
@@ -104,4 +96,4 @@ const JavaScript = () => {
   );
 };
 
-export default JavaScript;
+export default Sql;
