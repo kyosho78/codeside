@@ -18,6 +18,12 @@ import Sql from "./Staticpages/programming/Sql.jsx";
 import SqlCondition from "./Staticpages/programming/SqlCondition.jsx";
 import Html from "./Staticpages/programming/Html.jsx";
 import Css from "./Staticpages/programming/Css.jsx";
+import VisualStudio from "./Staticpages/platforms/VisualStudio.jsx";
+import VsCode from "./Staticpages/platforms/VsCode.jsx";
+import Git from "./Staticpages/platforms/Git.jsx";
+import Net from "./Staticpages/platforms/Net.jsx";
+import Django from "./Staticpages/platforms/Django.jsx";
+import Azure from "./Staticpages/platforms/Azure.jsx";
 import backgroundVideo from "./Assets/background.mp4";
 
 function BackgroundVideo() {
@@ -70,6 +76,12 @@ function App() {
           <Route path="/sql-condition" element={<><Navbar /><SqlCondition /></>} />
           <Route path="/html" element={<><Navbar /><Html /></>} />
           <Route path="/css" element={<><Navbar /><Css /></>} />
+          <Route path="/visual-studio" element={<><Navbar /><VisualStudio /></>} />
+          <Route path="/vs-code" element={<><Navbar /><VsCode /></>} />
+          <Route path="/git" element={<><Navbar /><Git /></>} />
+          <Route path="/net" element={<><Navbar /><Net /></>} />
+          <Route path="/django" element={<><Navbar /><Django /></>} />
+          <Route path="/azure" element={<><Navbar /><Azure /></>} />
         </Routes>
       </div>
     </Router>

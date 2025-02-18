@@ -132,7 +132,7 @@ const Navbar = () => {
                     Visual Studio
                   </Link>
                   <Link
-                    to="/vscode"
+                    to="/vs-code"
                     className="flex items-center gap-2 p-2 text-white hover:bg-gray-700 rounded"
                   >
                     <img src="/vscode.svg" alt="VS Code" className="w-5 h-5" />
@@ -148,7 +148,7 @@ const Navbar = () => {
 
                   {/* Column 2 */}
                   <Link
-                    to="/dotnet"
+                    to="/net"
                     className="flex items-center gap-2 p-2 text-white hover:bg-gray-700 rounded"
                   >
                     <img src="/dotnet.svg" alt=".NET" className="w-5 h-5" />
@@ -310,7 +310,7 @@ const Navbar = () => {
                 Visual Studio
               </Link>
               <Link
-                to="/vscode"
+                to="/vs-code"
                 className="flex items-center justify-center gap-2 p-2 text-white hover:bg-gray-700 rounded"
                 onClick={() => {
                   setIsMobileOhjelmointiOpen(false)
@@ -332,7 +332,7 @@ const Navbar = () => {
                 Git
               </Link>
               <Link
-                to="/dotnet"
+                to="/net"
                 className="flex items-center justify-center gap-2 p-2 text-white hover:bg-gray-700 rounded"
                 onClick={() => {
                   setIsMobileOhjelmointiOpen(false)
