@@ -5,7 +5,7 @@ const Dictionary = () => {
   const [selectedLetter, setSelectedLetter] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
 
-  // Load JSON file
+  // Load JSON dynamically
   useEffect(() => {
     fetch("/coding_dictionary.json")
       .then((response) => response.json())
@@ -13,17 +13,19 @@ const Dictionary = () => {
       .catch((error) => console.error("Error loading JSON:", error));
   }, []);
 
-  // Search and filter words
+  // Function to filter words (Finnish and English) 
   const getFilteredWords = () => {
+    if (!wordsData) return [];
+
     if (searchQuery) {
       return Object.values(wordsData)
         .flat()
-        .filter((word) => word.toLowerCase().includes(searchQuery.toLowerCase()));
+        .filter((entry) =>
+          entry.word.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          entry.translation.toLowerCase().includes(searchQuery.toLowerCase())
+        );
     }
-    if (selectedLetter) {
-      return wordsData[selectedLetter] || [];
-    }
-    return [];
+    return selectedLetter ? wordsData[selectedLetter] || [] : [];
   };
 
   return (
@@ -41,7 +43,7 @@ const Dictionary = () => {
               setSearchQuery(e.target.value);
               setSelectedLetter(null);
             }}
-            className="p-2 w-full sm:w-2/3 md:w-1/2 bg-gray-700 text-white rounded-md border border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="p-2 w-full sm:w-2/3 md:w-1/2 bg-gray-700 text-white rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
@@ -75,11 +77,13 @@ const Dictionary = () => {
             <h2 className="text-2xl font-semibold text-center">Select a letter or search</h2>
           )}
 
-          <ul className="text-lg mt-4 space-y-2 text-center">
+          <ul className="text-lg mt-4 space-y-4 text-center">
             {getFilteredWords().length > 0 ? (
-              getFilteredWords().map((word, index) => (
-                <li key={index} className="bg-gray-600 p-2 rounded-md">
-                  {word}
+              getFilteredWords().map((entry, index) => (
+                <li key={index} className="bg-gray-600 p-4 rounded-md text-left">
+                  <strong className="text-xl text-white">{entry.word}</strong> - 
+                  <span className="text-white"> {entry.translation}</span>
+                  <p className="mt-2 text-white">{entry.explanation}</p>
                 </li>
               ))
             ) : (
