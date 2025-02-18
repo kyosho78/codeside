@@ -1,0 +1,148 @@
+{
+    "a": [
+      "Abstraction - Abstraktio",
+      "Algorithm - Algoritmi",
+      "API (Application Programming Interface) - Rajapinta",
+      "Argument - Argumentti",
+      "Array - Taulukko",
+      "Asynchronous - Asynkroninen",
+      "Authentication - Tunnistautuminen",
+      "Authorization - Valtuutus"
+    ],
+    "b": [
+      "Binary - Binääri",
+      "Boolean - Totuusarvo",
+      "Bug - Virhe"
+    ],
+    "c": [
+      "Cache - Välimuisti",
+      "Callback - Takaisinkutsu",
+      "Class - Luokka",
+      "Cloud Computing - Pilvilaskenta",
+      "Codebase - Koodipohja",
+      "Compilation - Kääntäminen",
+      "Condition - Ehto",
+      "Constructor - Rakentaja",
+      "Container - Säiliö",
+      "Continuous Integration - Jatkuva integrointi"
+    ],
+    "d": [
+      "Data Structure - Tietorakenne",
+      "Database - Tietokanta",
+      "Debug - Virheenjäljitys",
+      "Dependency - Riippuvuus",
+      "Deployment - Julkaisu",
+      "Deserialization - Deserialisointi",
+      "Documentation - Dokumentaatio",
+      "Dynamic Typing - Dynaaminen tyypitys"
+    ],
+    "e": [
+      "Encapsulation - Kapselointi",
+      "Endpoint - Päätepiste",
+      "Enumeration (Enum) - Luettelo",
+      "Error - Virhe",
+      "Exception - Poikkeus",
+      "Expression - Lauseke"
+    ],
+    "f": [
+      "Feature - Ominaisuus",
+      "Framework - Kehys",
+      "Function - Funktio"
+    ],
+    "g": [
+      "Garbage Collection - Roskankeräys",
+      "Git - Git",
+      "GraphQL - GraphQL"
+    ],
+    "h": [
+      "Hardcoded - Kovakoodattu",
+      "Hash - Hajautus",
+      "Heap - Keko",
+      "Hook (React, etc.) - Koukku"
+    ],
+    "i": [
+      "IDE (Integrated Development Environment) - Kehitysympäristö",
+      "Immutable - Muuttumaton",
+      "Index - Indeksi",
+      "Inheritance - Periytyminen",
+      "Integer - Kokonaisluku",
+      "Interface - Rajapinta",
+      "Iteration - Iterointi"
+    ],
+    "j": [
+      "JSON - JSON"
+    ],
+    "l": [
+      "Lambda Function - Lambda-funktio",
+      "Library - Kirjasto",
+      "Loop - Silmukka"
+    ],
+    "m": [
+      "Middleware - Väliohjelmisto",
+      "Method - Metodi",
+      "Module - Moduuli",
+      "Mutation (GraphQL, etc.) - Muutos"
+    ],
+    "n": [
+      "Namespace - Nimiavaruus",
+      "Null - Tyhjä"
+    ],
+    "o": [
+      "Object - Olio",
+      "Operator - Operaattori",
+      "Overloading - Ylikuormitus",
+      "Override - Korvaaminen"
+    ],
+    "p": [
+      "Parameter - Parametri",
+      "Parsing - Jäsentäminen",
+      "Polymorphism - Monimuotoisuus",
+      "Pointer - Osoitin",
+      "Promise - Lupa",
+      "Property - Ominaisuus",
+      "Prototype - Prototyyppi"
+    ],
+    "q": [
+      "Query - Kysely"
+    ],
+    "r": [
+      "Recursion - Rekursio",
+      "Refactoring - Refaktorointi",
+      "Regular Expression (Regex) - Säännöllinen lauseke",
+      "Repository - Tietovarasto",
+      "REST API - REST-rajapinta",
+      "Return - Palauttaa"
+    ],
+    "s": [
+      "Scope - Laajuus",
+      "Serialization - Serialisointi",
+      "Server - Palvelin",
+      "Session - Istunto",
+      "Singleton - Singleton",
+      "Source Code - Lähdekoodi",
+      "Stack - Pino",
+      "Statement - Lause",
+      "String - Merkkijono",
+      "Syntax - Syntaksi"
+    ],
+    "t": [
+      "Template - Malli",
+      "Thread - Säie",
+      "Token - Tunniste",
+      "Tuple - Tupla",
+      "TypeScript - TypeScript"
+    ],
+    "u": [
+      "Unit Test - Yksikkötesti"
+    ],
+    "v": [
+      "Variable - Muuttuja",
+      "Version Control - Versionhallinta",
+      "Virtual Machine (VM) - Virtuaalikone"
+    ],
+    "w": [
+      "WebSocket - WebSocket",
+      "Wrapper - Kääre"
+    ]
+  }
+  
