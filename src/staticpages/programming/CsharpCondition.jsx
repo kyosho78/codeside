@@ -157,7 +157,7 @@ class Program
               className="text-blue-400 underline hover:text-blue-500 mr-4"
               onClick={scrollToTop}
             >
-              ⬅ Takaisin C# Ohjelmointiin
+              ⬅ Takaisin C# pääsivulle
             </Link>
   
             <Link

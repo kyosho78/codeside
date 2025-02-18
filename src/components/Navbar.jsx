@@ -32,14 +32,13 @@ const Navbar = () => {
         <div className="hidden md:flex flex-1 justify-center space-x-6 relative">
           {/* Ohjelmointi Dropdown */}
           <div
-            className="relative"
-            onMouseEnter={() => setIsOhjelmointiOpen(true)}
-            onMouseLeave={(e) => {
-              if (!e.relatedTarget || !(e.relatedTarget instanceof Element) || !e.relatedTarget.closest(".dropdown-menu")) {
-                setIsOhjelmointiOpen(false);
-              }
-            }}
-          >
+             className="relative"
+             onMouseEnter={() => {
+               setIsOhjelmointiOpen(true);
+               setIsAlustatOpen(false);
+             }}
+             onMouseLeave={() => setIsOhjelmointiOpen(false)}
+           >
             <Link to="#" className="nav-link py-2 px-4">
               Ohjelmointi
             </Link>
@@ -106,12 +105,11 @@ const Navbar = () => {
           {/* Alustat Dropdown */}
           <div
             className="relative"
-            onMouseEnter={() => setIsAlustatOpen(true)}
-            onMouseLeave={(e) => {
-              if (!e.relatedTarget || !(e.relatedTarget instanceof Element) || !e.relatedTarget.closest(".dropdown-menu")) {
-                setIsOhjelmointiOpen(false);
-              }
+            onMouseEnter={() => {
+              setIsAlustatOpen(true);
+              setIsOhjelmointiOpen(false);
             }}
+            onMouseLeave={() => setIsAlustatOpen(false)}
           >
             <Link to="#" className="nav-link py-2 px-4">
               Alustat

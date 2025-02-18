@@ -8,6 +8,9 @@ import Csharp from "./Staticpages/programming/csharp.jsx";
 import AsyncProgramming from "./Staticpages/programming/AsyncProgramming.jsx";
 import CsharpCondition from "./Staticpages/programming/CsharpCondition.jsx";
 import CsharpLoop from "./Staticpages/programming/CsharpLoop.jsx";
+import JavaScript from "./Staticpages/programming/JavaScript.jsx";
+import JavaScriptCondition from "./Staticpages/programming/JavaScriptCondition.jsx";
+import JavaScriptLoop from "./Staticpages/programming/JavaScriptLoop.jsx";
 import backgroundVideo from "./Assets/background.mp4";
 
 function BackgroundVideo() {
@@ -50,6 +53,9 @@ function App() {
           <Route path="/async-programming" element={<><Navbar /><AsyncProgramming /></>} />
           <Route path="/csharp-condition" element={<><Navbar /><CsharpCondition /></>} />
           <Route path="/csharp-loop" element={<><Navbar /><CsharpLoop /></>} />
+          <Route path="/javascript" element={<><Navbar /><JavaScript /></>} />
+          <Route path="/javascript-condition" element={<><Navbar /><JavaScriptCondition /></>} />
+          <Route path="/javascript-loop" element={<><Navbar /><JavaScriptLoop /></>} />
         </Routes>
       </div>
     </Router>
