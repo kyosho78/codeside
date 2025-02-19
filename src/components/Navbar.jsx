@@ -32,14 +32,13 @@ const Navbar = () => {
         <div className="hidden md:flex flex-1 justify-center space-x-6 relative">
           {/* Ohjelmointi Dropdown */}
           <div
-            className="relative"
-            onMouseEnter={() => setIsOhjelmointiOpen(true)}
-            onMouseLeave={(e) => {
-              if (!e.relatedTarget || !(e.relatedTarget instanceof Element) || !e.relatedTarget.closest(".dropdown-menu")) {
-                setIsOhjelmointiOpen(false);
-              }
-            }}
-          >
+             className="relative"
+             onMouseEnter={() => {
+               setIsOhjelmointiOpen(true);
+               setIsAlustatOpen(false);
+             }}
+             onMouseLeave={() => setIsOhjelmointiOpen(false)}
+           >
             <Link to="#" className="nav-link py-2 px-4">
               Ohjelmointi
             </Link>
@@ -71,11 +70,11 @@ const Navbar = () => {
                     JavaScript
                   </Link>
                   <Link
-                    to="/html"
+                    to="/python"
                     className="flex items-center gap-2 p-2 text-white hover:bg-gray-700 rounded"
                   >
-                    <img src="/html.svg" alt="HTML" className="w-5 h-5" />
-                    HTML
+                    <img src="/python.svg" alt="Python" className="w-5 h-5" />
+                    Python
                   </Link>
                   <Link
                     to="/sql"
@@ -85,11 +84,11 @@ const Navbar = () => {
                     SQL
                   </Link>
                   <Link
-                    to="/python"
+                    to="/html"
                     className="flex items-center gap-2 p-2 text-white hover:bg-gray-700 rounded"
                   >
-                    <img src="/python.svg" alt="Python" className="w-5 h-5" />
-                    Python
+                    <img src="/html.svg" alt="HTML" className="w-5 h-5" />
+                    HTML
                   </Link>
                   <Link
                     to="/css"
@@ -106,12 +105,11 @@ const Navbar = () => {
           {/* Alustat Dropdown */}
           <div
             className="relative"
-            onMouseEnter={() => setIsAlustatOpen(true)}
-            onMouseLeave={(e) => {
-              if (!e.relatedTarget || !(e.relatedTarget instanceof Element) || !e.relatedTarget.closest(".dropdown-menu")) {
-                setIsOhjelmointiOpen(false);
-              }
+            onMouseEnter={() => {
+              setIsAlustatOpen(true);
+              setIsOhjelmointiOpen(false);
             }}
+            onMouseLeave={() => setIsAlustatOpen(false)}
           >
             <Link to="#" className="nav-link py-2 px-4">
               Alustat
@@ -134,7 +132,7 @@ const Navbar = () => {
                     Visual Studio
                   </Link>
                   <Link
-                    to="/vscode"
+                    to="/vs-code"
                     className="flex items-center gap-2 p-2 text-white hover:bg-gray-700 rounded"
                   >
                     <img src="/vscode.svg" alt="VS Code" className="w-5 h-5" />
@@ -150,7 +148,7 @@ const Navbar = () => {
 
                   {/* Column 2 */}
                   <Link
-                    to="/dotnet"
+                    to="/net"
                     className="flex items-center gap-2 p-2 text-white hover:bg-gray-700 rounded"
                   >
                     <img src="/dotnet.svg" alt=".NET" className="w-5 h-5" />
@@ -243,15 +241,15 @@ const Navbar = () => {
                 JavaScript
               </Link>
               <Link
-                to="/html"
+                to="/python"
                 className="flex items-center justify-center gap-2 p-2 text-white hover:bg-gray-700 rounded"
                 onClick={() => {
                   setIsMobileOhjelmointiOpen(false)
                   setIsOpen(false)  
                 }}
               >
-                <img src="/html.svg" alt="Git" className="w-5 h-5" />
-                HTML
+                <img src="/python.svg" alt="Django" className="w-5 h-5" />
+                Python
               </Link>
               <Link
                 to="/sql"
@@ -265,15 +263,15 @@ const Navbar = () => {
                 SQL
               </Link>
               <Link
-                to="/python"
+                to="/html"
                 className="flex items-center justify-center gap-2 p-2 text-white hover:bg-gray-700 rounded"
                 onClick={() => {
                   setIsMobileOhjelmointiOpen(false)
                   setIsOpen(false)  
                 }}
               >
-                <img src="/python.svg" alt="Django" className="w-5 h-5" />
-                Python
+                <img src="/html.svg" alt="Git" className="w-5 h-5" />
+                HTML
               </Link>
               <Link
                 to="/css"
@@ -312,7 +310,7 @@ const Navbar = () => {
                 Visual Studio
               </Link>
               <Link
-                to="/vscode"
+                to="/vs-code"
                 className="flex items-center justify-center gap-2 p-2 text-white hover:bg-gray-700 rounded"
                 onClick={() => {
                   setIsMobileOhjelmointiOpen(false)
@@ -334,7 +332,7 @@ const Navbar = () => {
                 Git
               </Link>
               <Link
-                to="/dotnet"
+                to="/net"
                 className="flex items-center justify-center gap-2 p-2 text-white hover:bg-gray-700 rounded"
                 onClick={() => {
                   setIsMobileOhjelmointiOpen(false)
