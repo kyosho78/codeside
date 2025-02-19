@@ -1,0 +1,696 @@
+{
+  "a": [
+    {
+      "word": "Abstract Class",
+      "translation": "Abstrakti luokka",
+      "explanation": "Luokka, jota ei voi suoraan instanssoida, vaan se toimii pohjana muille luokille.Se voi sisältää abstrakteja metodeja, jotka on toteutettava aliluokissa."
+    },
+    {
+      "word": "Abstraction",
+      "translation": "Abstraktio",
+      "explanation": "Abstraktio piilottaa monimutkaisuuden ja näyttää vain olennaiset osat ohjelmistokehityksessä."
+    },
+    {
+      "word": "Agile Development",
+      "translation": "Ketterä kehitys",
+      "explanation": "Ohjelmistokehitysmenetelmä, joka painottaa iteratiivista kehitystä, tiivistä yhteistyötä ja jatkuvaa parantamista."
+    },
+    {
+      "word": "Algorithm",
+      "translation": "Algoritmi",
+      "explanation": "Määritelty sarja askelia, joita seuraamalla tietty ongelma ratkaistaan."
+    },
+    {
+      "word": "API (Application Programming Interface)",
+      "translation": "Sovellusliittymä (Rajapinta)",
+      "explanation": "Ohjelmistorajapinta, joka mahdollistaa eri ohjelmistojen välisen kommunikoinnin."
+    },
+    {
+      "word": "API Call",
+      "translation": "API-kutsu",
+      "explanation": "Pyyntö, joka lähetetään sovellusliittymän kautta toisen ohjelmiston tietojen tai palveluiden käyttämiseksi."
+    },
+    {
+      "word": "Argument",
+      "translation": "Argumentti",
+      "explanation": "Tieto, joka välitetään funktiolle tai metodille sen kutsun yhteydessä."
+    },
+    {
+      "word": "Array",
+      "translation": "Taulukko",
+      "explanation": "Tietorakenne, joka tallentaa useita arvoja samaan muuttujaan."
+    },
+    {
+      "word": "Asynchronous",
+      "translation": "Asynkroninen",
+      "explanation": "Toiminta, jossa tehtävät suoritetaan rinnakkain ilman odotusta edellisen päättymisestä."
+    },
+    {
+      "word": "Authentication",
+      "translation": "Tunnistautuminen",
+      "explanation": "Prosessi, jolla varmistetaan käyttäjän henkilöllisyys järjestelmässä."
+    },
+    {
+      "word": "Authorization",
+      "translation": "Valtuutus",
+      "explanation": "Käyttäjän oikeuksien ja pääsyn määrittäminen järjestelmään."
+    }
+  ],
+  "b": [
+    {
+      "word": "Binary",
+      "translation": "Binääri",
+      "explanation": "Järjestelmä, joka käyttää vain kahta numeroa: 0 ja 1."
+    },
+    {
+      "word": "Boolean",
+      "translation": "Totuusarvo",
+      "explanation": "Tietotyyppi, joka voi olla joko 'true' (tosi) tai 'false' (epätosi)."
+    },
+    {
+      "word": "Bug",
+      "translation": "Virhe",
+      "explanation": "Ohjelmistossa oleva virhe, joka aiheuttaa odottamattoman toiminnan."
+    }
+  ],
+  "c": [
+    {
+      "word": "Cache",
+      "translation": "Välimuisti",
+      "explanation": "Nopea muistialue, johon tallennetaan usein käytettyjä tietoja suorituskyvyn parantamiseksi."
+    },
+    {
+      "word": "Callback",
+      "translation": "Takaisinkutsu",
+      "explanation": "Funktio, joka annetaan toiselle funktiolle suoritettavaksi tietyssä tilanteessa."
+    },
+    {
+      "word": "Class",
+      "translation": "Luokka",
+      "explanation": "Ohjelmoinnin rakenne, joka määrittelee olioiden ominaisuudet (attribuutit) ja toiminnot (metodit). Luokka toimii mallina, josta voidaan luoda olioita. Se on aivan kuin rakennuspiirrustukset siitä luotavalle instanssille."
+    },
+    {
+      "word": "Class Attribute",
+      "translation": "Luokka ominaisuus",
+      "explanation": "Luokan tasolla määritelty muuttuja, joka on yhteinen kaikille luokan instansseille."
+    },
+    {
+      "word": "Cloud Computing",
+      "translation": "Pilvilaskenta",
+      "explanation": "Tietotekniikan käyttömalli, jossa palvelut tarjotaan internetin kautta."
+    },
+    {
+      "word": "Cloud Service",
+      "translation": "Pilvipalvelu",
+      "explanation": "Verkon kautta tarjottavat palvelut, jotka mahdollistavat laskennan, tallennuksen ja sovellusten käytön etänä."
+    },
+    {
+      "word": "Codebase",
+      "translation": "Koodipohja",
+      "explanation": "Kaikki ohjelmiston lähdekoodit yhdessä projektissa."
+    },
+    {
+      "word": "Compilation",
+      "translation": "Kääntäminen",
+      "explanation": "Prosessi, jossa lähdekoodi muunnetaan suoritettavaan muotoon."
+    },
+    {
+      "word": "Condition",
+      "translation": "Ehto",
+      "explanation": "Lausunto, joka määrittää, suorittaako ohjelma tietyn koodilohkon."
+    },
+    {
+      "word": "Constructor",
+      "translation": "Konstruktori",
+      "explanation": "Metodi, jota käytetään olion luomisen yhteydessä ja jolla voidaan alustaa olion ominaisuudet."
+    },
+    {
+      "word": "Container",
+      "translation": "Kontti",
+      "explanation": "Kevyt virtualisointiyksikkö, joka sisältää ohjelmiston ja sen riippuvuudet."
+    },
+    {
+      "word": "Container Technology",
+      "translation": "Konttiteknologia",
+      "explanation": "Teknologia, joka mahdollistaa sovellusten ja niiden riippuvuuksien pakkaamisen eristettyihin 'kontteihin', jotka voidaan siirtää ja suorittaa helposti eri ympäristöissä."
+    },
+    {
+      "word": "Continuous Integration",
+      "translation": "Jatkuva integrointi",
+      "explanation": "Ohjelmistokehitysmenetelmä, jossa koodi yhdistetään ja testataan säännöllisesti."
+    },
+    {
+      "word": "Cybersecurity",
+      "translation": "Tietoturva",
+      "explanation": "Toimenpiteet ja käytännöt, joilla varmistetaan tietojen ja tietojärjestelmien suojaaminen luvattomalta käytöltä ja vaaroilta."
+    }
+  ],
+  "d": [
+    {
+      "word": "Data Structure",
+      "translation": "Tietorakenne",
+      "explanation": "Tapa järjestää ja tallentaa tietoa tehokasta käyttöä ja muokkaamista varten."
+    },
+    {
+      "word": "Data Type",
+      "translation": "Tietotyyppi",
+      "explanation": "Muuttujan tyyppi, joka määrittelee, millaista tietoa muuttuja voi sisältää, kuten kokonaislukuja, merkkijonoja tai liukulukuja."
+    },
+    {
+      "word": "Database",
+      "translation": "Tietokanta",
+      "explanation": "Järjestelmä, joka tallentaa, hallitsee ja hakee tietoa järjestetyssä muodossa."
+    },
+    {
+      "word": "Debugging",
+      "translation": "Virheenjäljitys",
+      "explanation": "Prosessi, jossa ohjelmasta etsitään ja korjataan virheitä tai ongelmia."
+    },
+    {
+      "word": "Dependency",
+      "translation": "Riippuvuus",
+      "explanation": "Ohjelmiston osa, joka vaatii toisen ohjelmiston toimiakseen."
+    },
+    {
+      "word": "Deployment",
+      "translation": "Julkaisu",
+      "explanation": "Ohjelmiston vieminen tuotantoon tai käyttöympäristöön."
+    },
+    {
+      "word": "Deserialization",
+      "translation": "Deserialisointi",
+      "explanation": "Tietojen muuntaminen tallennetusta muodosta takaisin käyttökelpoiseksi objektiksi."
+    },
+    {
+      "word": "DevOps",
+      "translation": "DevOps",
+      "explanation": "Yhdistelmä ohjelmistokehityksen ja ITtoimintojen käytäntöjä, joka korostaa yhteistyötä ja automaatiota ohjelmiston elinkaaren hallinnassa. Tulee sanoista kehittäminen ja operaatiot."
+    },
+    {
+      "word": "Documentation",
+      "translation": "Dokumentaatio",
+      "explanation": "Tekstikuvaus ohjelmiston toiminnasta, käytöstä ja ylläpidosta."
+    },
+    {
+      "word": "Dynamic Typing",
+      "translation": "Dynaaminen tyypitys",
+      "explanation": "Ohjelmointikielen ominaisuus, jossa muuttujan tyyppi määräytyy ajon aikana."
+    }
+  ],
+  "e": [
+    {
+      "word": "Encapsulation",
+      "translation": "Kapselointi",
+      "explanation": "Olio-ohjelmoinnin periaate, jossa olion sisäiset tiedot sekä toiminnot piilotetaan ja niitä käytetään vain rajapinnan kautta."
+    },
+    {
+      "word": "Endpoint",
+      "translation": "Päätepiste",
+      "explanation": "Verkossa toimivan palvelun päätepiste, joka vastaanottaa ja käsittelee pyyntöjä."
+    },
+    {
+      "word": "Enumeration (Enum)",
+      "translation": "Luettelo",
+      "explanation": "Tietotyyppi, joka sisältää joukon nimettyjä vakioarvoja."
+    },
+    {
+      "word": "Error",
+      "translation": "Virhe",
+      "explanation": "Virhetilanne, joka voi keskeyttää ohjelman suorituksen."
+    },
+    {
+      "word": "Exception",
+      "translation": "Poikkeus",
+      "explanation": "Ohjelman virhetilanne, joka voi keskeyttää normaalin suoritusprosessin. Poikkeukset voidaan käsitellä erillisellä koodilla virhetilanteiden hallitsemiseksi."
+    },
+    {
+      "word": "Expression",
+      "translation": "Lauseke",
+      "explanation": "Yhdistelmä arvoja, muuttujia ja operaattoreita, joka tuottaa arvon."
+    }
+  ],
+  "f": [
+    {
+      "word": "Feature",
+      "translation": "Ominaisuus",
+      "explanation": "Ohjelmiston toiminnallinen osa tai lisäominaisuus."
+    },
+    {
+      "word": "Framework",
+      "translation": "Kehys",
+      "explanation": "Ohjelmistokehityksen tukirakenne, joka tarjoaa valmiita komponentteja."
+    },
+    {
+      "word": "Function",
+      "translation": "Funktio",
+      "explanation": "Ohjelmoinnissa käytetty koodilohko, joka suorittaa tietyn tehtävän."
+    }
+  ],
+  "g": [
+    {
+      "word": "Garbage Collection",
+      "translation": "Roskankeräys",
+      "explanation": "Prosessi, jossa käyttämättömät muistivaraukset vapautetaan automaattisesti."
+    },
+    {
+      "word": "Git",
+      "translation": "Git",
+      "explanation": "Versiohallintajärjestelmä, jota käytetään ohjelmistokehityksessä koodimuutosten hallintaan."
+    },
+    {
+      "word": "GraphQL",
+      "translation": "GraphQL",
+      "explanation": "Kyselykieli, joka mahdollistaa tehokkaan ja joustavan tavan hakea ja muokata dataa API:sta."
+    }
+  ],
+  "h": [
+    {
+      "word": "Hardcoded",
+      "translation": "Kovakoodattu",
+      "explanation": "Ohjelmakoodiin kiinteästi kirjoitettu arvo, jota ei voi muuttaa ajonaikaisesti."
+    },
+    {
+      "word": "Hash",
+      "translation": "Hajautus",
+      "explanation": "Algoritmi, joka muuntaa syötetiedon kiinteän pituiseksi merkkijonoksi tietoturvaa tai nopeutettua hakua varten."
+    },
+    {
+      "word": "Heap",
+      "translation": "Keko",
+      "explanation": "Muistialue, jota käytetään dynaamisesti allokoidulle datalle ohjelman suorituksen aikana."
+    },
+    {
+      "word": "Hook (React, etc.)",
+      "translation": "Koukku",
+      "explanation": "Reactin funktio, jonka avulla komponentit voivat käyttää tilaa ja elinkaarimetodeja ilman luokkia."
+    }
+  ],
+  "i": [
+    {
+      "word": "IDE (Integrated Development Environment)",
+      "translation": "Kehitysympäristö",
+      "explanation": "Ohjelmointiympäristö, joka yhdistää tekstieditorin, kääntäjän, debuggerin ja muita työkaluja kehitystyöhön."
+    },
+    {
+      "word": "Immutable",
+      "translation": "Muuttumaton",
+      "explanation": "Olio tai arvo, jota ei voi muuttaa sen luomisen jälkeen."
+    },
+    {
+      "word": "Index",
+      "translation": "Indeksi",
+      "explanation": "Tietorakenteessa käytettävä tunnus tai sijainti, joka nopeuttaa tietojen hakua."
+    },
+    {
+      "word": "Inheritance",
+      "translation": "Perintä",
+      "explanation": "Olio-ohjelmoinnin ominaisuus, jossa yksi luokka (aliluokka) perii toisen luokan (yliluokka) ominaisuudet ja metodit."
+    },
+    {
+      "word": "Integer",
+      "translation": "Kokonaisluku",
+      "explanation": "Tietotyyppi, joka sisältää kokonaislukuja ilman desimaaliosaa."
+    },
+    {
+      "word": "Interface",
+      "translation": "Rajapinta",
+      "explanation": "Ohjelmoinnin rakenne, joka määrittelee, mitä metodeja luokka tai olio tarjoaa, mutta ei niiden toteutusta."
+    },
+    {
+      "word": "Instance",
+      "translation": "Instanssi",
+      "explanation": "Yksittäinen luokan ilmentymä eli olio, joka on luotu luokasta."
+    },
+    {
+      "word": "Iteration",
+      "translation": "Iterointi",
+      "explanation": "Prosessi, jossa koodilohko suoritetaan useita kertoja silmukan avulla."
+    }
+  ],
+  "j": [
+    {
+      "word": "JSON",
+      "translation": "JSON",
+      "explanation": "Kevyt tietojen vaihtomuoto, joka käyttää avain-arvo -pareja ja on helppolukuinen sekä ihmisille että koneille."
+    }
+  ],
+  "k": [
+    {
+      "word": "Kernel",
+      "translation": "Ydin",
+      "explanation": "Käyttöjärjestelmän keskeisin osa, joka hallitsee suoraan laitteiston resursseja ja mahdollistaa ohjelmien suorituksen."
+  },
+  {
+      "word": "Keyword",
+      "translation": "Avainsana",
+      "explanation": "Ohjelmointikielen varattu sana, jolla on erityinen merkitys, kuten 'if', 'while' tai 'return'."
+  },
+  {
+      "word": "Kotlin",
+      "translation": "Kotlin",
+      "explanation": "Javan kanssa yhteensopiva ohjelmointikieli, jota käytetään erityisesti Android-kehityksessä."
+  },
+  {
+      "word": "Kubernetes",
+      "translation": "Kubernetes",
+      "explanation": "Avoimen lähdekoodin järjestelmä, joka automatisoi konttipohjaisten sovellusten käyttöönoton, skaalauksen ja hallinnan."
+  },
+  {
+      "word": "Key-Value Pair",
+      "translation": "Avain-arvo pari",
+      "explanation": "Tiedon tallennusmuoto, jossa jokaisella avaimella on siihen liittyvä arvo. Yleinen esimerkiksi tietorakenteissa, kuten sanakirjoissa (dictionaries) ja hajautustauluissa (hash tables)."
+  }
+  ],
+  "l": [
+    {
+      "word": "Lambda Function",
+      "translation": "Lambda-funktio",
+      "explanation": "Anonyymi funktio, jota käytetään usein lyhyissä ja yksinkertaisissa operaatioissa."
+    },
+    {
+      "word": "Library",
+      "translation": "Kirjasto",
+      "explanation": "Kokoelma valmiita ohjelmistokomponentteja, joita voidaan käyttää ohjelmoinnissa."
+    },
+    {
+      "word": "Loop",
+      "translation": "Silmukka",
+      "explanation": "Ohjelmointirakenne, joka toistaa tietyn koodilohkon, kunnes ehto täyttyy."
+    }
+  ],
+  "m": [
+    {
+      "word": "Microservices Architecture",
+      "translation": "Mikropalveluarkkitehtuuri",
+      "explanation": "Ohjelmistoarkkitehtuurityyli, jossa sovellus koostuu pienistä, itsenäisesti toimivista palveluista."
+    },
+    {
+      "word": "Middleware",
+      "translation": "Väliohjelmisto",
+      "explanation": "Ohjelmiston kerros, joka toimii sovelluksen ja käyttöjärjestelmän tai palvelun välillä tarjoten lisätoiminnallisuuksia."
+    },
+    {
+      "word": "Method",
+      "translation": "Metodi",
+      "explanation": " Olion tai luokan sisällä määritelty funktio, joka määrittää toiminnallisuuden. Metodeja kutsutaan olioiden tai luokkien kautta."
+    },
+    {
+      "word": "Module",
+      "translation": "Moduuli",
+      "explanation": "OYksittäinen ohjelmiston osa, joka sisältää koodia, kuten luokkia ja funktioita, ja jota voidaan käyttää uudelleen muissa ohjelmissa. Voi olla valmis kirjasto tai itse totetettu ohjelman osa."
+    },
+    {
+      "word": "Mutation (GraphQL, etc.)",
+      "translation": "Muutos",
+      "explanation": "GraphQL:ssa käytetty operaatio, jolla tehdään muutoksia tietoon (luonti, päivitys tai poisto)."
+    }
+  ],
+  "n": [
+    {
+      "word": "Namespace",
+      "translation": "Nimiavaruus",
+      "explanation": "Konteksti, joka erottaa saman nimiset elementit toisistaan ohjelmistossa."
+    },
+    {
+      "word": "Null",
+      "translation": "Tyhjä",
+      "explanation": "Arvo, joka tarkoittaa, ettei muuttujaan ole tallennettu mitään tietoa."
+    }
+  ],
+  "o": [
+    {
+      "word": "Object",
+      "translation": "Olio",
+      "explanation": "Ohjelmoinnissa käytetty rakenne, joka sisältää tietoa (ominaisuuksia) ja toiminnallisuuksia (metodeja). Oliot ovat luokkien instansseja, eli tilannekohtaisia käytännön ilmentymiä."
+    },
+    {
+      "word": "Object Model",
+      "translation": "Oliomalli",
+      "explanation": "Kokoelma olioita ja niiden välisiä suhteita, joita käytetään kuvaamaan ohjelmiston toiminnallisuutta."
+    },
+    {
+      "word": "Operator",
+      "translation": "Operaattori",
+      "explanation": "Symboli, joka suorittaa tietyn laskenta- tai loogisen operaation."
+    },
+    {
+      "word": "Operating System (OS)",
+      "translation": "Käyttöjärjestelmä",
+      "explanation": "Ohjelmisto, joka hallitsee tietokoneen laitteistoa ja tarjoaa käyttäjälle palveluita sovellusten suorittamiseen."
+    },
+    {
+      "word": "Overloading",
+      "translation": "Ylikuormitus",
+      "explanation": "Ohjelmointitekniikka, jossa usealla metodilla tai funktiolla voi olla sama nimi, mutta eri parametrit."
+    },
+    {
+      "word": "Override",
+      "translation": "Korvaaminen",
+      "explanation": "Ohjelmointimenetelmä, jossa aliluokka korvaa yliluokan metodin omalla toteutuksellaan."
+    }
+  ],
+  "p": [
+    {
+      "word": "Package",
+      "translation": "Paketti",
+      "explanation": "Kokoelma toisiinsa liittyviä luokkia ja moduuleja, jotka on ryhmitelty yhteen tiettyä tarkoitusta varten. Esim. NuGet paketti .NET ympäristössä tai NPM paketti JavaScript ohjelmissa. Pythonissa käytetään toisinaan nimitystä moduuli (module)."
+    },
+    {
+      "word": "Parameter",
+      "translation": "Parametri",
+      "explanation": "Metodille tai funktiolle annettu muuttuja, joka vastaanottaa tietoa metodin tai funktion kutsussa. Parametri määrittää, mitä tietoa funktio käsittelee.",
+      "example": {
+        "code": "public int LaskeLuvutYhteen(int luku1, int luku2) {\n    return (luku1 + luku2);\n}\n\npublic void AnnaVaroitus(string varoitus) {\n    MessageBox.Show(varoitus);\n}",
+        "description": "Ensimmäinen funktio ottaa vastaan kaksi parametria, joiden tietotyyppi pitää olla int (integer) eli kokonaisluku. Jälkimmäinen funktio kykenee ottamaan vastaan yhden string-tyyppisen parametrin, eli tyypiltään merkkijonon."
+      }
+    },
+    {
+      "word": "Parsing",
+      "translation": "Jäsentäminen",
+      "explanation": "Prosessi, jossa tietoa käsitellään ja muutetaan käyttökelpoisempaan muotoon."
+    },
+    {
+      "word": "Polymorphism",
+      "translation": "Polymorfismi",
+      "explanation": "Olio-ohjelmoinnin periaate, jossa eri luokat voivat toteuttaa saman rajapinnan tai periytyä samasta luokasta, mutta käyttäytyä eri tavoin."
+    },
+    {
+      "word": "Pointer",
+      "translation": "Osoitin",
+      "explanation": "Muuttuja, joka sisältää viitteen muistipaikkaan, jossa arvo sijaitsee."
+    },
+    {
+      "word": "Programming Language",
+      "translation": "Ohjelmointikieli",
+      "explanation": "Kieli, jota käytetään ohjelmointiin eli tietokoneohjelmien kirjoittamiseen."
+    },
+    {
+      "word": "Promise",
+      "translation": "Lupa",
+      "explanation": "JavaScriptin asynkroninen olio, joka edustaa tulevaa arvoa tai virhettä."
+    },
+    {
+      "word": "Property",
+      "translation": "Ominaisuus",
+      "explanation": "Olioiden tai luokkien attribuutti, joka tallentaa tietoa."
+    },
+    {
+      "word": "Prototype",
+      "translation": "Prototyyppi",
+      "explanation": "JavaScriptin olioiden periytymismekanismi, jonka avulla ominaisuuksia voidaan jakaa olioiden kesken."
+    }
+  ],
+  "q": [
+    {
+      "word": "Query",
+      "translation": "Kysely",
+      "explanation": "Tietokantakysely tai tiedonhakuoperaatio, jota käytetään datan hakemiseen."
+    }
+  ],
+  "r": [
+    {
+      "word": "Recursion",
+      "translation": "Rekursio",
+      "explanation": "Ohjelmointitekniikka, jossa funktio kutsuu itseään ratkaistakseen ongelman osissa."
+    },
+    {
+      "word": "Refactoring",
+      "translation": "Refaktorointi",
+      "explanation": "Ohjelmakoodin parantaminen ilman sen toiminnallisuuden muuttamista."
+    },
+    {
+      "word": "Regular Expression (Regex)",
+      "translation": "Säännöllinen lauseke",
+      "explanation": "Merkkijonojen käsittelyyn käytetty kuvioiden tunnistusjärjestelmä."
+    },
+    {
+      "word": "Repository",
+      "translation": "Tietovarasto",
+      "explanation": "Paikka, jossa ohjelmiston lähdekoodi ja sen versiot tallennetaan."
+    },
+    {
+      "word": "REST API",
+      "translation": "REST-rajapinta",
+      "explanation": "Rajapinta, joka käyttää HTTP-protokollaa tiedon hakemiseen ja muokkaamiseen verkkopalveluissa."
+    },
+    {
+      "word": "Return",
+      "translation": "Palauttaa",
+      "explanation": "Funktiosta palautettu arvo, joka voidaan tallentaa ja käyttää muualla ohjelmassa. Vahvasti tyypitetyssä ohjelmointikielessä metodin on määriteltävä, minkä tietotyypin se palauttaa.",
+      "example": {
+        "code": "public int LaskeLuvutYhteen(int luku1, int luku2) {\n    return (luku1 + luku2);\n}\n\npublic void AnnaVaroitus(string varoitus) {\n    MessageBox.Show(varoitus);\n}",
+        "description": "Ensimmäinen metodi palauttaa kokonaisluvun (int), kun taas toinen metodi käyttää void-palautustyyppiä eikä palauta arvoa, mutta suorittaa toimenpiteen, kuten varoitusikkunan näyttämisen."
+      }
+    },
+    {
+      "word": "Return Type",
+      "translation": "Paluutyyppi",
+      "explanation": "Vahvasti tyypitetyssä ohjelmointikielessä on metodia luotaessa kerrottava minkä tietotyypin tietoa se palauttaa kutsuvalle komennolle. Ensimmäinen metodi on tyypiltään int, jolloin sen on palautettava retun lauseessa kokonaisluku eli integer ja jälkimmäinen void, joka ei palauta mitään, mutta funktio voi kutsuttaessa tehdä asioita, kuten esim. antaa alert ikkunaan varoituksen."
+    }
+  ],
+  "s": [
+    {
+      "word": "Script",
+      "translation": "Komentosarja",
+      "explanation": "Ohjelma tai koodinpätkä, joka suoritetaan yleensä ilman erillistä kääntämisvaihetta ja usein jonkin tietyn tehtävän automatisoimiseksi."
+    },
+    {
+      "word": "Scope",
+      "translation": "Laajuus",
+      "explanation": "Ohjelmointitermi, joka määrittää, missä muuttuja tai funktio on käytettävissä."
+    },
+    {
+      "word": "Serialization",
+      "translation": "Serialisointi",
+      "explanation": "Prosessi, jossa data muunnetaan siirrettävään muotoon."
+    },
+    {
+      "word": "Server",
+      "translation": "Palvelin",
+      "explanation": "Tietokone tai ohjelmisto, joka tarjoaa palveluita tai ressurseja muille tietokoneille tai ohjelmille verkossa."
+    },
+    {
+      "word": "Session",
+      "translation": "Istunto",
+      "explanation": "Tietojenkäsittelyssä käyttäjän istunto tai yhteys palvelimeen tietyn ajanjakson aikana."
+    },
+    {
+      "word": "Singleton",
+      "translation": "Singleton",
+      "explanation": "Ohjelmointimalli, jossa luokasta voidaan luoda vain yksi instanssi."
+    },
+    {
+      "word": "Source Code",
+      "translation": "Lähdekoodi",
+      "explanation": "Ohjelmiston kirjoitettu koodi, joka määrittelee sen toiminnan."
+    },
+    {
+      "word": "Stack",
+      "translation": "Pino",
+      "explanation": "Tietorakenne, jossa viimeksi lisätty elementti poistetaan ensimmäisenä (LIFO)."
+    },
+    {
+      "word": "Statement",
+      "translation": "Lause",
+      "explanation": "Ohjelmointikielen yksikkö, joka suorittaa tietyn toiminnon."
+    },
+    {
+      "word": "String",
+      "translation": "Merkkijono",
+      "explanation": "Tietotyyppi, joka sisältää tekstiä eli merkkien sarjan."
+    },
+    {
+      "word": "Syntax",
+      "translation": "Syntaksi",
+      "explanation": "Säännöt, jotka määrittelevät, miten ohjelmointikielen komennot kirjoitetaan."
+    },
+    {
+      "word": "System Architecture",
+      "translation": "Järjestelmäarkkitehtuuri",
+      "explanation": "Yleiskuvaus ohjelmistojärjestelmän rakenteesta, joka määrittelee eri komponenttien suhteen ja vuorovaikutuksen."
+    }
+  ],
+  "t": [
+    {
+      "word": "Template",
+      "translation": "Malli",
+      "explanation": "Esimuotoiltu rakenne, jota voidaan käyttää useissa ohjelmistoissa."
+    },
+    {
+      "word": "Terminal (command line)",
+      "translation": "Pääteohjelma (terminaali, komentorivi)",
+      "explanation": "Komentorivipohjainen käyttöliittymä, jossa käyttäjä voi antaa komentoja suoraan käyttöjärjestelmälle. Esim. CMD=komentokehote, PowerShell, Linux terminal, Git Bash ovat tällaisia"
+    },
+    {
+      "word": "Test Automation",
+      "translation": "Testiautomaatio",
+      "explanation": "Prosessi, jossa testit suoritetaan automaattisesti ohjelmiston laadun varmistamiseksi."
+    },
+    {
+      "word": "Thread",
+      "translation": "Säie",
+      "explanation": "Kevyt prosessi, joka mahdollistaa rinnakkaisen suorituksen ohjelmassa."
+    },
+    {
+      "word": "Token",
+      "translation": "Tunniste",
+      "explanation": "Turvallinen tapa tunnistaa käyttäjäjärjestelmässä tai ohjelmistossa."
+    },
+    {
+      "word": "Tuple",
+      "translation": "Tupla",
+      "explanation": "Tietorakenne, joka sisältää useita eri tyyppisiä arvoja yhdessä."
+    },
+    {
+      "word": "TypeScript",
+      "translation": "TypeScript",
+      "explanation": "JavaScriptin superset-ohjelmointikieli, joka lisää tyypityksen."
+    }
+  ],
+  "u": [
+    {
+      "word": "User Interface (UI)",
+      "translation": "Käyttöliittymä",
+      "explanation": "Näkymä ja elementit, joiden kautta käyttäjä vuorovaikuttaa sovelluksen kanssa. Esim. html+css+javascript websivu tai xaml tai cshtml tiedostoissa määritetty näkymä."
+    },
+    {
+      "word": "Unit Test",
+      "translation": "Yksikkötesti",
+      "explanation": "Ohjelmistotestauksen menetelmä, jossa yksittäisiä komponentteja tai funktioita testataan erikseen varmistaakseen niiden oikean toiminnan."
+    }
+  ],
+  "v": [
+    {
+      "word": "Variable",
+      "translation": "Muuttuja",
+      "explanation": "Nimi, joka viittaa tiettyyn muistipaikkaan, jossa säilytetään arvoa. Muuttujan arvo voi muuttua ohjelman suorituksen aikana. Muuttujien tyyppejä on esim. string = merkkijono, int = kokonaisluku, decimal = desimaaliluku, array = taulukko…"
+    },
+    {
+      "word": "Version Control",
+      "translation": "Versionhallinta",
+      "explanation": "Järjestelmä, joka hallitsee tiedostojen muutoksia ja mahdollistaa aiempien versioiden palauttamisen. Git ja siihen perustuva web pohjainen GitHub on tunnetuin."
+    },
+    {
+      "word": "Virtual Machine (VM)",
+      "translation": "Virtuaalikone",
+      "explanation": "Ohjelmallinen tietokone, joka toimii fyysisen tietokoneen sisällä ja mahdollistaa eri käyttöjärjestelmien suorittamisen eristetysti."
+    },
+    {
+      "word": "Visibility",
+      "translation": "Näkyvyys",
+      "explanation": "Olio-ohjelmoinnin periaate, joka määrittelee, missä määrin luokan ominaisuudet ja metodit ovat näkyvissä muille luokille."
+    }
+  ],
+  "w": [
+    {
+      "word": "WebSocket",
+      "translation": "WebSocket",
+      "explanation": "Protokolla, joka mahdollistaa kaksisuuntaisen reaaliaikaisen viestinnän asiakkaan ja palvelimen välillä yhden jatkuvan yhteyden kautta."
+    },
+    {
+      "word": "Wrapper",
+      "translation": "Kääre",
+      "explanation": "Ohjelmointirakenne, joka kapseloi olemassa olevan toiminnallisuuden ja tarjoaa sille yksinkertaistetun tai yhtenäisen rajapinnan."
+    }
+  ]
+}
