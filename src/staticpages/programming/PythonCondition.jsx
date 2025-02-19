@@ -1,17 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const CsharpCondition = () => {
+const PythonCondition = () => {
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
   return (
     <div className="min-h-screen bg-black text-white p-4 sm:p-6 pt-20 md:pt-32 lg:pt-20">
       <div className="max-w-7xl mx-auto bg-gray-800 p-6 sm:p-8 rounded-lg border border-gray-600 shadow-lg">
-        <h1 className="text-3xl font-bold mb-6 text-center md:text-left">C# Lausekkeet</h1>
+        <h1 className="text-3xl font-bold mb-6 text-center md:text-left">Python Lausekkeet</h1>
 
         <p className="text-lg text-center md:text-left mb-6">
-          C#:n lausekkeet mahdollistavat ohjelman loogisen ohjauksen. Tässä on esimerkkejä if-lauseista, switch-case-
+          Pythonin lausekkeet mahdollistavat ohjelman loogisen ohjauksen. Tässä on esimerkkejä if-lauseista, switch-case-
           rakenteesta ja try-catch-poikkeuskäsittelystä.
         </p>
 
@@ -23,37 +23,22 @@ const CsharpCondition = () => {
         </p>
         <pre className="bg-gray-900 p-4 rounded text-left text-sm overflow-x-auto">
           <code>
-            {`using System;
+            {`# Pyydä käyttäjää syöttämään ikä
 
-class Program
-{
-    static void Main(string[] args)
-    {
-        Console.WriteLine("Syötä ikäsi:");
-        int ika = int.Parse(Console.ReadLine());
+ika = int(input("Syötä ikäsi: "))
 
-        if (ika >= 1 && ika <= 12)
-        {
-            Console.WriteLine("Olet lapsi.");
-        }
-        else if (ika >= 13 && ika <= 17)
-        {
-            Console.WriteLine("Olet nuori.");
-        }
-        else if (ika >= 18 && ika <= 64)
-        {
-            Console.WriteLine("Olet aikuinen.");
-        }
-        else if (ika > 64)
-        {
-            Console.WriteLine("Olet eläkeläinen.");
-        }
-        else
-        {
-            Console.WriteLine("Ikä ei voi olla negatiivinen.");
-        }
-    }
-}`}
+# Tarkista käyttäjän ikä ja tulosta vastaava luokitus
+
+if 1 <= ika <= 12:
+    print("Olet lapsi.")
+elif 13 <= ika <= 17:
+    print("Olet nuori.")
+elif 18 <= ika <= 64:
+    print("Olet aikuinen.")
+elif ika > 64:
+    print("Olet eläkeläinen.")
+else:
+    print("Ikä ei voi olla nolla tai negatiivinen.")`}
           </code>
         </pre>
 
@@ -65,35 +50,27 @@ class Program
         </p>
         <pre className="bg-gray-900 p-4 rounded text-left text-sm overflow-x-auto">
           <code>
-            {`using System;
+            {`Huom!  Python ei sisällä natiivisti switch-case-rakennetta, 
+mutta voidaan käyttää match-lauseketta (Python 3.10 ja uudemmat) 
+saavuttaakseen saman toiminnallisuuden:
 
-class Program
-{
-    static void Main(string[] args)
-    {
-        Console.WriteLine("Syötä ikäsi:");
-        int ika = int.Parse(Console.ReadLine());
+# Pyydä käyttäjää syöttämään ikä
 
-        switch (ika)
-        {
-            case int n when (n >= 1 && n <= 12):
-                Console.WriteLine("Olet lapsi.");
-                break;
-            case int n when (n >= 13 && n <= 17):
-                Console.WriteLine("Olet nuori.");
-                break;
-            case int n when (n >= 18 && n <= 64):
-                Console.WriteLine("Olet aikuinen.");
-                break;
-            case int n when (n > 64):
-                Console.WriteLine("Olet eläkeläinen.");
-                break;
-            default:
-                Console.WriteLine("Ikä ei voi olla negatiivinen.");
-                break;
-        }
-    }
-}`}
+ika = int(input("Syötä ikäsi: "))
+
+# Käytä match-case-rakennetta ilman ylimääräisiä muuttujia
+
+match True:
+    case _ if 1 <= ika <= 12:
+        print("Olet lapsi.")
+    case _ if 13 <= ika <= 17:
+        print("Olet nuori.")
+    case _ if 18 <= ika <= 64:
+        print("Olet aikuinen.")
+    case _ if ika > 64:
+        print("Olet eläkeläinen.")
+    case _:
+        print("Ikä ei voi olla nolla tai negatiivinen.")`}
           </code>
         </pre>
 
@@ -153,15 +130,15 @@ class Program
           {/* Back to C# Page */}
           <div className="mt-6 text-center">
             <Link
-              to="/csharp"
+              to="/python"
               className="text-blue-400 underline hover:text-blue-500 mr-4"
               onClick={scrollToTop}
             >
-              ⬅ Takaisin C# pääsivulle
+              ⬅ Takaisin Python pääsivulle
             </Link>
   
             <Link
-              to="/csharp-loop"
+              to="/python-loop"
               className="text-blue-400 underline hover:text-blue-500 ml-4"
               onClick={scrollToTop}
             >
@@ -173,4 +150,4 @@ class Program
   );
 };
 
-export default CsharpCondition;
+export default PythonCondition;
