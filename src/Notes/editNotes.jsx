@@ -4,7 +4,8 @@ import { useParams, useNavigate } from "react-router-dom";
 const EditNotes = () => {
     const { id } = useParams(); // Haetaan id URL:sta
     const navigate = useNavigate();
-    const baseUrl = "https://codesitebe-efgshggehucfdvhq.swedencentral-01.azurewebsites.net/api/Notes/";
+    //const baseUrl = "https://codesitebe-efgshggehucfdvhq.swedencentral-01.azurewebsites.net/api/Notes/";
+    const baseUrl = "http://127.0.0.1:8000/api/Notes/";
 
     const [note, setNote] = useState({ header: "", content: "" });
     const [loading, setLoading] = useState(true);
@@ -14,11 +15,14 @@ const EditNotes = () => {
     useEffect(() => {
         const fetchNote = async () => {
             try {
+                const token = localStorage.getItem("access_token");
+
                 const response = await fetch(`${baseUrl}${id}`, {
                     method: "GET",
                     mode: "cors",
                     headers: {
                         "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`,
                     },
                 });
 
@@ -41,11 +45,14 @@ const EditNotes = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            const token = localStorage.getItem("access_token");
+            
             const response = await fetch(`${baseUrl}${id}`, {
                 method: "PUT",
                 mode: "cors",
                 headers: {
                     "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`,
                 },
                 body: JSON.stringify(note),
             });

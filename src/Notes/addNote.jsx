@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 const AddNote = () => {
     const navigate = useNavigate();
-    const baseUrl = "https://codesitebe-efgshggehucfdvhq.swedencentral-01.azurewebsites.net/api/Notes/";
+    // const baseUrl = "https://codesitebe-efgshggehucfdvhq.swedencentral-01.azurewebsites.net/api/Notes/";
+    const baseUrl = "http://127.0.0.1:8000/api/Notes/";
 
     const [note, setNote] = useState({ header: "", content: "" });
     const [error, setError] = useState(null);
@@ -12,6 +13,8 @@ const AddNote = () => {
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {
+          const token = localStorage.getItem("access_token");
+
           const requestBody = JSON.stringify({
               owner: "2", //Testikäyttäjä
               header: note.header,  
@@ -25,6 +28,7 @@ const AddNote = () => {
               mode: "cors",
               headers: {
                   "Content-Type": "application/json",
+                  "Authorization": `Bearer ${token}`,
               },
               body: requestBody,
           });

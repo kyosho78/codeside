@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./Components/Navbar.jsx";
+import Navbar from "./components/Navbar.jsx";
 import MatrixRainingCode from "./Components/MatrixRainingEffect.jsx";
 import Home from "./Staticpages/Home.jsx";
 import Login from "./Login.jsx";

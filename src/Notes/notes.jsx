@@ -7,24 +7,29 @@ const Notes = () => {
   const [searchTerm, setSearchTerm] = useState(""); // Hakutermi
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const baseUrl = "https://codesitebe-efgshggehucfdvhq.swedencentral-01.azurewebsites.net/api/Notes/";
+  //const baseUrl = "https://codesitebe-efgshggehucfdvhq.swedencentral-01.azurewebsites.net/api/Notes/";
+  const baseUrl = "http://127.0.0.1:8000/api/Notes/"; 
+
 
   useEffect(() => {
     fetchNotes();
   }, []);
-
+  
   const fetchNotes = async () => {
     try {
+      const token = localStorage.getItem("access_token");  // 🔥 Hae token localStoragesta
+  
       const response = await fetch(baseUrl, {
         method: "GET",
         mode: "cors",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,  // 🔥 Lähetä token mukana
         },
       });
-
+  
       if (!response.ok) throw new Error(`Virhe: ${response.status}`);
-
+  
       const data = await response.json();
       setNotes(data);
     } catch (error) {
@@ -33,6 +38,8 @@ const Notes = () => {
       setLoading(false);
     }
   };
+  
+  
 
   // Muokkaa muistiinpanoa (navigoi muokkaussivulle)
   const handleEdit = (id) => {
