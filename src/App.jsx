@@ -1,3 +1,4 @@
+//Toimiva App.jsx
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar.jsx";
 import MatrixRainingCode from "./Components/MatrixRainingEffect.jsx";
@@ -29,7 +30,7 @@ import backgroundVideo from "./Assets/background.mp4";
 import Notes from "./Notes/notes.jsx"; 
 import EditNotes from "./Notes/editNotes";
 import AddNote from "./Notes/addNote";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 
 
@@ -56,6 +57,8 @@ function BackgroundVideo() {
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+
   return (
     <Router>
       <div className="min-h-screen">

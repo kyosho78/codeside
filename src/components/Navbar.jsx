@@ -1,12 +1,40 @@
+//Toimiva Navbar
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const Navbar = () => {
+const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isAlustatOpen, setIsAlustatOpen] = useState(false);
   const [isMobileAlustatOpen, setIsMobileAlustatOpen] = useState(false);
   const [isOhjelmointiOpen, setIsOhjelmointiOpen] = useState(false);
   const [isMobileOhjelmointiOpen, setIsMobileOhjelmointiOpen] = useState(false);
+  useEffect(() => {
+    console.log("Navbar päivittyi, isAuthenticated:", isAuthenticated);
+  }, [isAuthenticated]);
+
+  const handleLogout = async () => {
+    try {
+      const response = await fetch("http://127.0.0.1:8000/api/logout/", {
+        method: "POST",
+        credentials: "include",
+      });
+  
+      if (!response.ok) {
+        console.error("❌ Uloskirjaus epäonnistui!");
+        return;
+      }
+  
+      console.log("✅ Uloskirjaus onnistui Reactin kautta");
+      
+      await new Promise(resolve => setTimeout(resolve, 100)); // 🔹 Pieni viive ennen tilapäivitystä
+      
+      setIsAuthenticated(false); // 🔹 Päivitetään tila vasta onnistuneen pyynnön jälkeen
+    } catch (error) {
+      console.error("❌ Virhe uloskirjautumisessa:", error);
+    }
+  };
+  
+
 
   return (
     <nav className="fixed w-full bg-black bg-opacity-100">
@@ -186,12 +214,22 @@ const Navbar = () => {
 
         {/* Right Section: Login & Signup */}
         <div className="hidden md:flex space-x-4">
+        {isAuthenticated ? (
+          <Link
+            to="/"
+            onClick={handleLogout} // 🔹 Logout tapahtuu klikkaamalla
+            className="px-4 py-2 bg-red-500 !text-white rounded hover:bg-red-600"
+          >
+            Logout
+          </Link>
+        ) : (
           <Link
             to="/login"
             className="px-4 py-2 bg-[#56afe6] !text-white rounded hover:bg-blue-600"
           >
             Login
           </Link>
+        )}
           <Link
             to="/signup"
             className="px-4 py-2 bg-[#56afe6] !text-white rounded hover:bg-blue-600"
@@ -384,12 +422,28 @@ const Navbar = () => {
 
         {/* Mobile Login/Signup */}
         <div className="flex flex-col space-y-2">
+        {isAuthenticated ? (
+          <Link
+            to="/"
+            onClick={handleLogout} // 🔹 Logout tapahtuu klikkaamalla
+            className="px-4 py-2 bg-red-500 !text-white rounded hover:bg-red-600"
+          >
+            Logout
+          </Link>
+        ) : (
           <Link
             to="/login"
             className="px-4 py-2 bg-[#56afe6] !text-white rounded hover:bg-blue-600"
           >
             Login
           </Link>
+        )}
+          {/* <Link
+            to="/login"
+            className="px-4 py-2 bg-[#56afe6] !text-white rounded hover:bg-blue-600"
+          >
+            Login
+          </Link> */}
           <Link
             to="/signup"
             className="px-4 py-2 bg-[#56afe6] !text-white rounded hover:bg-blue-600"
