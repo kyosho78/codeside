@@ -242,15 +242,19 @@
 //klo22.57 2.3  asettaa evästeisiin tokenit. refresh toimii myös. 
 import { useState, useEffect } from "react";
 
-const Login = () => {
+const Login = ({isAuthenticated, setIsAuthenticated} ) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [userData, setUserData] = useState(null);
 
-  // useEffect(() => {
-  //   checkAuth();
-  // }, []);
+  useEffect(() => { 
+    if (isAuthenticated) {
+        checkAuth();
+    }
+ }, [isAuthenticated]);
+ 
+  
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -267,36 +271,18 @@ const Login = () => {
       if (response.ok) {
         setMessage("✅ Login successful!");
         setIsAuthenticated(true); // 🔹 Päivittää tilan onnistuneen kirjautumisen jälkeen
-        checkAuth(); // 🔹 Päivittää käyttäjätiedot automaattisesti
+        //checkAuth(); // 🔹 Päivittää käyttäjätiedot automaattisesti
       } else {
         const data = await response.json();
-        setMessage(data.error || "❌ Login failed");
+        setMessage(data.error || "❌ Login failed React");
       }
     } catch (err) {
       console.error("Error:", err);
-      setMessage("❌ Login error");
+      setMessage("❌ Login error React");
     }
   };
 
-  const refreshToken = async () => {
-    try {
-      const response = await fetch("http://127.0.0.1:8000/api/token/refresh/", {
-        method: "POST",
-        credentials: "include",
-      });
 
-      if (response.ok) {
-        console.log("✅ Refresh token successful!");
-        return true;
-      } else {
-        console.error("❌ Refresh token failed!");
-        return false;
-      }
-    } catch (error) {
-      console.error("❌ Error refreshing token:", error);
-      return false;
-    }
-  };
 
   const checkAuth = async () => {
     try {
@@ -317,12 +303,33 @@ const Login = () => {
           checkAuth(); // 🔄 Kokeile uudestaan uusitulla tokenilla
         } else {
           setIsAuthenticated(false);
-          setMessage("❌ User not authenticated");
+          setMessage("❌ User not authenticated React");
         }
       }
     } catch (err) {
       console.error("Error:", err);
       setMessage("❌ Authentication check failed");
+    }
+  };
+
+  const refreshToken = async () => {
+    try {
+      const response = await fetch("http://127.0.0.1:8000/api/token/refresh/", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (response.ok) {
+        console.log("✅ Refresh token successful!");
+        return true;
+      } else {
+        console.error("❌ Refresh token failed!");
+        return false;
+      }
+    } catch (error) {
+      console.error("❌ Error refreshing token:", error);
+      return false;
     }
   };
 

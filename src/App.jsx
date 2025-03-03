@@ -29,6 +29,7 @@ import backgroundVideo from "./Assets/background.mp4";
 import Notes from "./Notes/notes.jsx"; 
 import EditNotes from "./Notes/editNotes";
 import AddNote from "./Notes/addNote";
+import { useState } from "react";
 
 
 
@@ -54,23 +55,25 @@ function BackgroundVideo() {
 }
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   return (
     <Router>
       <div className="min-h-screen">
         {/* Show Matrix & Background Video on Home Page */}
+        <Navbar isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />
         <Routes>
           <Route path="/" element={
             <>
               <MatrixRainingCode className="absolute inset-0" />
               <BackgroundVideo />
-              <Navbar />
+              {/* <Navbar /> */}
               <Home />
             </>
           } />
 
             
           {/* Other Pages with Navbar */}
-          <Route path="/login" element={<><Navbar /><Login /></>} />
+          <Route path="/login" element={<><Navbar /><Login isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated}/></>} />
           <Route path="/signup" element={<><Navbar /><Signup /></>} />
           <Route path="/csharp" element={<><Navbar /><Csharp /></>} />
           <Route path="/async-programming" element={<><Navbar /><AsyncProgramming /></>} />
