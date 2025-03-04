@@ -134,6 +134,13 @@ const Login = ({isAuthenticated, setIsAuthenticated} ) => {
         </button>
       </form>
 
+       <button
+        onClick={() => navigate("/")} // 🔹 Vie käyttäjän etusivulle
+        className="mt-6 bg-gray-600 hover:bg-gray-700 text-black font-bold py-2 px-4 rounded"
+      >
+        Peruuta
+      </button>
+
 
 
       <p>{message}</p> 

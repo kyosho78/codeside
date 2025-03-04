@@ -1,5 +1,5 @@
 //Toimiva Navbar
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
@@ -8,9 +8,18 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
   const [isMobileAlustatOpen, setIsMobileAlustatOpen] = useState(false);
   const [isOhjelmointiOpen, setIsOhjelmointiOpen] = useState(false);
   const [isMobileOhjelmointiOpen, setIsMobileOhjelmointiOpen] = useState(false);
+
+
+
   useEffect(() => {
     console.log("Navbar päivittyi, isAuthenticated:", isAuthenticated);
   }, [isAuthenticated]);
+
+  const location = useLocation(); // 🔹 Tarkistetaan, missä sivulla ollaan
+  // 🔹 Piilotetaan Navbar, jos ollaan login-sivulla
+  if (location.pathname === "/login") {
+    return null;
+  }
 
   const handleLogout = async () => {
     try {
