@@ -26,6 +26,8 @@ import Django from "./Staticpages/platforms/Django.jsx";
 import Azure from "./Staticpages/platforms/Azure.jsx";
 import Dictionary from "./Staticpages/dictionary/Dictionary.jsx";
 import backgroundVideo from "./Assets/background.mp4";
+//Forum
+import forumlist from "./Forum/ForumList.jsx"
 
 
 // Background Video Component
@@ -87,6 +89,7 @@ function App() {
           <Route path="/django" element={<><Navbar /><Django /></>} />
           <Route path="/azure" element={<><Navbar /><Azure /></>} />
           <Route path="/dictionary" element={<><Navbar /><Dictionary /></>} />
+          <Route path="/forumlist" element={<><Navbar /><Forum /></>} />
         </Routes>
       </div>
     </Router>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { fetchTopics } from "../services/forumService";
+import { fetchTopics } from "../Forum/services/ForumService";
 import { Link } from "react-router-dom";
 
 const ForumList = () => {
