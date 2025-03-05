@@ -1,4 +1,4 @@
-//Toimiva Navbar
+//Toimiva Navbar 5.3
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 
@@ -8,6 +8,8 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
   const [isMobileAlustatOpen, setIsMobileAlustatOpen] = useState(false);
   const [isOhjelmointiOpen, setIsOhjelmointiOpen] = useState(false);
   const [isMobileOhjelmointiOpen, setIsMobileOhjelmointiOpen] = useState(false);
+  const [message, setMessage] = useState("");
+
 
 
 
@@ -15,38 +17,52 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
     console.log("Navbar päivittyi, isAuthenticated:", isAuthenticated);
   }, [isAuthenticated]);
 
+  useEffect(() => {
+    if (message) {
+      const timer = setTimeout(() => setMessage(""), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [message]);
+
   const location = useLocation(); // 🔹 Tarkistetaan, missä sivulla ollaan
   // 🔹 Piilotetaan Navbar, jos ollaan login-sivulla
   if (location.pathname === "/login") {
     return null;
   }
 
-  const handleLogout = async () => {
-    try {
-      const response = await fetch("http://127.0.0.1:8000/api/logout/", {
-        method: "POST",
-        credentials: "include",
-      });
-  
-      if (!response.ok) {
-        console.error("❌ Uloskirjaus epäonnistui!");
-        return;
-      }
-  
-      console.log("✅ Uloskirjaus onnistui Reactin kautta");
-      
-      await new Promise(resolve => setTimeout(resolve, 100)); // 🔹 Pieni viive ennen tilapäivitystä
-      
-      setIsAuthenticated(false); // 🔹 Päivitetään tila vasta onnistuneen pyynnön jälkeen
-    } catch (error) {
-      console.error("❌ Virhe uloskirjautumisessa:", error);
-    }
-  };
-  
+//V1
+const handleLogout = async () => {
+  try {
+    const response = await fetch("http://127.0.0.1:8000/api/logout/", {
+      method: "POST",
+      credentials: "include",
+    });
 
+    if (response.ok) {
+      setIsAuthenticated(false);
+      setMessage("✅ Uloskirjautuminen onnistui!");
+
+      // 🔹 Navigoi etusivulle ilman uudelleenlatausta
+      setTimeout(() => {
+        navigate("/");
+      }, 1500);
+    } else {
+      setMessage("❌ Uloskirjautuminen epäonnistui!");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    setMessage("❌ Virhe uloskirjautumisessa!");
+  }
+};
 
   return (
     <nav className="fixed w-full bg-black bg-opacity-100">
+      {/* 🔹 Näytetään ilmoitus */}
+      {message && (
+        <div className="fixed top-5 right-5 bg-blue-500 text-white px-6 py-4 rounded-lg shadow-xl">
+          {message}
+        </div>
+      )}
       <div className="max-w-7xl mx-auto flex items-center justify-between px-0">
         {/* Left Section: Logo */}
         <Link to="/" className="p-2 flex-shrink-0 group" onClick={() => setIsOpen(false)}> 

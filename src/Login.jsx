@@ -1,4 +1,4 @@
-//Toimiva login
+//Toimiva login 5.3
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -15,12 +15,16 @@ const Login = ({isAuthenticated, setIsAuthenticated} ) => {
     }
  }, [isAuthenticated]);
 
- const navigate = useNavigate();
+ useEffect(() => {
+  if (message) {
+    const timer = setTimeout(() => setMessage(""), 3000);
+    return () => clearTimeout(timer);
+  }
+}, [message]);
 
- 
-  
+const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+const handleLogin = async (e) => {
     e.preventDefault();
     setMessage("");
 
@@ -33,18 +37,22 @@ const Login = ({isAuthenticated, setIsAuthenticated} ) => {
       });
 
       if (response.ok) {
-        setMessage("✅ Login successful React!");
-        setIsAuthenticated(true); // 🔹 Päivittää tilan onnistuneen kirjautumisen jälkeen
+        
+        setIsAuthenticated(true); //  Päivittää tilan onnistuneen kirjautumisen jälkeen. Laukaisee useEffectin (yllä)
+        //joka taas  laukaisee  checkAuth funktion (alla), joka tarkistaa tokenin voimassaolon.
+        setMessage("✅ Kirjautuminen onnistui!");
         console.log("isAuthenticated tila päivitetty:", true);
-        navigate("/"); // 🔹 Vie käyttäjän etusivulle!
-        //checkAuth(); // 🔹 Päivittää käyttäjätiedot automaattisesti
+        setTimeout(() => {
+          navigate("/"); 
+        }, 2000);
+        //checkAuth(); //  Päivittää käyttäjätiedot automaattisesti
       } else {
         const data = await response.json();
-        setMessage(data.error || "❌ Login failed React");
+        setMessage(data.error || " Kirjautuminen epäonnistui ");
       }
     } catch (err) {
       console.error("Error:", err);
-      setMessage("❌ Login error React");
+      setMessage(" Kirjautumisvirhe ");
     }
   };
 
@@ -59,7 +67,7 @@ const Login = ({isAuthenticated, setIsAuthenticated} ) => {
 
       if (response.ok) {        
         setIsAuthenticated(true);
-        setMessage("✅ User authenticated React!");
+        setMessage("Kirjautuminen onnistui!");
         
 
       } else {
@@ -69,7 +77,7 @@ const Login = ({isAuthenticated, setIsAuthenticated} ) => {
           checkAuth(); // 🔄 Kokeile uudestaan uusitulla tokenilla
         } else {
           setIsAuthenticated(false);
-          setMessage("❌ User not authenticated React");
+          setMessage("❌ Käyttäjä ei autentikoitunut!");
         }
       }
 
@@ -88,20 +96,26 @@ const Login = ({isAuthenticated, setIsAuthenticated} ) => {
       });
 
       if (response.ok) {
-        console.log("✅ Refresh token successful!");
+        console.log("✅ Token uusittu onnistuneesti!");
         return true;
       } else {
-        console.error("❌ Refresh token failed!");
+        console.error("❌ Token päivitys epäonnistui!");
         return false;
       }
     } catch (error) {
-      console.error("❌ Error refreshing token:", error);
+      console.error("❌ Ongelma tokenin uusimisessa:", error);
       return false;
     }
   };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white">
+      {/* 🔹 Näytetään ilmoitus */}
+      {message && (
+        <div className="fixed top-5 right-5 bg-blue-500 text-white px-6 py-4 rounded-lg shadow-xl">
+          {message}
+        </div>
+      )}
       <h2 className="text-2xl mb-4">Kirjaudu sisään</h2>
       <form onSubmit={handleLogin} className="bg-gray-800 p-6 rounded-lg shadow-lg">
         <div className="mb-4">
@@ -128,22 +142,19 @@ const Login = ({isAuthenticated, setIsAuthenticated} ) => {
 
         <button
           type="submit"
-          className="w-full bg-blue-500 hover:bg-blue-600 text-black font-bold py-2 px-4 rounded"
+          className="w-full !bg-blue-500 hover:bg-blue-600 text-black font-bold py-2 px-4 rounded"
         >
-          Kirjaudu sisään
+          Kirjaudu
         </button>
       </form>
 
        <button
         onClick={() => navigate("/")} // 🔹 Vie käyttäjän etusivulle
-        className="mt-6 bg-gray-600 hover:bg-gray-700 text-black font-bold py-2 px-4 rounded"
+        className="mt-6 !bg-gray-600 hover:bg-gray-700 !text-white font-bold py-2 px-4 rounded"
       >
         Peruuta
       </button>
 
-
-
-      <p>{message}</p> 
 
 
     </div>
