@@ -1,6 +1,6 @@
-//Toimiva login 5.3
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { fetchWithAuth } from "./api.js";
 
 
 const Login = ({isAuthenticated, setIsAuthenticated} ) => {
@@ -45,7 +45,7 @@ const handleLogin = async (e) => {
         setTimeout(() => {
           navigate("/"); 
         }, 2000);
-        //checkAuth(); //  Päivittää käyttäjätiedot automaattisesti
+        
       } else {
         const data = await response.json();
         setMessage(data.error || " Kirjautuminen epäonnistui ");
@@ -60,7 +60,7 @@ const handleLogin = async (e) => {
 
   const checkAuth = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/profile/", {
+      const response = await fetchWithAuth("http://127.0.0.1:8000/api/profile/", {
         method: "GET",
         credentials: "include",
       });
@@ -87,26 +87,7 @@ const handleLogin = async (e) => {
     }
   };
 
-  const refreshToken = async () => {
-    try {
-      const response = await fetch("http://127.0.0.1:8000/api/token/refresh/", {
-        method: "POST",
-        credentials: "include",
-        headers: { "Content-Type": "application/json" },
-      });
 
-      if (response.ok) {
-        console.log("✅ Token uusittu onnistuneesti!");
-        return true;
-      } else {
-        console.error("❌ Token päivitys epäonnistui!");
-        return false;
-      }
-    } catch (error) {
-      console.error("❌ Ongelma tokenin uusimisessa:", error);
-      return false;
-    }
-  };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white">
