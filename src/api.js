@@ -1,15 +1,14 @@
-// api.js
 export const fetchWithAuth = async (url, options = {}) => {
     const response = await fetch(url, {
-      ...options,
-      credentials: "include", // 🔹 Mahdollistaa evästeiden käytön
+      ...options,// Kopioi kaikki alkuperäisessä kutsussa annetut asetukset (method: "GET", jne.).
+      credentials: "include", // Varmistaa evästeiden käytön
     });
   
-    if (response.status === 401) { // 🔄 Access token on vanhentunut
-      console.warn("🔄 Access token expired, trying to refresh...");
+    if (response.status === 401) { //  Access token on vanhentunut
+      console.warn(" Token vanhentunut. Yritetään uusia..");
       const refreshed = await refreshToken();
       if (refreshed) {
-        return fetchWithAuth(url, options); // 🔄 Yritä uudestaan uusitulla tokenilla
+        return fetchWithAuth(url, options); //  Yritä uudestaan uusitulla tokenilla
       } else {
         throw new Error("Unauthorized: Please log in again.");
       }
@@ -18,7 +17,7 @@ export const fetchWithAuth = async (url, options = {}) => {
     return response;
   };
   
-  // 🛠 Funktio tokenin uusimiseen
+  //  Funktio tokenin uusimiseen
   export const refreshToken = async () => {
     try {
       const response = await fetch("http://127.0.0.1:8000/api/token/refresh/", {
@@ -27,14 +26,14 @@ export const fetchWithAuth = async (url, options = {}) => {
       });
   
       if (response.ok) {
-        console.log("✅ Refresh token successful!");
+        console.log("Token uusittu onnistuneesti!");
         return true;
       } else {
-        console.error("❌ Refresh token failed!");
+        console.error("Tokenin uusiminen epäonnistui");
         return false;
       }
     } catch (error) {
-      console.error("❌ Error refreshing token:", error);
+      console.error("Virhe uusittaessa tokenia:", error);
       return false;
     }
   };

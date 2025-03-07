@@ -38,10 +38,9 @@ const handleLogin = async (e) => {
 
       if (response.ok) {
         
-        setIsAuthenticated(true); //  Päivittää tilan onnistuneen kirjautumisen jälkeen. Laukaisee useEffectin (yllä)
+        setIsAuthenticated(true); //  Päivittää tilan App.jsx tiedostossa onnistuneen kirjautumisen jälkeen. Laukaisee useEffectin (yllä)
         //joka taas  laukaisee  checkAuth funktion (alla), joka tarkistaa tokenin voimassaolon.
-        setMessage("✅ Kirjautuminen onnistui!");
-        console.log("isAuthenticated tila päivitetty:", true);
+
         setTimeout(() => {
           navigate("/"); 
         }, 2000);
@@ -57,7 +56,7 @@ const handleLogin = async (e) => {
   };
 
 
-
+//Varmistaa tokenin voimassaolon
   const checkAuth = async () => {
     try {
       const response = await fetchWithAuth("http://127.0.0.1:8000/api/profile/", {
@@ -67,23 +66,23 @@ const handleLogin = async (e) => {
 
       if (response.ok) {        
         setIsAuthenticated(true);
-        setMessage("Kirjautuminen onnistui!");
+        setMessage("✅ Kirjautuminen onnistui!");
         
 
       } else {
-        console.warn("🔄 Access token expired, trying to refresh...");
-        const refreshed = await refreshToken();
+        console.warn("Token vanhentunut. Yritetään uusia...");
+        const refreshed = await refreshToken();//Funktio tokenin uusimiseen api.js tiedostossa
         if (refreshed) {
-          checkAuth(); // 🔄 Kokeile uudestaan uusitulla tokenilla
+          checkAuth(); //  Kokeile uudestaan uusitulla tokenilla
         } else {
           setIsAuthenticated(false);
-          setMessage("❌ Käyttäjä ei autentikoitunut!");
+          setMessage(" Käyttäjä ei autentikoitunut!");
         }
       }
 
     } catch (err) {
       console.error("Error:", err);
-      setMessage("❌ Authentication check failed React");
+      setMessage("Käyttäjän tarkistus epäonnistui");
     }
   };
 
