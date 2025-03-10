@@ -13,15 +13,17 @@ const Home = () => {
         Tervetuloa koodi<br /> opetusluolaan.
       </motion.h1>
       <p className="text-lg text-gray-400 mt-4">
-        Täällä saat perus ymmäryksen koodauksen saloista.
+        Täällä saat perus ymmäryksen koodauksen saloista. <br />
+        Käymme läpi perusteet ja edetään siitä eteenpäin <br />
+        Paina aloitetaan joka vie sinut Ohjelmointi, C# osioon.
       </p>
       <div className="mt-6">
         <button className="px-6 py-3 mr-4">
           <Link to="/csharp">Aloitetaan</Link>
         </button>
-        <button className="px-6 py-3">
+        {/* <button className="px-6 py-3">
           Forumiin
-        </button>
+        </button> */}
       </div>
     </div>
   );
