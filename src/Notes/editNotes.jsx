@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { fetchWithAuth } from "../api";
 
 const EditNotes = () => {
     const { id } = useParams(); // Haetaan id URL:sta
     const navigate = useNavigate();
-    //const baseUrl = "https://codesitebe-efgshggehucfdvhq.swedencentral-01.azurewebsites.net/api/Notes/";
-    const baseUrl = "http://127.0.0.1:8000/api/Notes/";
+    const baseUrl = "https://codesitebe-efgshggehucfdvhq.swedencentral-01.azurewebsites.net/api/Notes/";
+    
 
     const [note, setNote] = useState({ header: "", content: "" });
     const [loading, setLoading] = useState(true);
@@ -15,14 +16,12 @@ const EditNotes = () => {
     useEffect(() => {
         const fetchNote = async () => {
             try {
-                const token = localStorage.getItem("access_token");
-
-                const response = await fetch(`${baseUrl}${id}`, {
+                const response = await fetchWithAuth(`${baseUrl}${id}/`, {
                     method: "GET",
                     mode: "cors",
+                    credentials: "include",
                     headers: {
                         "Content-Type": "application/json",
-                        "Authorization": `Bearer ${token}`,
                     },
                 });
 
@@ -45,21 +44,21 @@ const EditNotes = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const token = localStorage.getItem("access_token");
-            
-            const response = await fetch(`${baseUrl}${id}`, {
+            const response = await fetchWithAuth(`${baseUrl}${id}/`, {
                 method: "PUT",
                 mode: "cors",
+                credentials: "include",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`,
                 },
                 body: JSON.stringify(note),
             });
+            
 
-            if (!response.ok) throw new Error("Virhe tallennettaessa muistiinpanoa.");
 
-            navigate("/notes"); // Palataan takaisin muistiinpanojen listaukseen
+        if (!response.ok) throw new Error("Virhe tallennettaessa muistiinpanoa.");
+
+        navigate("/notes"); // Palataan takaisin muistiinpanojen listaukseen
         } catch (error) {
             console.error(error);
             setError("Tallennus epäonnistui.");

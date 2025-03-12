@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import{fetchWithAuth} from "../api.js";
 
 
 const Notes = () => {
   const [notes, setNotes] = useState([]);
-  const [searchTerm, setSearchTerm] = useState(""); // Hakutermi
+  const [searchTerm, setSearchTerm] = useState(""); //  Hakutermi
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  //const baseUrl = "https://codesitebe-efgshggehucfdvhq.swedencentral-01.azurewebsites.net/api/Notes/";
-  const baseUrl = "http://127.0.0.1:8000/api/Notes/"; 
+  const baseUrl = "https://codesitebe-efgshggehucfdvhq.swedencentral-01.azurewebsites.net/api/Notes/";
+ 
 
 
   useEffect(() => {
@@ -17,19 +18,16 @@ const Notes = () => {
   
   const fetchNotes = async () => {
     try {
-      const token = localStorage.getItem("access_token");  // 🔥 Hae token localStoragesta
-  
-      const response = await fetch(baseUrl, {
+      const response = await fetchWithAuth(baseUrl, {
         method: "GET",
         mode: "cors",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,  // 🔥 Lähetä token mukana
         },
       });
-  
+
       if (!response.ok) throw new Error(`Virhe: ${response.status}`);
-  
+
       const data = await response.json();
       setNotes(data);
     } catch (error) {
@@ -51,8 +49,10 @@ const Notes = () => {
     if (!window.confirm("Haluatko varmasti poistaa tämän muistiinpanon?")) return;
 
     try {
-      const response = await fetch(`${baseUrl}${id}/`, {
+      const response = await fetchWithAuth(`${baseUrl}${id}/`, {
         method: "DELETE",
+        mode: "cors",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },

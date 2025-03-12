@@ -1,50 +1,45 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { fetchWithAuth } from "./api.js";
 
-
-const Login = ({isAuthenticated, setIsAuthenticated} ) => {
-  const [username, setUsername] = useState("");
+const Login = ({ setIsAuthenticated }) => {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  
+  const navigate = useNavigate();
 
-  useEffect(() => { 
-    if (isAuthenticated) {
-        checkAuth();
+  // Tarkistaa onko käyttäjä jo kirjautunut sessiolla
+  useEffect(() => {
+    checkAuth();
+  }, []);
+
+  // Poistaa ilmoituksen automaattisesti
+  useEffect(() => {
+    if (message) {
+      const timer = setTimeout(() => setMessage(""), 3000);
+      return () => clearTimeout(timer);
     }
- }, [isAuthenticated]);
+  }, [message]);
 
- useEffect(() => {
-  if (message) {
-    const timer = setTimeout(() => setMessage(""), 3000);
-    return () => clearTimeout(timer);
-  }
-}, [message]);
-
-const navigate = useNavigate();
-
-const handleLogin = async (e) => {
+  // **Kirjautuminen**
+  const handleLogin = async (e) => {
     e.preventDefault();
     setMessage("");
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/login/", {
+      const response = await fetch("https://codesitebe-efgshggehucfdvhq.swedencentral-01.azurewebsites.net/api/login/", {
         method: "POST",
-        credentials: "include",
+        credentials: "include", // ✅ Käyttää sessioevästettä
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ email, password }),
       });
 
       if (response.ok) {
-        
-        setIsAuthenticated(true); //  Päivittää tilan App.jsx tiedostossa onnistuneen kirjautumisen jälkeen. Laukaisee useEffectin (yllä)
-        //joka taas  laukaisee  checkAuth funktion (alla), joka tarkistaa tokenin voimassaolon.
+        setIsAuthenticated(true); // 🔹 Päivittää kirjautumistilan
+        setMessage("✅ Kirjautuminen onnistui!");
 
         setTimeout(() => {
-          navigate("/"); 
+          navigate("/");
         }, 2000);
-        
       } else {
         const data = await response.json();
         setMessage(data.error || " Kirjautuminen epäonnistui ");
@@ -55,38 +50,24 @@ const handleLogin = async (e) => {
     }
   };
 
-
-//Varmistaa tokenin voimassaolon
+  // **Tarkistaa onko käyttäjä jo kirjautunut**
   const checkAuth = async () => {
     try {
-      const response = await fetchWithAuth("http://127.0.0.1:8000/api/profile/", {
+      const response = await fetch("https://codesitebe-efgshggehucfdvhq.swedencentral-01.azurewebsites.net/api/profile/", {
         method: "GET",
-        credentials: "include",
+        credentials: "include", // ✅ Käyttää sessioevästettä
       });
 
-      if (response.ok) {        
+      if (response.ok) {
         setIsAuthenticated(true);
-        setMessage("✅ Kirjautuminen onnistui!");
-        
-
       } else {
-        console.warn("Token vanhentunut. Yritetään uusia...");
-        const refreshed = await refreshToken();//Funktio tokenin uusimiseen api.js tiedostossa
-        if (refreshed) {
-          checkAuth(); //  Kokeile uudestaan uusitulla tokenilla
-        } else {
-          setIsAuthenticated(false);
-          setMessage(" Käyttäjä ei autentikoitunut!");
-        }
+        setIsAuthenticated(false);
       }
-
     } catch (err) {
       console.error("Error:", err);
-      setMessage("Käyttäjän tarkistus epäonnistui");
+      setIsAuthenticated(false);
     }
   };
-
-
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white">
@@ -99,11 +80,11 @@ const handleLogin = async (e) => {
       <h2 className="text-2xl mb-4">Kirjaudu sisään</h2>
       <form onSubmit={handleLogin} className="bg-gray-800 p-6 rounded-lg shadow-lg">
         <div className="mb-4">
-          <label className="block text-sm font-medium">Käyttäjätunnus</label>
+          <label className="block text-sm font-medium">Sähköposti</label>
           <input
             type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className="mt-1 p-2 w-full rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
@@ -128,18 +109,18 @@ const handleLogin = async (e) => {
         </button>
       </form>
 
-       <button
-        onClick={() => navigate("/")} // 🔹 Vie käyttäjän etusivulle
+      <button
+        onClick={() => navigate("/")}
         className="mt-6 !bg-gray-600 hover:bg-gray-700 !text-white font-bold py-2 px-4 rounded"
       >
         Peruuta
       </button>
-
-
-
     </div>
   );
 };
 
 export default Login;
+
+
+
 

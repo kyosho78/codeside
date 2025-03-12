@@ -1,6 +1,7 @@
 //Toimiva Navbar 5.3
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,6 +10,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
   const [isOhjelmointiOpen, setIsOhjelmointiOpen] = useState(false);
   const [isMobileOhjelmointiOpen, setIsMobileOhjelmointiOpen] = useState(false);
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
 
 
@@ -33,7 +35,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
 //V1
 const handleLogout = async () => {
   try {
-    const response = await fetch("http://127.0.0.1:8000/api/logout/", {
+    const response = await fetch("https://codesitebe-efgshggehucfdvhq.swedencentral-01.azurewebsites.net/api/logout/", {
       method: "POST",
       credentials: "include",
     });
