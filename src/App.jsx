@@ -69,7 +69,7 @@ function App() {
             <>
               <MatrixRainingCode className="absolute inset-0" />
               <BackgroundVideo />
-              {/* <Navbar /> */}
+             
               <Home />
             </>
           } />
@@ -99,7 +99,7 @@ function App() {
           <Route path="/django" element={<><Navbar /><Django /></>} />
           <Route path="/azure" element={<><Navbar /><Azure /></>} />
           <Route path="/dictionary" element={<><Navbar /><Dictionary /></>} />
-          <Route path="/notes" element={<Notes />} />
+          <Route path="/notes" element={<Notes isAuthenticated={isAuthenticated}/>} />
           <Route path="/edit-note/:id" element={<EditNotes />} />
           <Route path="/add-note" element={<AddNote />} /> 
           {/* Add other pages as needed */}

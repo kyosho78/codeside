@@ -42,7 +42,7 @@ const Login = ({ setIsAuthenticated }) => {
         }, 2000);
       } else {
         const data = await response.json();
-        setMessage(data.error || " Kirjautuminen epäonnistui ");
+        setMessage(data.error || " Kirjautuminen epäonnistui. Tarkista sähköposti ja salasana.");
       }
     } catch (err) {
       console.error("Error:", err);
@@ -55,7 +55,7 @@ const Login = ({ setIsAuthenticated }) => {
     try {
       const response = await fetch("https://codesitebe-efgshggehucfdvhq.swedencentral-01.azurewebsites.net/api/profile/", {
         method: "GET",
-        credentials: "include", // ✅ Käyttää sessioevästettä
+        credentials: "include", 
       });
 
       if (response.ok) {

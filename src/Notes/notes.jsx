@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import{fetchWithAuth} from "../api.js";
 
 
-const Notes = () => {
+const Notes = (isAuthenticated) => {
   const [notes, setNotes] = useState([]);
   const [searchTerm, setSearchTerm] = useState(""); //  Hakutermi
   const [loading, setLoading] = useState(true);
@@ -11,10 +11,17 @@ const Notes = () => {
   const baseUrl = "https://codesitebe-efgshggehucfdvhq.swedencentral-01.azurewebsites.net/api/Notes/";
  
 
+// Versio1
+  // useEffect(() => {
+  //   fetchNotes();
+  // }, []);
 
+  //Ajetaan vain kun käyttäjä on kirjautunut
   useEffect(() => {
-    fetchNotes();
-  }, []);
+    if (isAuthenticated) {
+        fetchNotes();
+    }
+}, [isAuthenticated]);
   
   const fetchNotes = async () => {
     try {
@@ -36,6 +43,29 @@ const Notes = () => {
       setLoading(false);
     }
   };
+
+    useEffect(() => {
+        const checkAuth = async () => {
+            try {
+                const response = await fetchWithAuth("https://codesitebe-efgshggehucfdvhq.swedencentral-01.azurewebsites.net/api/profile/", {
+                    method: "GET",
+                    credentials: "include",
+                });
+
+                if (!response.ok) {
+                    navigate("/login"); // 🔹 Ohjataan login-sivulle
+                    console.log("iflohko"); // 🔹 Jos tulee virhe, ohjataan login-sivulle
+                    window.location.reload();  // 🔹 Pakotetaan uusimaan näkymä
+                }
+            } catch {
+                navigate("/login");
+                console.log("catchlohko"); // 🔹 Jos tulee virhe, ohjataan login-sivulle
+                window.location.reload();  // 🔹 Estetään cache-version käyttäminen
+            }
+        };
+
+        checkAuth();
+    }, []);
   
   
 
@@ -74,7 +104,7 @@ const Notes = () => {
   );
 
   if (loading) {
-    return <p className="text-center text-gray-300">Ladataan muistiinpanoja...</p>;
+    return <p className="text-center text-black">Ladataan muistiinpanoja...</p>;
   }
 
   return (
