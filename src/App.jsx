@@ -1,5 +1,6 @@
+//Toimiva App.jsx
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./Components/Navbar.jsx";
+import Navbar from "./components/Navbar.jsx";
 import MatrixRainingCode from "./Components/MatrixRainingEffect.jsx";
 import Home from "./Staticpages/Home.jsx";
 import Login from "./Login.jsx";
@@ -26,6 +27,13 @@ import Django from "./Staticpages/platforms/Django.jsx";
 import Azure from "./Staticpages/platforms/Azure.jsx";
 import Dictionary from "./Staticpages/dictionary/Dictionary.jsx";
 import backgroundVideo from "./Assets/background.mp4";
+import Notes from "./Notes/notes.jsx"; 
+import EditNotes from "./Notes/editNotes";
+import AddNote from "./Notes/addNote";
+import { useState,useEffect } from "react";
+
+
+
 
 
 // Background Video Component
@@ -48,23 +56,27 @@ function BackgroundVideo() {
 }
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+
   return (
     <Router>
       <div className="min-h-screen">
         {/* Show Matrix & Background Video on Home Page */}
+        <Navbar isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />
         <Routes>
           <Route path="/" element={
             <>
               <MatrixRainingCode className="absolute inset-0" />
               <BackgroundVideo />
-              <Navbar />
+             
               <Home />
             </>
           } />
 
             
           {/* Other Pages with Navbar */}
-          <Route path="/login" element={<><Navbar /><Login /></>} />
+          <Route path="/login" element={<><Navbar /><Login isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated}/></>} />
           <Route path="/signup" element={<><Navbar /><Signup /></>} />
           <Route path="/csharp" element={<><Navbar /><Csharp /></>} />
           <Route path="/async-programming" element={<><Navbar /><AsyncProgramming /></>} />
@@ -87,6 +99,10 @@ function App() {
           <Route path="/django" element={<><Navbar /><Django /></>} />
           <Route path="/azure" element={<><Navbar /><Azure /></>} />
           <Route path="/dictionary" element={<><Navbar /><Dictionary /></>} />
+          <Route path="/notes" element={<Notes isAuthenticated={isAuthenticated}/>} />
+          <Route path="/edit-note/:id" element={<EditNotes />} />
+          <Route path="/add-note" element={<AddNote />} /> 
+          {/* Add other pages as needed */}
         </Routes>
       </div>
     </Router>
