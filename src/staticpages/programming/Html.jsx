@@ -1,11 +1,24 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Html = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <div className="min-h-screen bg-black text-white p-4 sm:p-6 pt-20 md:pt-32 lg:pt-20">
       <div className="max-w-7xl mx-auto bg-gray-800 p-6 sm:p-8 rounded-lg border border-gray-600 shadow-lg">
-        <h1 className="text-3xl text-center font-bold mb-4">HTML</h1>
+        <div className="mb-4">
+          <Link
+            to="/forum-html"
+            onClick={scrollToTop}
+            className="bg-[#56afe6] !text-white text-sm px-3 py-1 rounded-md hover:bg-blue-600 transition duration-200"
+          >
+            HTML Forum
+          </Link>
+          <h1 className="text-3xl font-bold text-center mb-4">HTML</h1>
+        </div>
 
         <p className="text-lg leading-loose">
           HTML (HyperText Markup Language) on verkkosivujen perusta, joka

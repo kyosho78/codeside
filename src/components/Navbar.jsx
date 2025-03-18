@@ -1,15 +1,83 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
+//Toimiva Navbar 5.3
+import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isAlustatOpen, setIsAlustatOpen] = useState(false);
   const [isMobileAlustatOpen, setIsMobileAlustatOpen] = useState(false);
   const [isOhjelmointiOpen, setIsOhjelmointiOpen] = useState(false);
   const [isMobileOhjelmointiOpen, setIsMobileOhjelmointiOpen] = useState(false);
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
+
+
+
+
+  useEffect(() => {
+    console.log("Navbar päivittyi, isAuthenticated:", isAuthenticated);
+  }, [isAuthenticated]);
+
+  useEffect(() => {
+    if (message) {
+      const timer = setTimeout(() => setMessage(""), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [message]);
+
+  const location = useLocation(); // 🔹 Tarkistetaan, missä sivulla ollaan
+  if (
+    location.pathname === "/login" ||
+    location.pathname === "/notes" ||
+    location.pathname === "/add-note" ||
+    location.pathname.startsWith("/edit-note/") // 🔹 Tarkistaa, alkaako polku "/edit-note/"
+  ) {
+    return null;
+  }
+
+
+const handleLogout = async () => {
+  try {
+    const response = await fetch("https://codesitebe-efgshggehucfdvhq.swedencentral-01.azurewebsites.net/api/logout/", {
+      method: "POST",
+      credentials: "include",
+    });
+
+    if (response.ok) {
+      setIsAuthenticated(false);
+      setMessage("✅ Uloskirjautuminen onnistui!");
+
+      // 🔹 Poistetaan evästeet manuaalisesti
+      document.cookie = "access_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+      document.cookie = "refresh_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+
+      localStorage.clear();
+      sessionStorage.clear();
+
+      // 🔹 Navigoi etusivulle.Päivittää sivun
+      setTimeout(() => {
+      window.location.href = "/";
+      //navigate("/");
+      }, 1500);
+
+    } else {
+      setMessage("❌ Uloskirjautuminen epäonnistui!");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    setMessage("❌ Virhe uloskirjautumisessa!");
+  }
+};
 
   return (
     <nav className="fixed w-full bg-black bg-opacity-100">
+      {/* 🔹 Näytetään ilmoitus */}
+      {message && (
+        <div className="fixed top-5 right-5 bg-blue-500 text-white px-6 py-4 rounded-lg shadow-xl">
+          {message}
+        </div>
+      )}
       <div className="max-w-7xl mx-auto flex items-center justify-between px-0">
         {/* Left Section: Logo */}
         <Link to="/" className="p-2 flex-shrink-0 group" onClick={() => setIsOpen(false)}> 
@@ -186,12 +254,22 @@ const Navbar = () => {
 
         {/* Right Section: Login & Signup */}
         <div className="hidden md:flex space-x-4">
+        {isAuthenticated ? (
+          <Link
+            to="/"
+            onClick={handleLogout} // 🔹 Logout tapahtuu klikkaamalla
+            className="px-4 py-2 bg-red-500 !text-white rounded hover:bg-red-600"
+          >
+            Logout
+          </Link>
+        ) : (
           <Link
             to="/login"
             className="px-4 py-2 bg-[#56afe6] !text-white rounded hover:bg-blue-600"
           >
             Login
           </Link>
+        )}
           <Link
             to="/signup"
             className="px-4 py-2 bg-[#56afe6] !text-white rounded hover:bg-blue-600"
@@ -384,12 +462,23 @@ const Navbar = () => {
 
         {/* Mobile Login/Signup */}
         <div className="flex flex-col space-y-2">
+        {isAuthenticated ? (
+          <Link
+            to="/"
+            onClick={handleLogout} // 🔹 Logout tapahtuu klikkaamalla
+            className="px-4 py-2 bg-red-500 !text-white rounded hover:bg-red-600"
+          >
+            Logout
+          </Link>
+        ) : (
           <Link
             to="/login"
             className="px-4 py-2 bg-[#56afe6] !text-white rounded hover:bg-blue-600"
           >
             Login
           </Link>
+        )}
+
           <Link
             to="/signup"
             className="px-4 py-2 bg-[#56afe6] !text-white rounded hover:bg-blue-600"
