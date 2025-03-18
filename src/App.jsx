@@ -5,7 +5,7 @@ import MatrixRainingCode from "./components/MatrixRainingEffect.jsx";
 import Home from "./staticpages/Home.jsx";
 import Login from "./Login.jsx";
 import Signup from "./Signup.jsx";
-import Csharp from "./staticpages/programming/csharp.jsx";
+import Csharp from "./staticpages/programming/Csharp.jsx";
 import AsyncProgramming from "./staticpages/programming/AsyncProgramming.jsx";
 import CsharpCondition from "./staticpages/programming/CsharpCondition.jsx";
 import CsharpLoop from "./staticpages/programming/CsharpLoop.jsx";
