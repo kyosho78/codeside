@@ -1,9 +1,12 @@
 //Toimiva Navbar 5.3
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../AuthContext";
 
-const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
+const Navbar = () => {
+  const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   const [isAlustatOpen, setIsAlustatOpen] = useState(false);
   const [isMobileAlustatOpen, setIsMobileAlustatOpen] = useState(false);
@@ -29,8 +32,6 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
   const location = useLocation(); // 🔹 Tarkistetaan, missä sivulla ollaan
   if (
     location.pathname === "/login" ||
-    location.pathname === "/notes" ||
-    location.pathname === "/add-note" ||
     location.pathname.startsWith("/edit-note/") // 🔹 Tarkistaa, alkaako polku "/edit-note/"
   ) {
     return null;

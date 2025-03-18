@@ -18,12 +18,12 @@ const Home = () => {
         Paina aloitetaan joka vie sinut Ohjelmointi, C# osioon.
       </p>
       <div className="mt-6">
-        <button className="px-6 py-3 mr-4">
-          <Link to="/csharp">Aloitetaan</Link>
-        </button>
-        {/* <button className="px-6 py-3">
-          Forumiin
-        </button> */}
+        <Link
+          to="/csharp"
+          className="bg-[#56afe6] !text-white font-semibold px-6 py-3 rounded-md hover:bg-blue-600 transition duration-300 inline-block"
+        >
+          Aloitetaan
+        </Link>
       </div>
     </div>
   );
