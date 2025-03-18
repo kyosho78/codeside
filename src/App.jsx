@@ -27,9 +27,9 @@ import Django from "./staticpages/platforms/Django.jsx";
 import Azure from "./staticpages/platforms/Azure.jsx";
 import Dictionary from "./staticpages/dictionary/Dictionary.jsx";
 import backgroundVideo from "./assets/background.mp4";
-import Notes from "./notes/Notes.jsx"; 
-import EditNotes from "./notes/editNotes";
-import AddNote from "./notes/addNote";
+import Notes from "./Notes/notes.jsx"; 
+import EditNotes from "./Notes/editNotes";
+import AddNote from "./Notes/addNote";
 import { useState,useEffect } from "react";
 
 
