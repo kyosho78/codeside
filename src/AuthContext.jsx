@@ -6,7 +6,7 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // Auto-check login status on page load
+  // Auto-check login status when page loads
   useEffect(() => {
     const checkAuth = async () => {
       try {

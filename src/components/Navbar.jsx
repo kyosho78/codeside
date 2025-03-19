@@ -1,4 +1,3 @@
-//Toimiva Navbar 5.3
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useContext } from "react";
