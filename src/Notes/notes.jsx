@@ -11,10 +11,7 @@ const Notes = (isAuthenticated) => {
   const baseUrl = "https://codesitebe-efgshggehucfdvhq.swedencentral-01.azurewebsites.net/api/Notes/";
  
 
-// Versio1
-  // useEffect(() => {
-  //   fetchNotes();
-  // }, []);
+
 
   //Ajetaan vain kun käyttäjä on kirjautunut
   useEffect(() => {
