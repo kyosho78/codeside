@@ -50,18 +50,19 @@ const Dictionary = () => {
           />
         </div>
 
-        {/* A-Z Navigation */}
+      {/* A-Z Navigation */}
         <div className="flex flex-wrap justify-center gap-2 mb-6">
           {Object.keys(wordsData).map((letter) => (
             <button
               key={letter}
+              style={{color: "black", backgroundColor: "white"}} //Lisätty 19.3
               onClick={() => {
                 setSelectedLetter(letter);
                 setSearchQuery("");
               }}
               className={`px-4 py-2 rounded-md text-lg font-semibold transition ${
                 selectedLetter === letter
-                  ? "bg-blue-500 text-white"
+                  ? "!bg-blue-500  !text-black" //Lisätty 19.3
                   : "bg-gray-700 hover:bg-gray-600"
               }`}
             >
