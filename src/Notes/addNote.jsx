@@ -4,7 +4,7 @@
     
     const AddNote = () => {
         const navigate = useNavigate();
-        const baseUrl = 'https://codesitebe-efgshggehucfdvhq.swedencentral-01.azurewebsites.net/api/Notes/';
+        const baseUrl = 'https://projekti2025backend-e0dubhd7e5h6akcw.swedencentral-01.azurewebsites.net/api/Notes/';
     
         const [note, setNote] = useState({ header: "", content: "" });
         const [error, setError] = useState(null);
