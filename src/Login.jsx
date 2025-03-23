@@ -26,7 +26,7 @@ const Login = ({ setIsAuthenticated }) => {
     setMessage("");
 
     try {
-      const response = await fetch("https://codesitebe-efgshggehucfdvhq.swedencentral-01.azurewebsites.net/api/login/", {
+      const response = await fetch("https://projekti2025backend-e0dubhd7e5h6akcw.swedencentral-01.azurewebsites.net/api/login/", {
         method: "POST",
         credentials: "include", // ✅ Käyttää sessioevästettä
         headers: { "Content-Type": "application/json" },
@@ -53,7 +53,7 @@ const Login = ({ setIsAuthenticated }) => {
   // **Tarkistaa onko käyttäjä jo kirjautunut**
   const checkAuth = async () => {
     try {
-      const response = await fetch("https://codesitebe-efgshggehucfdvhq.swedencentral-01.azurewebsites.net/api/profile/", {
+      const response = await fetch("https://projekti2025backend-e0dubhd7e5h6akcw.swedencentral-01.azurewebsites.net/api/profile/", {
         method: "GET",
         credentials: "include", 
       });
