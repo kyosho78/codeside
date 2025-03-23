@@ -31,7 +31,8 @@ import Notes from "./Notes/notes.jsx";
 import EditNotes from "./Notes/editNotes";
 import AddNote from "./Notes/addNote";
 import { useState,useEffect } from "react";
-
+import ForumList from "./forum/ForumList.jsx"
+import KetjutList from "./forum/KetjutList.jsx" 
 
 
 
@@ -102,6 +103,8 @@ function App() {
           <Route path="/notes" element={<Notes isAuthenticated={isAuthenticated}/>} />
           <Route path="/edit-note/:id" element={<EditNotes />} />
           <Route path="/add-note" element={<AddNote />} /> 
+          <Route path="/forum" element={<><ForumList /></>} />
+          <Route path="/threads/:topicId" element={<KetjutList />} />
           {/* Add other pages as needed */}
         </Routes>
       </div>
