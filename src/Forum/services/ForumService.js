@@ -2,7 +2,7 @@
 
 import axios from "axios";
 
-const API_BASE_URL = "https://codesitebe-efgshggehucfdvhq.swedencentral-01.azurewebsites.net/api/";
+const API_BASE_URL = "http://127.0.0.1:8000/api";
 
 export const fetchTopics = async () => {
     const response = await axios.get(`${API_BASE_URL}/Aiheet/`);
@@ -10,7 +10,7 @@ export const fetchTopics = async () => {
 };
 
 export const fetchThreads = async (topicId) => {
-    const response = await axios.get(`${API_BASE_URL}/Ketjut/?aihealue=${topicId}`);
+    const response = await axios.get(`${API_BASE_URL}/Ketjut/${topicId}/`);
     return response.data;
 };
 
@@ -21,6 +21,11 @@ export const fetchThread = async (threadId) => {
 
 export const createThread = async (data) => {
     const response = await axios.post(`${API_BASE_URL}/Ketjut/`, data);
+    return response.data;
+};
+
+export const fetchReplies = async (threadId) => {
+    const response = await axios.get(`${API_BASE_URL}/Vastaukset/${threadId}/`);
     return response.data;
 };
 

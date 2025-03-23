@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "https://codesitebe-efgshggehucfdvhq.swedencentral-01.azurewebsites.net/api/";
+const API_BASE_URL = "http://127.0.0.1:8000/api/";
 
 const testApi = async () => {
     try {

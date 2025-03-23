@@ -8,14 +8,21 @@ const ThreadsList = () => {
     const [topicName, setTopicName] = useState(""); // Uusi tila aihealueen nimelle
 
     useEffect(() => {
-        fetchThreads(topicId).then((data) => {
-            setThreads(data);
-            if (data.length > 0) {
-                setTopicName(data[0].aihealue_data.header); // Haetaan aihealueen nimi ensimmäisestä ketjusta
-            } else {
-                setTopicName("Tuntematon aihealue");
-            }
-        });
+        fetchThreads(topicId)
+            .then((data) => {
+                console.log('Received threads:', data); // Tämä tarkistaa, että data saapuu oikein
+                // Jos data ei ole taulukko, pakotetaan se taulukoksi
+                const threadArray = Array.isArray(data) ? data : [data];
+                setThreads(threadArray);
+                if (threadArray.length > 0 && threadArray[0].aihealue_data) {
+                    setTopicName(threadArray[0].aihealue_data.header); 
+                } else {
+                    setTopicName("Tuntematon aihealue");
+                }
+            })
+            .catch((err) => {
+                console.error('Virhe tietojen latauksessa', err);
+            });
     }, [topicId]);
 
     return (
@@ -35,6 +42,7 @@ const ThreadsList = () => {
                                     {thread.header}
                                 </Link>
                                 <p className="text-gray-400 text-sm">Kirjoittaja: {thread.author.username}</p>
+                                <p className="text-gray-400 text-sm">Sisältö: {thread.content}</p>
                             </li>
                         ))
                     ) : (
