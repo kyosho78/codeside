@@ -25,8 +25,9 @@ export const createThread = async (data) => {
 };
 
 export const fetchReplies = async (threadId) => {
-    const response = await axios.get(`${API_BASE_URL}/Vastaukset/${threadId}/`);
-    return response.data;
+    const response = await axios.get(`${API_BASE_URL}/Vastaukset/`);
+
+    return response.data.filter(reply => reply.ketju === parseInt(threadId));
 };
 
 export const createReply = async (data) => {

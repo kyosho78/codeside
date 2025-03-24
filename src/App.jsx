@@ -32,7 +32,10 @@ import EditNotes from "./Notes/editNotes";
 import AddNote from "./Notes/addNote";
 import { useState,useEffect } from "react";
 import ForumList from "./forum/ForumList.jsx"
-import KetjutList from "./forum/KetjutList.jsx" 
+import KetjutList from "./forum/KetjutList.jsx"
+import ThreadView from "./forum/ThreadView.jsx";
+
+
 
 
 
@@ -105,7 +108,8 @@ function App() {
           <Route path="/add-note" element={<AddNote />} /> 
           <Route path="/forum" element={<><ForumList /></>} />
           <Route path="/threads/:topicId" element={<KetjutList />} />
-          {/* Add other pages as needed */}
+          <Route path="/thread/:threadId" element={<ThreadView />} />
+         
         </Routes>
       </div>
     </Router>
