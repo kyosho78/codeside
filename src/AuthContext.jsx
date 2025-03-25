@@ -1,8 +1,14 @@
+/*
+ Written by: Valter Backström 
+*/
+
 import { createContext, useState, useEffect } from "react";
 import { fetchWithAuth } from "./api";
 
+// Store the authentication status in a context
 export const AuthContext = createContext();
 
+// Provider component to wrap the entire app with the authentication context, AuthProvider in main.jsx 
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -22,7 +28,8 @@ export const AuthProvider = ({ children }) => {
 
     checkAuth();
   }, []);
-
+  
+  // Provide the authentication status to the entire app
   return (
     <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
       {children}

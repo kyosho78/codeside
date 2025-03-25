@@ -32,7 +32,7 @@ import EditNotes from "./Notes/editNotes";
 import AddNote from "./Notes/addNote";
 
 
-// Background video
+// Background video, written by Valter Backström
 function BackgroundVideo() {
   return (
     <video
@@ -51,6 +51,7 @@ function BackgroundVideo() {
   );
 }
 
+// Main App component with Navbar and Routes, written by Valter Backström
 function App() {
   return (
     <div className="min-h-screen">

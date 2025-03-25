@@ -1,7 +1,11 @@
+/*
+  Base Navbar written by: Valter Backström and Login/Logout functionality by: Toni Pekkala 
+*/
+
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthContext";
 
 const Navbar = () => {
@@ -12,7 +16,7 @@ const Navbar = () => {
   const [isOhjelmointiOpen, setIsOhjelmointiOpen] = useState(false);
   const [isMobileOhjelmointiOpen, setIsMobileOhjelmointiOpen] = useState(false);
   const [message, setMessage] = useState("");
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
 
 

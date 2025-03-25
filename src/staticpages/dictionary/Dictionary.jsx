@@ -1,3 +1,8 @@
+/*
+  Writen by: Valter Backström
+  This component is a dictionary application that allows users to search for words in Finnish and English.
+  Based on the idea of Simo Siren and forward by Toni Pekkala
+*/
 import React, { useState, useEffect } from "react";
 
 const Dictionary = () => {
@@ -5,7 +10,7 @@ const Dictionary = () => {
   const [selectedLetter, setSelectedLetter] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
 
-  // Load JSON dynamically
+  // Load JSON dynamically from the public folder (public/coding_dictionary.json)
   useEffect(() => {
     fetch("/coding_dictionary.json")
       .then((response) => response.json())
@@ -65,7 +70,7 @@ const Dictionary = () => {
                   : "bg-white text-black hover:bg-blue-100"}`}
             >
               {letter.toUpperCase()}
-            </button>
+            </button> // This button highlight idea is from Toni Pekkala
 
           ))}
         </div>

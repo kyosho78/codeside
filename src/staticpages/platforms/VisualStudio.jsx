@@ -1,3 +1,6 @@
+/*
+  Written by: Valter Backström
+*/
 import React from "react";
 
 const VisualStudio = () => {

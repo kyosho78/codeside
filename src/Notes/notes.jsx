@@ -124,6 +124,7 @@ const Notes = (isAuthenticated) => {
 
             <input
               type="text"
+              id="searchInput"
               placeholder="🔍 Hae muistiinpanoista..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
