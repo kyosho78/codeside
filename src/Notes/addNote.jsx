@@ -75,13 +75,13 @@
                         <button
                             type="button"
                             onClick={() => navigate("/notes")}
-                            className="!bg-white text-black px-4 py-2 rounded-md hover:bg-gray-600 hover:bg-opacity-80 transition"
+                            className="bg-[#56afe6] text-white text-sm px-3 py-1 rounded-md hover:bg-blue-600 transition duration-200"
                         >
                             ❌ Peruuta
                         </button>
                         <button
                             type="submit"
-                            className="!bg-white text-black px-4 py-2 rounded-md hover:bg-green-600 hover:bg-opacity-80 transition"
+                            className="bg-[#56afe6] text-white text-sm px-3 py-1 rounded-md hover:bg-blue-600 transition duration-200"
                         >
                             💾 Tallenna
                         </button>

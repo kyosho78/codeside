@@ -1,16 +1,22 @@
-//Toimiva Navbar 5.3
+/*
+  Base Navbar written by: Valter Backström and Login/Logout functionality by: Toni Pekkala 
+*/
+
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+// import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../AuthContext";
 
-const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
+const Navbar = () => {
+  const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   const [isAlustatOpen, setIsAlustatOpen] = useState(false);
   const [isMobileAlustatOpen, setIsMobileAlustatOpen] = useState(false);
   const [isOhjelmointiOpen, setIsOhjelmointiOpen] = useState(false);
   const [isMobileOhjelmointiOpen, setIsMobileOhjelmointiOpen] = useState(false);
   const [message, setMessage] = useState("");
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
 
 
@@ -29,8 +35,6 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
   const location = useLocation(); // 🔹 Tarkistetaan, missä sivulla ollaan
   if (
     location.pathname === "/login" ||
-    location.pathname === "/notes" ||
-    location.pathname === "/add-note" ||
     location.pathname.startsWith("/edit-note/") // 🔹 Tarkistaa, alkaako polku "/edit-note/"
   ) {
     return null;
@@ -258,21 +262,21 @@ const handleLogout = async () => {
           <Link
             to="/"
             onClick={handleLogout} // 🔹 Logout tapahtuu klikkaamalla
-            className="px-4 py-2 bg-red-500 !text-white rounded hover:bg-red-600"
+            className="px-2 py-1.5 bg-red-500 !text-white rounded hover:bg-red-600"
           >
             Logout
           </Link>
         ) : (
           <Link
             to="/login"
-            className="px-4 py-2 bg-[#56afe6] !text-white rounded hover:bg-blue-600"
+            className="px-3 py-1.5 bg-[#56afe6] !text-white rounded hover:bg-blue-600"
           >
             Login
           </Link>
         )}
           <Link
             to="/signup"
-            className="px-4 py-2 bg-[#56afe6] !text-white rounded hover:bg-blue-600"
+            className="px-3 py-1.5 bg-[#56afe6] !text-white rounded hover:bg-blue-600"
           >
             Sign Up
           </Link>
