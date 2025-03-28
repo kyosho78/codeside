@@ -52,7 +52,7 @@ const Notes = (isAuthenticated) => {
                 });
 
                 if (!response.ok) {
-                    navigate("/login"); // 🔹 Ohjataan login-sivulle
+                    navigate("/login");  // 🔹 Ohjataan login-sivulle
                     console.log("iflohko"); // 🔹 Jos tulee virhe, ohjataan login-sivulle
                     window.location.reload();  // 🔹 Pakotetaan uusimaan näkymä
                 }
