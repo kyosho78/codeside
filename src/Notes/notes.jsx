@@ -4,7 +4,7 @@ import{fetchWithAuth} from "../api.js";
 import Navbar from "../components/Navbar";
 
 
-
+//Statet
 const Notes = (isAuthenticated) => {
   const [notes, setNotes] = useState([]);
   const [searchTerm, setSearchTerm] = useState(""); //  Hakutermi
