@@ -4,7 +4,7 @@ import{fetchWithAuth} from "../api.js";
 import Navbar from "../components/Navbar";
 
 
-
+//Statet
 const Notes = (isAuthenticated) => {
   const [notes, setNotes] = useState([]);
   const [searchTerm, setSearchTerm] = useState(""); //  Hakutermi
@@ -52,7 +52,7 @@ const Notes = (isAuthenticated) => {
                 });
 
                 if (!response.ok) {
-                    navigate("/login"); // 🔹 Ohjataan login-sivulle
+                    navigate("/login");  // 🔹 Ohjataan login-sivulle
                     console.log("iflohko"); // 🔹 Jos tulee virhe, ohjataan login-sivulle
                     window.location.reload();  // 🔹 Pakotetaan uusimaan näkymä
                 }
