@@ -1,5 +1,5 @@
-//Toimiva App.jsx
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar.jsx";
 import MatrixRainingCode from "./components/MatrixRainingEffect.jsx";
 import Home from "./staticpages/Home.jsx";
@@ -30,15 +30,11 @@ import backgroundVideo from "./assets/background.mp4";
 import Notes from "./Notes/notes.jsx"; 
 import EditNotes from "./Notes/editNotes";
 import AddNote from "./Notes/addNote";
-import { useState,useEffect } from "react";
 import ForumList from "./forum/FoorumiListaus.jsx"
 import KetjutList from "./forum/KetjutList.jsx"
 import ThreadView from "./forum/YksittäinenKetju.jsx";
 import NewThreadForm from "./forum/UusiKetju.jsx";
-
-
-
-// Background Video Component
+// Background video, written by Valter Backström
 function BackgroundVideo() {
   return (
     <video
@@ -57,6 +53,7 @@ function BackgroundVideo() {
   );
 }
 
+// Main App component with Navbar and Routes, written by Valter Backström
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -88,57 +85,46 @@ function App() {
 
 
   return (
-    <Router>
-      <div className="min-h-screen">
-        {/* Show Matrix & Background Video on Home Page */}
-        <Navbar isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />
-        <Routes>
-          <Route path="/" element={
-            <>
-              <MatrixRainingCode className="absolute inset-0" />
-              <BackgroundVideo />
-             
-              <Home />
-            </>
-          } />
+    <div className="min-h-screen">
+      <Navbar />
 
-            
-          {/* Other Pages with Navbar */}
-           {/*<Route path="/login" element={<><Navbar /><Login isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated}/></>} /> */}
-          <Route path="/login" element={<><Navbar /><Login /></>} />
-          <Route path="/signup" element={<><Navbar /><Signup /></>} />
-          <Route path="/csharp" element={<><Navbar /><Csharp /></>} />
-          <Route path="/async-programming" element={<><Navbar /><AsyncProgramming /></>} />
-          <Route path="/csharp-condition" element={<><Navbar /><CsharpCondition /></>} />
-          <Route path="/csharp-loop" element={<><Navbar /><CsharpLoop /></>} />
-          <Route path="/javascript" element={<><Navbar /><JavaScript /></>} />
-          <Route path="/javascript-condition" element={<><Navbar /><JavaScriptCondition /></>} />
-          <Route path="/javascript-loop" element={<><Navbar /><JavaScriptLoop /></>} />
-          <Route path="/python" element={<><Navbar /><Python /></>} />
-          <Route path="/python-condition" element={<><Navbar /><PythonCondition /></>} />
-          <Route path="/python-loop" element={<><Navbar /><PythonLoop /></>} />
-          <Route path="/sql" element={<><Navbar /><Sql /></>} />
-          <Route path="/sql-condition" element={<><Navbar /><SqlCondition /></>} />
-          <Route path="/html" element={<><Navbar /><Html /></>} />
-          <Route path="/css" element={<><Navbar /><Css /></>} />
-          <Route path="/visual-studio" element={<><Navbar /><VisualStudio /></>} />
-          <Route path="/vs-code" element={<><Navbar /><VsCode /></>} />
-          <Route path="/git" element={<><Navbar /><Git /></>} />
-          <Route path="/net" element={<><Navbar /><Net /></>} />
-          <Route path="/django" element={<><Navbar /><Django /></>} />
-          <Route path="/azure" element={<><Navbar /><Azure /></>} />
-          <Route path="/dictionary" element={<><Navbar /><Dictionary /></>} />
-          <Route path="/notes" element={<Notes isAuthenticated={isAuthenticated}/>} />
-          <Route path="/edit-note/:id" element={<EditNotes />} />
-          <Route path="/add-note" element={<AddNote />} /> 
-          <Route path="/forum" element={<><ForumList /></>} />
-          <Route path="/threads/:topicId" element={<KetjutList />} />
-          <Route path="/thread/:threadId" element={<ThreadView />} />
-          <Route path="/create-thread/:topicId" element={<NewThreadForm />} /> 
-         
-        </Routes>
-      </div>
-    </Router>
+      <Routes>
+        <Route path="/" element={
+          <>
+            <MatrixRainingCode className="absolute inset-0" />
+            <BackgroundVideo />
+            <Home />
+          </>
+        } />
+
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/csharp" element={<Csharp />} />
+        <Route path="/async-programming" element={<AsyncProgramming />} />
+        <Route path="/csharp-condition" element={<CsharpCondition />} />
+        <Route path="/csharp-loop" element={<CsharpLoop />} />
+        <Route path="/javascript" element={<JavaScript />} />
+        <Route path="/javascript-condition" element={<JavaScriptCondition />} />
+        <Route path="/javascript-loop" element={<JavaScriptLoop />} />
+        <Route path="/python" element={<Python />} />
+        <Route path="/python-condition" element={<PythonCondition />} />
+        <Route path="/python-loop" element={<PythonLoop />} />
+        <Route path="/sql" element={<Sql />} />
+        <Route path="/sql-condition" element={<SqlCondition />} />
+        <Route path="/html" element={<Html />} />
+        <Route path="/css" element={<Css />} />
+        <Route path="/visual-studio" element={<VisualStudio />} />
+        <Route path="/vs-code" element={<VsCode />} />
+        <Route path="/git" element={<Git />} />
+        <Route path="/net" element={<Net />} />
+        <Route path="/django" element={<Django />} />
+        <Route path="/azure" element={<Azure />} />
+        <Route path="/dictionary" element={<Dictionary />} />
+        <Route path="/notes" element={<Notes />} />
+        <Route path="/edit-note/:id" element={<EditNotes />} />
+        <Route path="/add-note" element={<AddNote />} />
+      </Routes>
+    </div>
   );
 }
 

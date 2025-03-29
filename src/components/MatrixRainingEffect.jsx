@@ -1,3 +1,6 @@
+/* Written by: Valter Backström
+   Based on the tutorial by: https://dev.to/javascriptacademy/matrix-raining-code-effect-using-javascript-4hep
+*/
 import React, { useEffect, useRef } from "react";
 
 
@@ -14,13 +17,13 @@ const MatrixRainingCode = () => {
     const charArray = characters.split("");
     let drops = [];
 
-    // Initialize drops
+    // Initialize drops, this is a array for each column of the canvas
     for (let i = 0; i < columns; i++) {
       drops[i] = 1;
     }
 
     let frameRate = 10; // Adjust the frame rate (lower value = slower speed)
-    let lastFrameTime = Date.now();
+    let lastFrameTime = Date.now(); // Look when the last frame was rendered
 
     const draw = () => {
       // Create the fade-out gradient effect
@@ -32,10 +35,11 @@ const MatrixRainingCode = () => {
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, width, height);
     
-      // Green matrix characters
+      // Green matrix styling and font
       ctx.fillStyle = "rgba(0, 255, 0, 0.8)"; 
       ctx.font = "20px monospace";
-    
+
+      // Loop through the drops
       for (let i = 0; i < drops.length; i++) {
         const text = charArray[Math.floor(Math.random() * charArray.length)];
         ctx.fillText(text, i * 20, drops[i] * 20);

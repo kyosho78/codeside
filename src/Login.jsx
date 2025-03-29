@@ -1,12 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "./AuthContext";
 
-const Login = ({ setIsAuthenticated }) => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
-  console.log("Login komponentti")
+  const { setIsAuthenticated } = useContext(AuthContext);
 
   // Tarkistaa onko käyttäjä jo kirjautunut sessiolla
   // useEffect(() => {

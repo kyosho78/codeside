@@ -74,38 +74,42 @@ const EditNotes = () => {
               <h2 className="text-2xl font-semibold mb-4 text-center">Muokkaa muistiinpanoa</h2>
               <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
                   
-                  <label className="font-medium">Otsikko:</label>
+                  {/* <label className="font-medium">Otsikko:</label> */}
+                  <label htmlFor="editHeader" className="font-medium">Otsikko:</label>
                   <input
+                      id="editHeader"
                       type="text"
                       value={note.header}
                       onChange={(e) => setNote({ ...note, header: e.target.value })}
                       className="border border-gray-600 bg-gray-700 text-white p-2 rounded-md w-full focus:ring-2 focus:ring-blue-500"
                   />
   
-                  <label className="font-medium">Sisältö:</label>
+                  {/* <label className="font-medium">Sisältö:</label> */}
+                  <label htmlFor="editContent" className="font-medium">Sisältö:</label>
                   <textarea
+                      id="editContent"
                       value={note.content}
                       onChange={(e) => setNote({ ...note, content: e.target.value })}
                       className="border border-gray-600 bg-gray-700 text-white p-2 rounded-md w-full h-32 focus:ring-2 focus:ring-blue-500"
                   />
   
-                  <div className="flex justify-between mt-4">
-                      <button
-                          type="button"
-                          onClick={() => navigate("/notes")}
-                          className="bg-gray-500 text-black px-4 py-2 rounded-md hover:bg-gray-600 hover:bg-opacity-80 transition"
-                          style={{ backgroundColor: "#f3f4f6", color: "#000000" }}
-                      >
-                          ❌ Peruuta
-                      </button>
-                      <button
-                          type="submit"
-                          className="bg-blue-500 text-black px-4 py-2 rounded-md hover:bg-blue-600 hover:bg-opacity-80 transition"
-                          style={{ backgroundColor: "#f3f4f6", color: "#000000" }}
-                      >
-                          💾 Tallenna
-                      </button>
-                  </div>
+                    <div className="flex justify-between mt-4">
+                        <button
+                            type="button"
+                            onClick={() => navigate("/notes")}
+                            className="bg-[#56afe6] text-white text-sm px-3 py-1 rounded-md hover:bg-blue-600 transition duration-200"
+                        >
+                            ❌ Peruuta
+                        </button>
+
+                        <button
+                            type="submit"
+                            className="bg-[#56afe6] text-white text-sm px-3 py-1 rounded-md hover:bg-blue-600 transition duration-200"
+                        >
+                            💾 Tallenna
+                        </button>
+
+                    </div>
               </form>
           </div>
       </div>
