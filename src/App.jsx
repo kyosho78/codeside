@@ -34,6 +34,8 @@ import ForumList from "./forum/FoorumiListaus.jsx"
 import KetjutList from "./forum/KetjutList.jsx"
 import ThreadView from "./forum/YksittäinenKetju.jsx";
 import NewThreadForm from "./forum/UusiKetju.jsx";
+
+
 // Background video, written by Valter Backström
 function BackgroundVideo() {
   return (
@@ -55,35 +57,6 @@ function BackgroundVideo() {
 
 // Main App component with Navbar and Routes, written by Valter Backström
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  useEffect(() => {
-    console.log("appjsx")
-    const checkAuth = async () => {
-      try {
-        const response = await fetch("http://127.0.0.1:8000/api/profile/", {
-          method: "GET",
-          credentials: "include", // Lähetetään evästeet mukana
-        });
-
-        if (response.ok) {
-          const userData = await response.json();
-          setIsAuthenticated(true); 
-          console.log("Käyttäjä:", userData);
-        } else {
-         
-          setIsAuthenticated(false); 
-        }
-      } catch (err) {
-        console.error("Virhe:", err);
-        setIsAuthenticated(false); 
-      }
-    };
-
-    checkAuth();
-  }, []);
-
-
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -123,6 +96,10 @@ function App() {
         <Route path="/notes" element={<Notes />} />
         <Route path="/edit-note/:id" element={<EditNotes />} />
         <Route path="/add-note" element={<AddNote />} />
+        <Route path="/forum" element={<><ForumList /></>} />
+        <Route path="/threads/:topicId" element={<KetjutList />} />
+        <Route path="/thread/:threadId" element={<ThreadView />} />
+        <Route path="/create-thread/:topicId" element={<NewThreadForm />} /> 
       </Routes>
     </div>
   );

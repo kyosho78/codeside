@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchThread, fetchReplies, createReply } from "./services/ForumService";
-import { useParams } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
+import { fetchWithAuth } from "../api";
 
 const ThreadView = () => {
     const { threadId } = useParams();
@@ -12,24 +13,30 @@ const ThreadView = () => {
     console.log("YksittäinenKetju");
 
     useEffect(() => {
-        const storedUserId = localStorage.getItem("userId");
-        if (storedUserId) {
-            setUserId(Number(storedUserId)); // Muunnetaan numeroksi
-            console.log("käyttäjä", storedUserId);
-        } else {
-            setUserId(null);
-        }
-    }, []); 
+        const checkAuth = async () => {
+            try {
+                const response = await fetchWithAuth("http://127.0.0.1:8000/api/profile/", {
+                    method: "GET",
+                    credentials: "include",
+                });
+
+                if (response.ok) {
+                    const userData = await response.json();
+                    setUserId(userData.id); 
+                    console.log("Käyttäjä:", userData.id);
+                } else {
+                    console.warn("Käyttäjä ei ole kirjautunut");
+                    
+                }
+            } catch (error) {
+                console.error("Virhe käyttäjän tunnistamisessa:", error);
+                }
+        };
+
+        checkAuth();
+    }, [Navigate]); 
 
     useEffect(() => {
-
-    const userId = localStorage.getItem("userId");
-        if (userId) {
-            setUserId(Number(userId));
-            console.log("käyttäjä",userId); // Muunnetaan numeroksi
-        } else {
-            setUserId(null);
-        };
 
         const getThreadData = async () => {
             try {
@@ -98,7 +105,7 @@ const ThreadView = () => {
                     disabled={isSubmitting}
                     className="mt-2 !bg-blue-500 text-white px-4 py-2 rounded hover:!bg-blue-600"
                 >
-                    Lähetä vastaus
+                    Lähetä uusi vastaus
                 </button>
             </form>
         </div>

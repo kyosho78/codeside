@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { createThread } from "./services/ForumService"; // Importoi API-funktio
 
 const NewThreadForm = () => {
-    const { topicId } = useParams(); // Haetaan aihealueen ID reitistä
+    const { topicId, userId } = useParams(); // Haetaan aihealueen ID reitistä
     const navigate = useNavigate(); // Navigointi uudelle sivulle
     const [header, setHeader] = useState("");
     const [content, setContent] = useState("");
@@ -19,7 +19,7 @@ const NewThreadForm = () => {
                 header,
                 content,
                 aihealue: topicId, // Aihealueen ID mukaan
-                author: 3, // Käyttäjän ID voidaan hakea esimerkiksi sessionista
+                author: userId,
             };
             await createThread(newThread); // Luo uusi ketju API:n kautta
             navigate(`/threads/${topicId}`); // Palataan ketjulistaukseen

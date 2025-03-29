@@ -9,12 +9,6 @@ const Login = () => {
   const navigate = useNavigate();
   const { setIsAuthenticated } = useContext(AuthContext);
 
-  // Tarkistaa onko käyttäjä jo kirjautunut sessiolla
-  // useEffect(() => {
-  //   checkAuth();
-  // }, []);
-    // ei välttämättä tarvita.
-
   // Poistaa ilmoituksen automaattisesti
   useEffect(() => {
     if (message) {
@@ -52,28 +46,6 @@ const Login = () => {
       setMessage(" Kirjautumisvirhe ");
     }
   };
-
-  // // **Tarkistaa onko käyttäjä jo kirjautunut**
-  // const checkAuth = async () => {
-  //   try {
-  //     const response = await fetch("http://127.0.0.1:8000/api/profile/", {
-  //       method: "GET",
-  //       credentials: "include", 
-  //     });
-
-  //     if (response.ok) {
-  //       const userData = await response.json();
-  //       setIsAuthenticated(true);
-  //       console.log("käyttäjä", userData)
-  //     } else {
-  //       setIsAuthenticated(false);
-  //     }
-  //   } catch (err) {
-  //     console.error("Error:", err);
-  //     setIsAuthenticated(false);
-  //   }
-  // };
-  // ei välttämättä tarvita.
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white">
