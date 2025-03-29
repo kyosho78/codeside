@@ -31,12 +31,10 @@ import Notes from "./Notes/notes.jsx";
 import EditNotes from "./Notes/editNotes";
 import AddNote from "./Notes/addNote";
 import { useState,useEffect } from "react";
-import ForumList from "./forum/ForumList.jsx"
+import ForumList from "./forum/FoorumiListaus.jsx"
 import KetjutList from "./forum/KetjutList.jsx"
-import ThreadView from "./forum/ThreadView.jsx";
-
-
-
+import ThreadView from "./forum/YksittäinenKetju.jsx";
+import NewThreadForm from "./forum/UusiKetju.jsx";
 
 
 
@@ -109,6 +107,7 @@ function App() {
           <Route path="/forum" element={<><ForumList /></>} />
           <Route path="/threads/:topicId" element={<KetjutList />} />
           <Route path="/thread/:threadId" element={<ThreadView />} />
+          <Route path="/create-thread/:topicId" element={<NewThreadForm />} /> 
          
         </Routes>
       </div>

@@ -10,27 +10,43 @@ export const fetchTopics = async () => {
 };
 
 export const fetchThreads = async (topicId) => {
-    const response = await axios.get(`${API_BASE_URL}/Ketjut/${topicId}/`);
-    return response.data;
+    try {
+        const response = await axios.get(`${API_BASE_URL}/Ketjut/?aihealue=${topicId}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching threads:', error);
+        throw error;
+    }
 };
 
 export const fetchThread = async (threadId) => {
-    const response = await axios.get(`${API_BASE_URL}/Ketjut/${threadId}/`);
-    return response.data;
-};
-
-export const createThread = async (data) => {
-    const response = await axios.post(`${API_BASE_URL}/Ketjut/`, data);
-    return response.data;
+    try {
+        const response = await axios.get(`${API_BASE_URL}/Ketjut/${threadId}/`);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching thread:', error);
+        throw error;
+    }
 };
 
 export const fetchReplies = async (threadId) => {
     const response = await axios.get(`${API_BASE_URL}/Vastaukset/`);
-
+    
     return response.data.filter(reply => reply.ketju === parseInt(threadId));
 };
 
+//Post kutsut
+
+export const createThread = async (data) => {
+    const response = await axios.post(`${API_BASE_URL}/Ketjut/`,  data, {
+        withCredentials: true,  
+    });
+    return response.data;
+};
+
 export const createReply = async (data) => {
-    const response = await axios.post(`${API_BASE_URL}/Vastaukset/`, data);
+    const response = await axios.post(`${API_BASE_URL}/Vastaukset/`, data, {
+        withCredentials: true,  // Add credentials (cookies) with the request
+    });
     return response.data;
 };

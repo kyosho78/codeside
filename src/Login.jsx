@@ -5,6 +5,7 @@ const Login = ({ setIsAuthenticated }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
   // Tarkistaa onko käyttäjä jo kirjautunut sessiolla
@@ -26,7 +27,7 @@ const Login = ({ setIsAuthenticated }) => {
     setMessage("");
 
     try {
-      const response = await fetch("https://projekti2025backend-e0dubhd7e5h6akcw.swedencentral-01.azurewebsites.net/api/login/", {
+      const response = await fetch("http://127.0.0.1:8000/api/login/", {
         method: "POST",
         credentials: "include", // ✅ Käyttää sessioevästettä
         headers: { "Content-Type": "application/json" },
@@ -53,13 +54,16 @@ const Login = ({ setIsAuthenticated }) => {
   // **Tarkistaa onko käyttäjä jo kirjautunut**
   const checkAuth = async () => {
     try {
-      const response = await fetch("https://projekti2025backend-e0dubhd7e5h6akcw.swedencentral-01.azurewebsites.net/api/profile/", {
+      const response = await fetch("http://127.0.0.1:8000/api/profile/", {
         method: "GET",
         credentials: "include", 
       });
 
       if (response.ok) {
+        const userData = await response.json();
         setIsAuthenticated(true);
+        localStorage.setItem("userId", userData.id);
+        console.log("käyttäjä", userData)
       } else {
         setIsAuthenticated(false);
       }

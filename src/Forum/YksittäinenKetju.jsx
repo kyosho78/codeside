@@ -7,33 +7,51 @@ const ThreadView = () => {
     const [thread, setThread] = useState({});
     const [replies, setReplies] = useState([]);
     const [newReply, setNewReply] = useState("");
+    const [userId, setUserId] = useState(null);
+    const [isSubmitting, setIsSubmitting] = useState(false); // Estää tuplaklikkaukset
+    console.log("YksittäinenKetju");
 
     useEffect(() => {
+        const storedUserId = localStorage.getItem("userId");
+        if (storedUserId) {
+            setUserId(Number(storedUserId)); // Muunnetaan numeroksi
+            console.log("käyttäjä", storedUserId);
+        } else {
+            setUserId(null);
+        }
+    }, []); 
+
+    useEffect(() => {
+
+    const userId = localStorage.getItem("userId");
+        if (userId) {
+            setUserId(Number(userId));
+            console.log("käyttäjä",userId); // Muunnetaan numeroksi
+        } else {
+            setUserId(null);
+        };
+
         const getThreadData = async () => {
             try {
                 const threadData = await fetchThread(threadId);
                 setThread(threadData);
-    
-                // Haetaan ja suodatetaan vastaukset
+
                 const replyData = await fetchReplies(threadId);
                 setReplies(replyData);
             } catch (error) {
                 console.error("Virhe tietojen haussa:", error);
             }
         };
-    
+
         getThreadData();
     }, [threadId]);
 
     const handleReplySubmit = async (e) => {
         e.preventDefault();
-        if (newReply.trim() === "") return;
+        if (newReply.trim() === "" || userId === null || isSubmitting) return;
 
-        const replyData = {
-            content: newReply,
-            ketju: threadId,
-            replier: 1, // Korvaa autentikoidun käyttäjän ID:llä
-        };
+        setIsSubmitting(true);
+        const replyData = { content: newReply, ketju: threadId, replier: userId };
 
         try {
             const createdReply = await createReply(replyData);
@@ -41,6 +59,8 @@ const ThreadView = () => {
             setNewReply("");
         } catch (error) {
             console.error("Virhe vastauksen lähettämisessä:", error);
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -74,8 +94,9 @@ const ThreadView = () => {
                     rows="3"
                 />
                 <button
-                    type="submit"
-                    className="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                    type="submit" 
+                    disabled={isSubmitting}
+                    className="mt-2 !bg-blue-500 text-white px-4 py-2 rounded hover:!bg-blue-600"
                 >
                     Lähetä vastaus
                 </button>

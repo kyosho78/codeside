@@ -5,9 +5,23 @@ import { useParams, Link } from "react-router-dom";
 const ThreadsList = () => {
     const { topicId } = useParams(); // Haetaan aihealueen ID URL:sta
     const [threads, setThreads] = useState([]);
-    const [topicName, setTopicName] = useState(""); // Uusi tila aihealueen nimelle
+    const [topicName, setTopicName] = useState("");
+    const [userId, setUserId] = useState(null);
+    console.log("KetjutList");
 
     useEffect(() => {
+        const storedUserId = localStorage.getItem("userId");
+        if (storedUserId) {
+            setUserId(Number(storedUserId)); // Muunnetaan numeroksi
+            console.log("käyttäjä", storedUserId);
+        } else {
+            setUserId(null);
+        }
+    }, []); 
+
+
+    useEffect(() => {
+
         fetchThreads(topicId)
             .then((data) => {
                 console.log('Received threads:', data); // Tämä tarkistaa, että data saapuu oikein
@@ -28,9 +42,20 @@ const ThreadsList = () => {
     return (
         <div className="bg-gray-900 text-white min-h-screen p-6">
             <div className="relative overflow-x-auto">
-                <h2 className="text-2xl font-semibold text-blue-400 mb-4">
+                <h2 className="text-2xl font-semibold !text-blue-400 mb-4">
                     Forum : {topicName}
                 </h2>
+
+                {userId ? (
+                    <Link to={`/create-thread/${topicId}?userId=${userId}`}>
+                        <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mb-4">
+                            Luo uusi ketju
+                        </button>
+                    </Link>
+                ) : (
+                    <p className="text-gray-400">Kirjaudu sisään, jotta voit luoda uuden ketjun.</p>
+                )}
+
                 <ul className="space-y-4">
                     {threads.length > 0 ? (
                         threads.map((thread) => (
