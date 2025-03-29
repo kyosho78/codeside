@@ -5,13 +5,14 @@ const Login = ({ setIsAuthenticated }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const [user, setUser] = useState(null);
   const navigate = useNavigate();
+  console.log("Login komponentti")
 
   // Tarkistaa onko käyttäjä jo kirjautunut sessiolla
-  useEffect(() => {
-    checkAuth();
-  }, []);
+  // useEffect(() => {
+  //   checkAuth();
+  // }, []);
+    // ei välttämättä tarvita.
 
   // Poistaa ilmoituksen automaattisesti
   useEffect(() => {
@@ -51,27 +52,27 @@ const Login = ({ setIsAuthenticated }) => {
     }
   };
 
-  // **Tarkistaa onko käyttäjä jo kirjautunut**
-  const checkAuth = async () => {
-    try {
-      const response = await fetch("http://127.0.0.1:8000/api/profile/", {
-        method: "GET",
-        credentials: "include", 
-      });
+  // // **Tarkistaa onko käyttäjä jo kirjautunut**
+  // const checkAuth = async () => {
+  //   try {
+  //     const response = await fetch("http://127.0.0.1:8000/api/profile/", {
+  //       method: "GET",
+  //       credentials: "include", 
+  //     });
 
-      if (response.ok) {
-        const userData = await response.json();
-        setIsAuthenticated(true);
-        localStorage.setItem("userId", userData.id);
-        console.log("käyttäjä", userData)
-      } else {
-        setIsAuthenticated(false);
-      }
-    } catch (err) {
-      console.error("Error:", err);
-      setIsAuthenticated(false);
-    }
-  };
+  //     if (response.ok) {
+  //       const userData = await response.json();
+  //       setIsAuthenticated(true);
+  //       console.log("käyttäjä", userData)
+  //     } else {
+  //       setIsAuthenticated(false);
+  //     }
+  //   } catch (err) {
+  //     console.error("Error:", err);
+  //     setIsAuthenticated(false);
+  //   }
+  // };
+  // ei välttämättä tarvita.
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white">

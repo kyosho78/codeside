@@ -8,7 +8,7 @@ const Notes = (isAuthenticated) => {
   const [searchTerm, setSearchTerm] = useState(""); //  Hakutermi
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const baseUrl = "https://projekti2025backend-e0dubhd7e5h6akcw.swedencentral-01.azurewebsites.net/api/Notes/";
+  const baseUrl = "http://127.0.0.1:8000/api/Notes/";
  
 
 
@@ -44,7 +44,7 @@ const Notes = (isAuthenticated) => {
     useEffect(() => {
         const checkAuth = async () => {
             try {
-                const response = await fetchWithAuth("https://projekti2025backend-e0dubhd7e5h6akcw.swedencentral-01.azurewebsites.net/api/profile/", {
+                const response = await fetchWithAuth("http://127.0.0.1:8000/api/profile/", {
                     method: "GET",
                     credentials: "include",
                 });

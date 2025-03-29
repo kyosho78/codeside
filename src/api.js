@@ -32,7 +32,7 @@ export const fetchWithAuth = async (url, options = {}) => {
 
 export const refreshToken = async () => {
   try {
-      const response = await fetch("https://projekti2025backend-e0dubhd7e5h6akcw.swedencentral-01.azurewebsites.net/api/refresh/", {
+      const response = await fetch("http://127.0.0.1:8000/api/refresh/", {
           method: "POST",
           headers: {
               "Content-Type": "application/json",

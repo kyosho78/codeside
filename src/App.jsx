@@ -60,6 +60,32 @@ function BackgroundVideo() {
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+  useEffect(() => {
+    console.log("appjsx")
+    const checkAuth = async () => {
+      try {
+        const response = await fetch("http://127.0.0.1:8000/api/profile/", {
+          method: "GET",
+          credentials: "include", // Lähetetään evästeet mukana
+        });
+
+        if (response.ok) {
+          const userData = await response.json();
+          setIsAuthenticated(true); 
+          console.log("Käyttäjä:", userData);
+        } else {
+         
+          setIsAuthenticated(false); 
+        }
+      } catch (err) {
+        console.error("Virhe:", err);
+        setIsAuthenticated(false); 
+      }
+    };
+
+    checkAuth();
+  }, []);
+
 
   return (
     <Router>
@@ -78,7 +104,8 @@ function App() {
 
             
           {/* Other Pages with Navbar */}
-          <Route path="/login" element={<><Navbar /><Login isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated}/></>} />
+           {/*<Route path="/login" element={<><Navbar /><Login isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated}/></>} /> */}
+          <Route path="/login" element={<><Navbar /><Login /></>} />
           <Route path="/signup" element={<><Navbar /><Signup /></>} />
           <Route path="/csharp" element={<><Navbar /><Csharp /></>} />
           <Route path="/async-programming" element={<><Navbar /><AsyncProgramming /></>} />

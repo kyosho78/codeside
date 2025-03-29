@@ -1,31 +1,46 @@
 import React, { useEffect, useState } from "react";
 import { fetchThreads } from "./services/ForumService";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import{fetchWithAuth} from "../api.js";
 
 const ThreadsList = () => {
-    const { topicId } = useParams(); // Haetaan aihealueen ID URL:sta
+    const { topicId } = useParams(); 
     const [threads, setThreads] = useState([]);
     const [topicName, setTopicName] = useState("");
+    const navigate = useNavigate();
     const [userId, setUserId] = useState(null);
     console.log("KetjutList");
 
+    
     useEffect(() => {
-        const storedUserId = localStorage.getItem("userId");
-        if (storedUserId) {
-            setUserId(Number(storedUserId)); // Muunnetaan numeroksi
-            console.log("käyttäjä", storedUserId);
-        } else {
-            setUserId(null);
-        }
-    }, []); 
+        const checkAuth = async () => {
+            try {
+                const response = await fetchWithAuth("http://127.0.0.1:8000/api/profile/", {
+                    method: "GET",
+                    credentials: "include",
+                });
 
+                if (response.ok) {
+                    const userData = await response.json();
+                    setUserId(userData.id); 
+                    console.log("Käyttäjä:", userData.id);
+                } else {
+                    console.warn("Käyttäjä ei ole kirjautunut");
+                    
+                }
+            } catch (error) {
+                console.error("Virhe käyttäjän tunnistamisessa:", error);
+                }
+        };
+
+        checkAuth();
+    }, [navigate]); 
 
     useEffect(() => {
 
         fetchThreads(topicId)
             .then((data) => {
-                console.log('Received threads:', data); // Tämä tarkistaa, että data saapuu oikein
-                // Jos data ei ole taulukko, pakotetaan se taulukoksi
+                console.log('Received threads:', data); 
                 const threadArray = Array.isArray(data) ? data : [data];
                 setThreads(threadArray);
                 if (threadArray.length > 0 && threadArray[0].aihealue_data) {

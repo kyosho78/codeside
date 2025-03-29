@@ -4,7 +4,7 @@
     
     const AddNote = () => {
         const navigate = useNavigate();
-        const baseUrl = 'https://projekti2025backend-e0dubhd7e5h6akcw.swedencentral-01.azurewebsites.net/api/Notes/';
+        const baseUrl = 'http://127.0.0.1:8000/api/Notes/';
     
         const [note, setNote] = useState({ header: "", content: "" });
         const [error, setError] = useState(null);
