@@ -3,6 +3,7 @@
 */
 import React from "react";
 import { Link } from "react-router-dom";
+const id = 2
 
 const Python = () => {
     const scrollToTop = () => {
@@ -13,7 +14,7 @@ const Python = () => {
       <div className="max-w-7xl mx-auto bg-gray-800 p-6 sm:p-8 rounded-lg border border-gray-600 shadow-lg">
         <div className="mb-4">
           <Link
-            to="/forum-python"
+            to={`/threads/${id}`} 
             onClick={scrollToTop}
             className="bg-[#56afe6] !text-white text-sm px-3 py-1 rounded-md hover:bg-blue-600 transition duration-200"
           >

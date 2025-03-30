@@ -11,11 +11,11 @@ const ForumList = () => {
     }, []);
 
     return (
-        <div className="bg-gray-900 text-white min-h-screen p-6">
+        <div className="bg-gray-900 text-white min-h-screen p-15">
             <div className="relative overflow-x-auto">
                 {/* Aloitusosio */}
                 <div className="text-center mb-10">
-                <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl"><span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Keskustelu Foorumi</span></h1>
+                <h1 className="text-3xl font-bold text-left mb-4">Keskustelu Foorumi</h1>
                 </div>
 
                 {/* Aihealueet */}
