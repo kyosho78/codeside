@@ -1,3 +1,4 @@
+import Navbar from "../components/Navbar";
 import React, { useEffect, useState } from "react";
 import { fetchTopics, fetchUserProfile, createTopic } from "./services/ForumService";
 import { Link } from "react-router-dom";
@@ -30,6 +31,8 @@ const ForumList = () => {
   };
 
   return (
+    <>
+    <Navbar />
     <div className="bg-gray-900 text-white min-h-screen flex flex-col">
       <div className="relative overflow-x-auto flex-grow p-8">
         <div className="text-center mb-10 mt-15">
@@ -93,6 +96,7 @@ const ForumList = () => {
         <p>&copy; 2025 Codesite. Kaikki oikeudet pidätetään.</p>
       </footer>
     </div>
+    </>
   );
 };
 
