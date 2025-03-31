@@ -30,6 +30,10 @@ import backgroundVideo from "./assets/background.mp4";
 import Notes from "./Notes/notes.jsx"; 
 import EditNotes from "./Notes/editNotes";
 import AddNote from "./Notes/addNote";
+import ForumList from "./Forum/aiheetListaus.jsx"
+import KetjutList from "./Forum/ketjujenListaus.jsx"
+import ThreadView from "./Forum/ketjuYksittainen.jsx";
+import NewThreadForm from "./Forum/luoUusiKetju.jsx";
 
 
 // Background video, written by Valter Backström
@@ -92,6 +96,10 @@ function App() {
         <Route path="/notes" element={<Notes />} />
         <Route path="/edit-note/:id" element={<EditNotes />} />
         <Route path="/add-note" element={<AddNote />} />
+        <Route path="/forum" element={<><ForumList /></>} />
+        <Route path="/threads/:topicId" element={<KetjutList />} />
+        <Route path="/thread/:threadId" element={<ThreadView />} />
+        <Route path="/create-thread/:topicId" element={<NewThreadForm />} /> 
       </Routes>
     </div>
   );
