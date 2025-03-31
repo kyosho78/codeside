@@ -73,13 +73,16 @@ const Login = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white">
-      {/* 🔹 Näytetään ilmoitus */}
+      {/* 🔹 Keskitetty ilmoitus */}
       {message && (
-        <div className="fixed top-5 right-5 bg-blue-500 text-white px-6 py-4 rounded-lg shadow-xl">
+        <div className="mb-4 bg-blue-500 text-white px-6 py-4 rounded-lg shadow-md max-w-sm text-center z-50 max-w-sm w-full">
           {message}
         </div>
       )}
+
       <h2 className="text-2xl mb-4">Kirjaudu sisään</h2>
+
+      <div className="w-full max-w-sm mx-auto">
       <form onSubmit={handleLogin} className="bg-gray-800 p-6 rounded-lg shadow-lg">
         <div className="mb-4">
           <label className="block text-sm font-medium">Sähköposti</label>
@@ -110,13 +113,11 @@ const Login = () => {
           Kirjaudu
         </button>
       </form>
+      <p className="text-center text-sm mt-2 text-blue-400 hover:underline cursor-pointer" onClick={() => navigate("/reset-password")}>
+        Unohtuiko salasana?
+      </p>
 
-      <button
-        onClick={() => navigate("/")}
-        className="mt-6 !bg-gray-600 hover:bg-gray-700 !text-white font-bold py-2 px-4 rounded"
-      >
-        Peruuta
-      </button>
+    </div>
     </div>
   );
 };

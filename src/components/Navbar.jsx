@@ -34,7 +34,7 @@ const Navbar = () => {
 
   const location = useLocation(); // 🔹 Tarkistetaan, missä sivulla ollaan
   if (
-    location.pathname === "/login" ||
+    // location.pathname === "/login" ||
     location.pathname.startsWith("/edit-note/") // 🔹 Tarkistaa, alkaako polku "/edit-note/"
   ) {
     return null;
