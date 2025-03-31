@@ -30,10 +30,10 @@ import backgroundVideo from "./assets/background.mp4";
 import Notes from "./Notes/notes.jsx"; 
 import EditNotes from "./Notes/editNotes";
 import AddNote from "./Notes/addNote";
-import ForumList from "./forum/foorumiListaus.jsx"
-import KetjutList from "./forum/ketjutListaus.jsx"
-import ThreadView from "./forum/yksittäinenKetju.jsx";
-import NewThreadForm from "./forum/uusiKetju.jsx";
+import ForumList from "./Forum/aiheetListaus.jsx"
+import KetjutList from "./Forum/ketjujenListaus.jsx"
+import ThreadView from "./Forum/ketjuYksittainen.jsx";
+import NewThreadForm from "./Forum/luoUusiKetju.jsx";
 
 
 // Background video, written by Valter Backström
