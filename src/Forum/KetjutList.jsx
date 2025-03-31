@@ -28,20 +28,13 @@ const ThreadsList = () => {
 
     const fetchData = async () => {
         try {
-<<<<<<< HEAD
-=======
             const topicData = await fetchTopic(topicId);
->>>>>>> janidevelopment
             const data = await fetchThreads(topicId);
             const threadArray = Array.isArray(data) ? data : [data];
             const sortedThreads = threadArray.sort((a, b) => new Date(b.updated) - new Date(a.updated));
 
             setThreads(sortedThreads);
-<<<<<<< HEAD
-            setTopicName(sortedThreads.length > 0 && sortedThreads[0].aihealue_data ? sortedThreads[0].aihealue_data.header : "Tuntematon aihealue");
-=======
             setTopicName(topicData.header);
->>>>>>> janidevelopment
         } catch (err) {
             console.error("Virhe tietojen latauksessa", err);
         }
