@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import EditThreadForm from "./editThreadForm";
 import { fetchThread, fetchReplies, createReply } from "./services/ForumService";
-import { useParams, Navigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { fetchWithAuth } from "../api";
 
 const ThreadView = () => {
@@ -37,7 +37,7 @@ const ThreadView = () => {
         };
 
         checkAuth();
-    }, [Navigate]); 
+    }, []); 
 
     useEffect(() => {
 
@@ -100,18 +100,16 @@ const ThreadView = () => {
             <div className="border-b border-gray-700 py-2 flex justify-between items-center">
             <h2 className="text-gray-300 mb-6">{thread.content}</h2>
             <div className="flex items-center space-x-4">
-            <p className="text-gray-400 text-sm">Kirjoittaja: {thread.author.username}</p>
-            {userId === thread.author.id && (
-                <button
-                    className="!bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded"
-                    onClick={() => {
-                        console.log("Muokattava ketju:", thread);
-                        setEditThread(thread);
-                    }}
-                >
-                    Muokkaa
-                </button>
-            )}
+            <p className="text-gray-400 text-sm">
+                Kirjoittaja: {thread.author ? thread.author.username : "Tuntematon"}
+                </p>
+                {userId && thread.author && userId === thread.author.id && (
+                    <button className="!bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded"
+                        onClick={() => setEditThread(thread)}
+                    >
+                        Muokkaa
+                    </button>
+                )}
                 </div>
             </div>
     

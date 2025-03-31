@@ -11,15 +11,15 @@ const ForumList = () => {
     }, []);
 
     return (
-        <div className="bg-gray-900 text-white min-h-screen p-15">
-            <div className="relative overflow-x-auto">
+        <div className="bg-gray-900 text-white min-h-screen flex flex-col">
+            <div className="relative overflow-x-auto flex-grow p-8">
                 {/* Aloitusosio */}
-                <div className="text-center mb-10">
-                <h1 className="text-3xl font-bold text-left mb-4">Keskustelu Foorumi</h1>
+                <div className="text-center mb-10 mt-15">
+                    <h1 className="text-3xl font-bold text-left mb-4">Keskustelu Foorumi</h1>
                 </div>
-
+    
                 {/* Aihealueet */}
-                <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <div>
                     <h2 className="text-2xl font-semibold text-blue-400 mb-4">Foorumin aihealueet</h2>
                     <ul className="space-y-4">
                         {topics.map((topic) => (
@@ -33,10 +33,14 @@ const ForumList = () => {
                             </li>
                         ))}
                     </ul>
-                </table>
+                </div>
             </div>
+    
+            {/* Footer */}
+            <footer className="mt-10 py-4 bg-gray-800 text-center text-gray-400">
+                <p>&copy; 2025 Codesite. Kaikki oikeudet pidätetään.</p>
+            </footer>
         </div>
     );
 };
-
 export default ForumList;
