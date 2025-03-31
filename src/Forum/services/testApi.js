@@ -1,6 +1,10 @@
 import axios from "axios";
 
+<<<<<<< HEAD
 const API_BASE_URL = "https://projekti2025backend-e0dubhd7e5h6akcw.swedencentral-01.azurewebsites.net/api/";
+=======
+const API_BASE_URL = "http://127.0.0.1:8000/api/";
+>>>>>>> janidevelopment
 
 const testApi = async () => {
     try {
