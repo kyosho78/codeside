@@ -30,6 +30,10 @@ import backgroundVideo from "./assets/background.mp4";
 import Notes from "./Notes/notes.jsx"; 
 import EditNotes from "./Notes/editNotes";
 import AddNote from "./Notes/addNote";
+import ForumList from "./forum/FoorumiListaus.jsx"
+import KetjutList from "./forum/KetjutList.jsx"
+import ThreadView from "./forum/YksittäinenKetju.jsx";
+import NewThreadForm from "./forum/UusiKetju.jsx";
 
 
 // Background video, written by Valter Backström
