@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import EditThreadForm from "./editThreadForm";
+import EditThreadForm from "./muokkaaKetjua";
 import { fetchThread, fetchReplies, createReply } from "./services/ForumService";
 import { useParams } from "react-router-dom";
 import { fetchWithAuth } from "../api";
