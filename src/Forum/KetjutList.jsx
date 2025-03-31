@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
-<<<<<<< HEAD
-import { fetchThreads, fetchUserProfile } from "./services/ForumService";
-=======
 import { fetchTopic ,fetchThreads, fetchUserProfile } from "./services/ForumService";
->>>>>>> janidevelopment
 import { useParams, Link } from "react-router-dom";
 import NewThreadForm from "./UusiKetju";
 
