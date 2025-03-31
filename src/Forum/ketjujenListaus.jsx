@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchTopic ,fetchThreads, fetchUserProfile } from "./services/ForumService";
 import { useParams, Link } from "react-router-dom";
-import NewThreadForm from "./UusiKetju";
+import NewThreadForm from "./luoUusiKetju";
 
 const ThreadsList = () => {
     const { topicId } = useParams();
