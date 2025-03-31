@@ -129,26 +129,28 @@ const ThreadView = () => {
                     )}
                 </ul>
             </div>
-    
-            <form onSubmit={handleReplySubmit} className="mb-4">
-                <div className="border border-gray-300 rounded-md p-2 w-1/2">
-                    <textarea
-                        value={newReply}
-                        onChange={(e) => setNewReply(e.target.value)}
-                        placeholder="Kirjoita vastaus..."
-                        className="w-full p-2 text-gray-900 bg-white rounded-md border-none"
-                        rows="2"
-                    />
-                    <button
-                        type="submit" 
-                        disabled={isSubmitting}
-                        className="mt-2 w-full !bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
-                    >
-                        Lähetä uusi vastaus
-                    </button>
-                </div>
-            </form>
-        
+            
+            {userId !== null && (
+                <form onSubmit={handleReplySubmit} className="mb-4">
+                    <div className="border border-gray-300 rounded-md p-2 w-1/2">
+                        <textarea
+                            value={newReply}
+                            onChange={(e) => setNewReply(e.target.value)}
+                            placeholder="Kirjoita vastaus..."
+                            className="w-full p-2 text-gray-900 bg-white rounded-md border-none"
+                            rows="2"
+                        />
+                        <button
+                            type="submit" 
+                            disabled={isSubmitting}
+                            className="mt-2 w-full !bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+                        >
+                            Lähetä uusi vastaus
+                        </button>
+                    </div>
+                </form>
+            )}
+
             {isModalOpen && (
                 <NewThreadForm 
                     topicId={topicId} 

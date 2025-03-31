@@ -75,7 +75,7 @@ const handleLogout = async () => {
 };
 
   return (
-    <nav className="fixed w-full bg-black bg-opacity-100">
+    <nav className="fixed w-full bg-black bg-opacity-100 z-50">
       {/* 🔹 Näytetään ilmoitus */}
       {message && (
         <div className="fixed top-5 right-5 bg-blue-500 text-white px-6 py-4 rounded-lg shadow-xl">

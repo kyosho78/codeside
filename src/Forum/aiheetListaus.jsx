@@ -1,3 +1,4 @@
+import Navbar from "../components/Navbar";
 import React, { useEffect, useState } from "react";
 import { fetchTopics, fetchUserProfile, createTopic } from "./services/ForumService";
 import { Link } from "react-router-dom";
@@ -14,7 +15,7 @@ const ForumList = () => {
     fetchTopics().then(setTopics);
     fetchUserProfile()
       .then(user => setIsSuperUser(user.is_superuser))
-      .catch(err => setError("Virhe käyttäjän tiedoissa"));
+      .catch(err => setError("Tervetuloa Codesite Foorumille ! Luo tunnukset tai kirjaudu jos haluat osallistua keskusteluun"));
   }, []);
 
   const handleCreateTopic = async () => {
@@ -30,7 +31,8 @@ const ForumList = () => {
   };
 
   return (
-    <div className="bg-gray-900 text-white min-h-screen flex flex-col">
+    <>
+     <div className="bg-gray-900 text-white min-h-screen flex flex-col">
       <div className="relative overflow-x-auto flex-grow p-8">
         <div className="text-center mb-10 mt-15">
           <h1 className="text-3xl font-bold text-left mb-4">Keskustelu Foorumi</h1>
@@ -86,13 +88,14 @@ const ForumList = () => {
           )}
         </div>
       </div>
-
-      {error && <div className="text-red-500">{error}</div>}
-
+       <div className="text-center">   
+      {error && <div className="text-white-500">{error}</div>}
+      </div>
       <footer className="mt-10 py-4 bg-gray-800 text-center text-gray-400">
         <p>&copy; 2025 Codesite. Kaikki oikeudet pidätetään.</p>
       </footer>
     </div>
+    </>
   );
 };
 
