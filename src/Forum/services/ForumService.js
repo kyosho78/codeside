@@ -42,6 +42,26 @@ export const fetchTopics = async () => {
   }
 };
 
+// GET: Aiheen haku
+export const fetchTopic = async (topicId) => {
+  try {
+    const response = await api(`${API_BASE_URL}/Aiheet/${topicId}/`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) throw new Error(`Virhe: ${response.status}`);
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Aiheiden haku epäonnistui:", error);
+    throw error;
+  }
+};
+
 // GET: Ketjut aiheen alla
 export const fetchThreads = async (topicId) => {
   try {
@@ -98,6 +118,27 @@ export const fetchReplies = async (threadId) => {
     return data.filter(reply => reply.ketju === parseInt(threadId));
   } catch (error) {
     console.error("Error fetching replies:", error);
+    throw error;
+  }
+};
+
+// POST: Luo aihealue
+export const createTopic = async (data) => {
+  try {
+    const response = await api(`${API_BASE_URL}/Aiheet/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) throw new Error(`Virhe: ${response.status}`);
+
+    const responseData = await response.json();
+    return responseData;
+  } catch (error) {
+    console.error("Virhe uuden aihealueen luomisessa:", error);
     throw error;
   }
 };
