@@ -117,7 +117,8 @@ const Notes = (isAuthenticated) => {
           <div className="flex flex-col md:flex-row justify-between items-center mb-6 space-y-4 md:space-y-0">
             <button
               onClick={() => navigate("/add-note")}
-              className="bg-[#56afe6] !text-white text-sm px-3 py-1 rounded-md hover:bg-blue-600 transition duration-200"
+              style={{color: "black", backgroundColor: "white"}} //Lisätty 31.3
+              className=" px-3 py-1 rounded-md hover:bg-blue-600 transition duration-200"
             >
               ➕ Uusi muistiinpano
             </button>
@@ -128,6 +129,7 @@ const Notes = (isAuthenticated) => {
               placeholder="🔍 Hae muistiinpanoista..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
+              style={{color: "black", backgroundColor: "white"}} //Lisätty 31.3
               className="bg-gray-700 text-white border border-gray-600 rounded-md p-2 w-full md:w-1/3"
             />
           </div>
@@ -161,13 +163,15 @@ const Notes = (isAuthenticated) => {
                       <td className="p-2 md:p-3 flex flex-wrap gap-2">
                         <button
                           onClick={() => handleEdit(note.id)}
-                          className="bg-[#56afe6] !text-white text-sm px-3 py-1 rounded-md hover:bg-blue-600 transition duration-200"
+                          style={{color: "black", backgroundColor: "white"}} //Lisätty 31.3
+                          className="text-sm px-3 py-1 rounded-md hover:bg-blue-600 transition duration-200"
                         >
                           ✏️ Muokkaa
                         </button>
                         <button
                           onClick={() => handleDelete(note.id)}
-                          className="bg-[#56afe6] !text-white text-sm px-3 py-1 rounded-md hover:bg-blue-600 transition duration-200"
+                          style={{color: "black", backgroundColor: "white"}} //Lisätty 31.3
+                          className="text-sm px-3 py-1 rounded-md hover:bg-blue-600 transition duration-200"
                         >
                           ❌ Poista
                         </button>
@@ -176,7 +180,7 @@ const Notes = (isAuthenticated) => {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="5" className="p-2 md:p-3 text-center text-gray-400">
+                    <td colSpan="5" className="p-2 md:p-3 text-center text-white-400">
                       Ei hakutuloksia.
                     </td>
                   </tr>
