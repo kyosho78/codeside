@@ -1,18 +1,25 @@
-import { useState } from "react";
+/*
+  ResetPassword.jsx writen by: Valter Backström
+  This component is used to reset the password of a user. It sends a POST request to the backend with the email address of the user.
+
+*/
+
+
+import { useState } from "react"; // Importing useState from React to manage state in the component
 
 const ResetPassword = () => {
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [email, setEmail] = useState(""); // State to store the email address entered by the user
+  const [message, setMessage] = useState(""); // State to store the message to be displayed to the user
 
   const handleReset = async (e) => {
-    e.preventDefault();
-    setMessage("");
+    e.preventDefault(); // Prevent the default form submission behavior (page reload)
+    setMessage(""); // Clear any previous message
 
     try {
       const response = await fetch("https://projekti2025backend-e0dubhd7e5h6akcw.swedencentral-01.azurewebsites.net/password-reset/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email }), // Send the email address as JSON in the request body
       });
 
       if (response.ok) {
@@ -22,7 +29,7 @@ const ResetPassword = () => {
       }
     } catch (err) {
       console.error("Reset error:", err);
-      setMessage("Virhe pyynnössä.");
+      setMessage("Virhe pyynnössä."); // Display error message if the request fails
     }
   };
 
