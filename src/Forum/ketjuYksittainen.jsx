@@ -13,6 +13,7 @@ const ThreadView = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editThread, setEditThread] = useState(null);
+    
     console.log("YksittäinenKetju");
 
     useEffect(() => {
@@ -44,6 +45,7 @@ const ThreadView = () => {
         const getThreadData = async () => {
             try {
                 const threadData = await fetchThread(threadId);
+                console.log("Haettu ketju:", threadData)
                 setThread(threadData);
 
                 const replyData = await fetchReplies(threadId);
@@ -100,9 +102,12 @@ const ThreadView = () => {
             <div className="border-b border-gray-700 py-2 flex justify-between items-center">
             <h2 className="text-gray-300 mb-6">{thread.content}</h2>
             <div className="flex items-center space-x-4">
-            <p className="text-gray-400 text-sm">
-                Kirjoittaja: {thread.author?.is_superuser ? "Admin" : thread.author?.username ? thread.author.username : thread.author.email}
-                </p>
+            <p className="text-gray-400">Kirjoittaja: {thread.author?.username && thread.author.username.trim() !== "" 
+                                ? thread.author.username 
+                                : thread.author?.is_superuser 
+                                    ? "Admin" 
+                                    : thread.author?.email}
+            </p>
                 {userId && thread.author && userId === thread.author.id && (
                     <button className="!bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded"
                         onClick={() => setEditThread(thread)}
@@ -119,7 +124,12 @@ const ThreadView = () => {
                     {replies.length > 0 ? (
                         replies.map((reply) => (
                             <li key={reply.id} className="border-b border-gray-700 py-3">
-                                <p className="text-gray-400">Kirjoittaja: {reply.replier?.is_superuser ? "Admin" : reply.replier?.username ? reply.replier.username : reply.replier.email}</p>
+                                <p className="text-gray-400">Kirjoittaja: {thread.author?.username && thread.author.username.trim() !== "" 
+                                ? thread.author.username 
+                                : thread.author?.is_superuser 
+                                    ? "Admin" 
+                                    : thread.author?.email}
+                                </p>
                                 <p className="text-gray-300">{reply.content}</p>
                                 <p className="text-gray-500 text-xs">Luotu: {new Date(reply.created).toLocaleString()}</p>
                             </li>
