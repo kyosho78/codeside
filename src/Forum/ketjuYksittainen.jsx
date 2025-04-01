@@ -101,7 +101,7 @@ const ThreadView = () => {
             <h2 className="text-gray-300 mb-6">{thread.content}</h2>
             <div className="flex items-center space-x-4">
             <p className="text-gray-400 text-sm">
-                Kirjoittaja: {thread.author ? thread.author.username : "Tuntematon"}
+                Kirjoittaja: {thread.author?.is_superuser ? "Admin" : thread.author?.username ? thread.author.username : thread.author.email}
                 </p>
                 {userId && thread.author && userId === thread.author.id && (
                     <button className="!bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded"

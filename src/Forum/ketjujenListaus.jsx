@@ -63,7 +63,7 @@ const ThreadsList = () => {
                                     </Link>
                                     <p className="text-gray-400 text-sm">Sisältö: {thread.content}</p>
                                 </div>
-                                <p className="text-gray-400 text-sm">Kirjoittaja: {thread.author.username}</p>
+                                <p className="text-gray-400 text-sm">Kirjoittaja: {thread.author?.is_superuser ? "Admin" : thread.author?.username ? thread.author.username : thread.author.email}</p>
                             </li>
                         ))
                     ) : (
