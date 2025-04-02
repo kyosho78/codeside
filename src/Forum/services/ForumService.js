@@ -62,6 +62,28 @@ export const fetchTopic = async (topicId) => {
   }
 };
 
+// GET: Kaikki ketjut
+export const fetchAllThreads = async (topicId) => {
+  try {
+    const response = await api(`${API_BASE_URL}/Ketjut/`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) throw new Error(`Virhe: ${response.status}`);
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching threads:", error);
+    throw error;
+  }
+};
+
+
+
 // GET: Ketjut aiheen alla
 export const fetchThreads = async (topicId) => {
   try {
