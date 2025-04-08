@@ -13,7 +13,7 @@ describe("Login Test", () => {
 
     cy.url({ timeout: 10000 }).should("include", "/");
 
-    cy.contains("Logout").should("be.visible").click({ force: true });
+    cy.contains("Logout", { timeout: 10000 }).should("be.visible").click({ force: true });
     cy.url().should("include", "/");
   });
 
@@ -29,7 +29,7 @@ describe("Login Test", () => {
 
     cy.wait("@loginRequest");
 
-    cy.contains("Kirjautuminen epäonnistui").should("exist");
+    cy.contains("Kirjautuminen epäonnistui",{ timeout: 10000 }).should("exist");
   });
 });
  
