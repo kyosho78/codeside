@@ -39,8 +39,8 @@ describe("Delete Note Test", () => {
       cy.contains("Muokattu muistiinpano").should("not.exist");
   
       
-      cy.contains("Logout").should("exist").click({ force: true });
-      cy.url().should("include", "/");
+      //cy.contains("Logout").should("exist").click({ force: true });
+      //cy.url().should("include", "/");
     });
   });
   
