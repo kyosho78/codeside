@@ -12,16 +12,13 @@ describe("Create Note Test", () => {
 
     
     cy.intercept("GET", "**/api/Notes/").as("getNotes");
-
-    
-    
+   
     // Siirrytään muistiinpanoihin
     cy.contains("a", "Muistiinpanot").should("be.visible").click();
     cy.url({ timeout: 10000 }).should("include", "/notes");
     
     cy.wait("@getNotes");
  
-
     cy.intercept("POST", "**/api/Notes/").as("createNote");
 
     // Uuden muistiinpanon lisäys
@@ -35,12 +32,6 @@ describe("Create Note Test", () => {
 
     cy.wait("@createNote");
 
-    // Tarkistetaan että palattiin ja muistiinpano näkyy
-    //cy.url().should("include", "/notes");
-    //cy.contains("Testi create", { timeout: 10000 }).should("exist");
-  
-    // cy.contains("Logout").should("be.visible").click({ force: true });;
-    // cy.url().should("include", "/");
   });
 });
 

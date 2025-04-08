@@ -17,9 +17,6 @@ describe("Delete Note Test", () => {
   
       cy.wait("@getNotes");
 
-      // cy.get("table", { timeout: 10000 }).should("exist");
-      // cy.get("input#searchInput", { timeout: 10000 }).should("exist");
-  
       cy.contains("Muokattu muistiinpano", { timeout: 10000 }).should("exist");
   
       //  Poistetaan muistiinpano
@@ -31,16 +28,10 @@ describe("Delete Note Test", () => {
         });
 
         cy.wait("@deleteNote");
-  
-      // Vahvista alert (poisto)
-      //cy.on("window:confirm", () => true);
-  
+   
       // Varmista että muistiinpano on poistunut
       cy.contains("Muokattu muistiinpano").should("not.exist");
   
-      
-      //cy.contains("Logout").should("exist").click({ force: true });
-      //cy.url().should("include", "/");
     });
   });
   
