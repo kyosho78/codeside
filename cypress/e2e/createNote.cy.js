@@ -13,9 +13,9 @@ describe("Create Note Test", () => {
     // Siirrytään muistiinpanoihin
     cy.contains("Muistiinpanot").click();
     cy.url().should("include", "/notes");
-
+    cy.wait(500);
     // Uuden muistiinpanon lisäys
-    cy.contains("Uusi muistiinpano").click();
+    cy.contains("Uusi muistiinpano").should("be.visible").click();
     cy.get("#noteHeader").type("Testi create");
     cy.get("#noteContent").type("Tämä on create-testi");
 
