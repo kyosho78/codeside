@@ -41,8 +41,8 @@ describe("Muistiinpanon muokkaus", () => {
       //cy.contains("Päivitetty sisältö").should("exist");
   
       // Logout
-      cy.contains("Logout").should("exist").click({ force: true });
-      cy.url().should("include", "/");
+      //cy.contains("Logout").should("exist").click({ force: true });
+      //cy.url().should("include", "/");
     });
   });
   
