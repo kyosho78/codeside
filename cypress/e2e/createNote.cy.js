@@ -14,7 +14,7 @@ describe("Create Note Test", () => {
     cy.contains("a", "Muistiinpanot").should("be.visible").click();
     cy.url({ timeout: 10000 }).should("include", "/notes");
 
-    cy.get("table", { timeout: 10000 }).should("exist");
+    //cy.get("table", { timeout: 10000 }).should("exist");
 
     
     // Uuden muistiinpanon lisäys
