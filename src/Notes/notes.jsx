@@ -35,7 +35,9 @@ const Notes = (isAuthenticated) => {
       if (!response.ok) throw new Error(`Virhe: ${response.status}`);
 
       const data = await response.json();
-      setNotes(data);
+      // setNotes(data);
+      setNotes([...data].reverse());
+
     } catch (error) {
       console.error("Muistiinpanojen lataaminen epäonnistui:", error);
     } finally {
