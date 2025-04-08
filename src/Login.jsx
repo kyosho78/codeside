@@ -75,7 +75,7 @@ const Login = () => {
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white">
       {/* 🔹 Keskitetty ilmoitus */}
       {message && (
-        <div className="mb-4 bg-blue-500 text-white px-6 py-4 rounded-lg shadow-md max-w-sm text-center z-50 max-w-sm w-full">
+        <div className="mb-4 bg-blue-500 text-white px-6 py-4 rounded-lg shadow-md max-w-sm text-center z-50  w-full">
           {message}
         </div>
       )}
