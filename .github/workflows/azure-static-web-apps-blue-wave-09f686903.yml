@@ -25,12 +25,12 @@ jobs:
       - name: Start dev server
         run: npm run dev & npx wait-on http://localhost:5173
       
-      # - name: Run Cypress E2E tests
-      #   run: |
-      #     npx cypress run --spec "cypress/e2e/createNote.cy.js"
-      #     npx cypress run --spec "cypress/e2e/editNote.cy.js"
-      #     npx cypress run --spec "cypress/e2e/deleteNote.cy.js"
-      #     npx cypress run --spec "cypress/e2e/login.cy.js"
+      - name: Run Cypress E2E tests
+        run: |
+          npx cypress run --spec "cypress/e2e/createNote.cy.js"
+          npx cypress run --spec "cypress/e2e/editNote.cy.js"
+          npx cypress run --spec "cypress/e2e/deleteNote.cy.js"
+          npx cypress run --spec "cypress/e2e/login.cy.js"
 
       - name: Run Vitest component tests
         run: npx vitest run
