@@ -114,7 +114,6 @@ describe("Notes Component", () => {
     await waitFor(() => {
       expect(fetchWithAuth).toHaveBeenCalledWith(
         expect.stringMatching(/\/\d+\/$/), // hyväksyy mitä tahansa numeroa
-        //expect.stringContaining("/1/"),
         expect.objectContaining({ method: "DELETE" })
       );
     });
@@ -134,6 +133,6 @@ describe("Notes Component", () => {
     const editButtons = screen.getAllByText(/✏️ Muokkaa/i);
     fireEvent.click(editButtons[0]);
     expect(navigate).toHaveBeenCalledWith(expect.stringContaining("/edit-note/"));
-    // expect(navigate).toHaveBeenCalledWith("/edit-note/1");
+    
   });
 });

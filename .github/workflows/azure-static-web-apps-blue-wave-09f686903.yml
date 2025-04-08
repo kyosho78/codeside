@@ -20,7 +20,7 @@ jobs:
           submodules: true
           lfs: false
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Start dev server
         run: npm run dev & npx wait-on http://localhost:5173
