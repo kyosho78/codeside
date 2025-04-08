@@ -37,12 +37,7 @@ describe("Muistiinpanon muokkaus", () => {
       cy.wait("@editNote");
   
       cy.url().should("include", "/notes");
-      //cy.contains("Muokattu muistiinpano").should("exist");
-      //cy.contains("Päivitetty sisältö").should("exist");
   
-      // Logout
-      //cy.contains("Logout").should("exist").click({ force: true });
-      //cy.url().should("include", "/");
     });
   });
   
