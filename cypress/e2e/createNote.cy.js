@@ -11,11 +11,12 @@ describe("Create Note Test", () => {
     //cy.contains("Logout", { timeout: 10000 }).should("be.visible");
 
     // Siirrytään muistiinpanoihin
-    cy.contains("Muistiinpanot").click();
-    cy.url().should("include", "/notes");
-    cy.wait(500);
+    cy.contains("a", "Muistiinpanot").should("be.visible").click();
+    cy.url({ timeout: 10000 }).should("include", "/notes");
+    
     // Uuden muistiinpanon lisäys
-    cy.contains("Uusi muistiinpano").should("be.visible").click();
+    cy.contains("Uusi muistiinpano", { timeout: 10000 }).should("be.visible").click();
+
     cy.get("#noteHeader").type("Testi create");
     cy.get("#noteContent").type("Tämä on create-testi");
 
