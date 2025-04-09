@@ -64,10 +64,8 @@ const ThreadsList = () => {
                                     <p className="text-gray-400 text-sm">Sisältö: {thread.content}</p>
                                 </div>
                                 <p className="text-gray-400">Kirjoittaja: {thread.author?.username && thread.author.username.trim() !== "" 
-                                ? thread.author.username 
-                                : thread.author?.is_superuser 
-                                    ? "Admin" 
-                                    : thread.author?.email}
+                                    ? thread.author.username 
+                                    : "Forumin käyttäjä"}
                                 </p>
                             </li>
                         ))

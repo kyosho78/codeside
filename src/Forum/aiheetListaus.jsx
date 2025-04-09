@@ -38,15 +38,52 @@ const ForumList = () => {
       <div className="relative overflow-x-auto flex-grow p-8">
         <div className="text-center mb-10 mt-15">
         <h1 
-          className="text-3xl font-bold text-left mb-4"
-          style={{ textShadow: "0 0 8px rgba(99, 179, 255, 0.8), 0 0 16px rgba(99, 179, 255, 0.6)" }}
+          className="text-3xl font-bold text-left mb-4 border-b border-gray-600 py-2"
+          style={{ textShadow: "0 0 2px rgba(99, 179, 255, 0.8), 0 0 16px rgba(99, 179, 255, 0.6)" }}
         >
           Keskustelu Foorumi
         </h1>
         </div>
 
-        <div>
-          <h2 className="text-2xl font-semibold text-blue-400 mb-4">Foorumin aihealueet</h2>
+        <div className="bg-gray-800 p-4 rounded-lg shadow-md mb-6">
+          <h2 className="text-2xl font-semibold text-blue-400 bg-gray-900 p-4 rounded-lg shadow-md mb-6">Foorumin aihealueet</h2>
+
+
+          {isSuperUser && (
+            <div className="mt-4">
+              <button
+                className="!bg-blue-500 text-white hover:!bg-orange-300 hover:text-black py-1 px-2 rounded flex items-center justify-center"
+                onClick={() => setIsEditing(true)}
+              >
+                <i className="fas fa-plus mr-2"></i> Luo uusi (Admin)
+              </button>
+
+              {isEditing && (
+                <div className="mt-4">
+                  <textarea
+                    value={newTopic}
+                    onChange={(e) => setNewTopic(e.target.value)}
+                    placeholder="Kirjoita uusi aihe"
+                    className="!bg-white w-full p-2 text-black rounded"
+                  />
+                  <button
+                    className="mt-2 !bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded"
+                    onClick={handleCreateTopic}
+                  >
+                    Tallenna
+                  </button>
+                  <button
+                    className="mt-2 ml-2 !bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded"
+                    onClick={() => setIsEditing(false)}
+                  >
+                    Peruuta
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+
+          
           <ul className="space-y-4">
           {topics.map((topic) => {
               const threadCount = threads.filter((thread) => thread.aihealue === topic.id).length;
@@ -86,39 +123,7 @@ const ForumList = () => {
             })}
           </ul>
 
-          {isSuperUser && (
-            <div className="mt-4">
-              <button
-                className="!bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded"
-                onClick={() => setIsEditing(true)}
-              >
-                Luo uusi
-              </button>
 
-              {isEditing && (
-                <div className="mt-4">
-                  <textarea
-                    value={newTopic}
-                    onChange={(e) => setNewTopic(e.target.value)}
-                    placeholder="Kirjoita uusi aihe"
-                    className="!bg-white w-full p-2 text-black rounded"
-                  />
-                  <button
-                    className="mt-2 !bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded"
-                    onClick={handleCreateTopic}
-                  >
-                    Tallenna
-                  </button>
-                  <button
-                    className="mt-2 ml-2 !bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded"
-                    onClick={() => setIsEditing(false)}
-                  >
-                    Peruuta
-                  </button>
-                </div>
-              )}
-            </div>
-          )}
         </div>
       </div>
 
