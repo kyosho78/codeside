@@ -15,7 +15,7 @@ const Csharp = () => {
           <Link
             to="/forum-csharp"
             onClick={scrollToTop}
-            className="bg-[#56afe6] !text-white text-sm px-3 py-1 rounded-md hover:bg-blue-600 transition duration-200"
+            className="bg-white !text-black text-sm px-3 py-1 rounded-md hover:bg-[#56afe6] transition duration-200"
           >
             C# Forum
           </Link>

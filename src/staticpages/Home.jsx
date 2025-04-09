@@ -24,7 +24,7 @@ const Home = () => {
       <div className="mt-6">
         <Link
           to="/csharp"
-          className="bg-[#56afe6] !text-white font-semibold px-6 py-3 rounded-md hover:bg-blue-600 transition duration-300 inline-block"
+          className="bg-white !text-black font-semibold px-6 py-3 rounded-md hover:bg-[#56afe6] transition duration-300 inline-block"
         >
           Aloitetaan
         </Link>
