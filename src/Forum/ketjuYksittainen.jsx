@@ -1,3 +1,5 @@
+{/*Yksittäinen keskustelu ketju -  Jani*/}
+
 import React, { useEffect, useState } from "react";
 import EditThreadForm from "./muokkaaKetjua";
 import { fetchThread, fetchReplies, createReply } from "./services/ForumService";

@@ -1,3 +1,5 @@
+                    {/*Salasanan vaihto lomake Jani*/}
+                    
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -30,17 +32,17 @@ const ResetPassword = () => {
       });
 
       if (response.ok) {
-        setMessage('✅ Salasana on vaihdettu onnistuneesti!');
+        setMessage('Salasana on vaihdettu onnistuneesti!');
         setTimeout(() => {
           navigate('/login');
         }, 2000);
       } else {
         const errorData = await response.json();
-        setMessage(errorData.token || errorData.uid || '❌ Jokin meni pieleen. Yritä uudelleen.');
+        setMessage(errorData.token || errorData.uid || 'Jokin meni pieleen. Yritä uudelleen.');
       }
     } catch (err) {
       console.error('Virhe:', err);
-      setMessage('❌ Salasanan vaihto epäonnistui.');
+      setMessage('Salasanan vaihto epäonnistui.');
     }
   };
 
