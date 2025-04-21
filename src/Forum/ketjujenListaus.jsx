@@ -1,3 +1,4 @@
+{/*Keskustelu ketjut -  Jani*/}
 import React, { useEffect, useState } from "react";
 import { fetchTopic ,fetchThreads, fetchUserProfile } from "./services/ForumService";
 import { useParams, Link } from "react-router-dom";
@@ -63,7 +64,10 @@ const ThreadsList = () => {
                                     </Link>
                                     <p className="text-gray-400 text-sm">Sisältö: {thread.content}</p>
                                 </div>
-                                <p className="text-gray-400 text-sm">Kirjoittaja: {thread.author.username}</p>
+                                <p className="text-gray-400">Kirjoittaja: {thread.author?.username && thread.author.username.trim() !== "" 
+                                    ? thread.author.username 
+                                    : "Forumin käyttäjä"}
+                                </p>
                             </li>
                         ))
                     ) : (

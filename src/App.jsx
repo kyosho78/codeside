@@ -6,6 +6,7 @@ import Home from "./staticpages/Home.jsx";
 import Login from "./Login.jsx";
 import Signup from "./Signup.jsx";
 import ResetPassword from "./ResetPassword";
+import ResetPasswordForm from "./ResetPasswordForm.jsx";
 import Csharp from "./staticpages/programming/Csharp.jsx";
 import AsyncProgramming from "./staticpages/programming/AsyncProgramming.jsx";
 import CsharpCondition from "./staticpages/programming/CsharpCondition.jsx";
@@ -73,7 +74,7 @@ function App() {
 
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/reset-password-form/:uid/:token" element={<ResetPasswordForm />} />
         <Route path="/csharp" element={<Csharp />} />
         <Route path="/async-programming" element={<AsyncProgramming />} />
         <Route path="/csharp-condition" element={<CsharpCondition />} />
