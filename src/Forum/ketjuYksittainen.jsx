@@ -258,7 +258,7 @@ const ThreadView = () => {
                 </form>
             )}
 
-            {/*Modaalin avaus*/}
+            {/*Uuden ketjun luonti modaali*/}
             {isModalOpen && (
                 <NewThreadForm 
                     topicId={thread.id} 
