@@ -16,7 +16,7 @@ const ResetPassword = () => {
     setMessage(""); // Clear any previous message
 
     try {
-      const response = await fetch("https://projekti2025backend-e0dubhd7e5h6akcw.swedencentral-01.azurewebsites.net/password-reset/", {
+      const response = await fetch("https://projekti2025backend-e0dubhd7e5h6akcw.swedencentral-01.azurewebsites.net/api/password-reset/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }), // Send the email address as JSON in the request body
