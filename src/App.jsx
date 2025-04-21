@@ -74,6 +74,7 @@ function App() {
 
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/reset-password-form/:uid/:token" element={<ResetPasswordForm />} />
         <Route path="/csharp" element={<Csharp />} />
         <Route path="/async-programming" element={<AsyncProgramming />} />
