@@ -210,14 +210,14 @@ export const createThread = async (data) => {
 };
 
 // PATCH: Muokkaa vastausta
-export const editReply = async (data) => {
+export const editReply = async (replyId, content) => {
   try {
-    const response = await api(`${API_BASE_URL}/Vastaukset/`, {
+    const response = await api(`${API_BASE_URL}/Vastaukset/${replyId}/`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify({ content }),
     });
 
     if (!response.ok) throw new Error(`Virhe: ${response.status}`);
@@ -225,7 +225,7 @@ export const editReply = async (data) => {
     const responseData = await response.json();
     return responseData;
   } catch (error) {
-    console.error("Error creating reply:", error);
+    console.error("Error editing reply:", error);
     throw error;
   }
 };
@@ -250,44 +250,39 @@ export const editThread = async (threadId, content) => {
   }
 };
 
-// PATCH: Poista vastaus
-export const deleteReply = async (data) => {
+// DELETE: Poista vastaus
+export const deleteReply = async (replyId) => {
   try {
-    const response = await api(`${API_BASE_URL}/Vastaukset/`, {
+    const response = await api(`${API_BASE_URL}/Vastaukset/${replyId}/`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
     });
 
     if (!response.ok) throw new Error(`Virhe: ${response.status}`);
 
-    const responseData = await response.json();
-    return responseData;
+    return true; // DELETE ei yleensä palauta bodya
   } catch (error) {
-    console.error("Error creating reply:", error);
+    console.error("Error deleting reply:", error);
     throw error;
   }
 };
 
 // DELETE: Poista viestiketju
-export const deleteThread = async (data) => {
+export const deleteThread = async (threadId) => {
   try {
-    const response = await api(`${API_BASE_URL}/Ketjut/`, {
+    const response = await api(`${API_BASE_URL}/Ketjut/${threadId}/`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
     });
 
-    if (!response.ok) throw new Error(`Virhe: ${response.status}`);
-
-    const responseData = await response.json();
-    return responseData;
+    if (!response.ok) throw new Error(`Virhe poistossa: ${response.status}`);
+    return true;
   } catch (error) {
-    console.error("Error creating thread:", error);
+    console.error("Ketjun poisto epäonnistui:", error);
     throw error;
   }
 };

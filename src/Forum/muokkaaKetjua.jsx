@@ -32,7 +32,7 @@ const EditThreadForm = ({ thread, userId, onUpdate, onClose }) => {
                         required
                     />
                     <div className="flex justify-end mt-2">
-                        <button type="button" className="!bg-red-500 px-4 py-2 rounded" onClick={onClose}>Peruuta</button>
+                        <button type="button" className="!bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded" onClick={onClose}>Peruuta</button>
                         <button type="submit" className="!bg-blue-500 px-4 py-2 rounded ml-2">Tallenna</button>
                     </div>
                 </form>
