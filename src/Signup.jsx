@@ -80,7 +80,7 @@ const Signup = () => {
 
       {/* Centered notification for error or success messages*/}
       {message && (
-        <div className="mb-4 bg-blue-500 text-white px-6 py-4 rounded-lg shadow-md max-w-sm text-center z-50 max-w-sm w-full">
+        <div className="mb-4 bg-blue-500 text-white px-6 py-4 rounded-lg shadow-md max-w-sm text-center z-50 w-full">
           {message}
         </div>
       )}
