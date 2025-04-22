@@ -42,50 +42,80 @@ const ThreadsList = () => {
     }, [topicId]);
 
     return (
-        <div className="bg-gray-900 text-white min-h-screen p-15">
-            <div className="relative overflow-x-auto">
-                <h2 className="text-2xl font-semibold text-blue-400 mb-4">Forum : {topicName}</h2>
-
+        <>
+          {/* Page background */}
+          <div className="pt-24 pb-10 min-h-screen bg-black text-white">
+            
+            {/* Centered card */}
+            <div className="max-w-7xl mx-auto bg-gray-800 p-6 sm:p-8 rounded-lg border border-gray-600 shadow-lg">
+              
+              {/* Header */}
+              <div className="text-center mb-10">
+                <h2 className="text-3xl font-bold !text-blue-400 mb-6">
+                  Keskustelualue: {topicName}
+                </h2>
+              </div>
+    
+              {/* Create new thread button */}
+              <div className="mb-6 text-center">
                 {userId ? (
-                    <button onClick={() => setIsModalOpen(true)} className="!bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded mb-4">
-                        Luo uusi ketju
-                    </button>
+                  <button
+                    onClick={() => setIsModalOpen(true)}
+                    className="!bg-blue-500 hover:!bg-orange-300 hover:!text-black !text-white px-6 py-2 rounded-md transition"
+                  >
+                  Luo uusi ketju
+                  </button>
                 ) : (
-                    <p className="text-gray-400">Kirjaudu sisään, jotta voit luoda uuden ketjun.</p>
+                  <p className="text-gray-400">Kirjaudu sisään, jotta voit luoda uuden ketjun.</p>
                 )}
-
-                <ul className="space-y-4">
-                    {threads.length > 0 ? (
-                        threads.map((thread) => (
-                            <li key={thread.id} className="border-b border-gray-700 py-2 flex justify-between items-center">
-                                <div>
-                                    <Link to={`/thread/${thread.id}`} className="text-lg text-orange-300 hover:text-blue-500">
-                                        {thread.header}
-                                    </Link>
-                                    <p className="text-gray-400 text-sm">Sisältö: {thread.content}</p>
-                                </div>
-                                <p className="text-gray-400">Kirjoittaja: {thread.author?.username && thread.author.username.trim() !== "" 
-                                    ? thread.author.username 
-                                    : "Forumin käyttäjä"}
-                                </p>
-                            </li>
-                        ))
-                    ) : (
-                        <p className="text-gray-400">Ei vielä ketjuja.</p>
-                    )}
-                </ul>
+              </div>
+    
+              {/* Threads list */}
+              <div className="bg-gray-700 p-6 rounded-lg shadow-md">
+                {threads.length > 0 ? (
+                  <ul className="space-y-6">
+                    {threads.map((thread) => (
+                      <li key={thread.id} className="border-b border-gray-600 pb-4">
+                        <div className="flex flex-col md:flex-row md:justify-between">
+                          <div>
+                            <Link
+                              to={`/thread/${thread.id}`}
+                              className="text-xl !text-orange-300 hover:!text-blue-400 transition"
+                            >
+                              {thread.header}
+                            </Link>
+                            <p className="text-gray-400 text-sm mt-1">
+                              Sisältö: {thread.content}
+                            </p>
+                          </div>
+                          <div className="text-gray-400 text-sm mt-2 md:mt-0 md:text-right">
+                            Kirjoittaja: {thread.author?.username && thread.author.username.trim() !== ""
+                              ? thread.author.username
+                              : "Forumin käyttäjä"}
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-gray-400 text-center">Ei vielä ketjuja.</p>
+                )}
+              </div>
+    
             </div>
-
-            {isModalOpen && (
-                <NewThreadForm 
-                    topicId={topicId} 
-                    userId={userId} 
-                    closeModal={() => setIsModalOpen(false)} 
-                    onThreadCreated={fetchData} 
-                />
-            )}
-        </div>
-    );
-};
+          </div>
+    
+          {/* Modal for creating new thread */}
+          {isModalOpen && (
+            <NewThreadForm
+              topicId={topicId}
+              userId={userId}
+              closeModal={() => setIsModalOpen(false)}
+              onThreadCreated={fetchData}
+            />
+          )}
+        </>
+      );
+    };
 
 export default ThreadsList;
