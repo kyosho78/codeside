@@ -23,7 +23,7 @@ const Signup = () => {
 
     // Check if the password and confirmation password match
     if (password !== confirmPassword) {
-      setMessage("Passwords do not match.");
+      setMessage("Salasanat eivät täsmää.");
       setTimeout(() => setMessage(""), 5000); // Clear the message after 5 seconds
       return; // Stop the form submission
     }
@@ -38,7 +38,7 @@ const Signup = () => {
 
       if (response.ok) {
         // If the response is OK, show a success message and navigate to the login page after 2 seconds
-        setMessage("Registration successful! You can now log in.");
+        setMessage("Rekisteröinti onnistui! Voit nyt kirjautua sisään.");
         setTimeout(() => navigate("/login"), 2000);
       } else {
         const data = await response.json(); // Parse the JSON response from the server
