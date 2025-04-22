@@ -13,12 +13,20 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState(""); 
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
   const handleSignup = async (e) => {
     e.preventDefault(); // Prevent the default form submission behavior (page reload)
     setMessage(""); // Clear any previous message
+
+    // Check if the password and confirmation password match
+    if (password !== confirmPassword) {
+      setMessage("Salasanat eivät täsmää.");
+      setTimeout(() => setMessage(""), 5000); // Clear the message after 5 seconds
+      return; // Stop the form submission
+    }
 
     try {
       // Send a POST request to the backend with the user's email, username, and password
@@ -58,21 +66,21 @@ const Signup = () => {
           .join(" ");
 
         setMessage(errorMessages || "Rekisteröinti epäonnistui.");
-        setTimeout(() => setMessage(""), 5000); // Poistaa ilmoituksen 5 sekunnin kuluttua
+        setTimeout(() => setMessage(""), 5000); // Clear the message after 5 seconds
       }
     } catch (error) {
       console.error("Signup error:", error); // Log the error to the console for debugging
       setMessage("Virhe rekisteröityessä.");
-      setTimeout(() => setMessage(""), 5000); // Poistaa ilmoituksen 5 sekunnin kuluttua
+      setTimeout(() => setMessage(""), 5000); // Clear the message after 5 seconds
     }
   };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white relative">
 
-      {/* 🔹 Keskitetty ilmoitus, esim. virhe tai onnistuminen */}
+      {/* Centered notification for error or success messages*/}
       {message && (
-        <div className="mb-4 bg-blue-500 text-white px-6 py-4 rounded-lg shadow-md max-w-sm text-center z-50 max-w-sm w-full">
+        <div className="mb-4 bg-blue-500 text-white px-6 py-4 rounded-lg shadow-md max-w-sm text-center z-50 w-full">
           {message}
         </div>
       )}
@@ -107,6 +115,21 @@ const Signup = () => {
             required
             className="w-full p-2 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
+
+          <input
+            type="password"
+            placeholder="Vahvista salasana"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+            className="w-full p-2 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+
+          {confirmPassword && (
+            <p className={`text-sm font-bold ${password === confirmPassword ? "text-green-400" : "text-red-400"}`}>
+              {password === confirmPassword ? "Salasanat täsmäävät." : "Salasanat eivät täsmää."}
+            </p>
+          )}
 
           <button
             type="submit"

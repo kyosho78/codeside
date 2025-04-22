@@ -163,118 +163,133 @@ const ThreadView = () => {
     };
 
     return (
-        <div className="bg-gray-900 text-white min-h-screen p-15">
-            
-            <h2 className="text-2xl font-semibold text-blue-400 mb-4">{thread.header}</h2>
-            <div className="border-b border-gray-700 py-2 flex justify-between items-center">
-                <h2 className="text-gray-300 mb-6">{thread.content}</h2>
-                <div className="flex items-center space-x-4">
-                    <p className="text-gray-400">Kirjoittaja: {thread.author?.username && thread.author.username.trim() !== "" 
-                        ? thread.author.username 
-                        : "Forumin käyttäjä"}
-                    </p>
-                    {userId && thread.author && userId === thread.author.id && (
-                        <>
-                            <button className="!bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded"
-                                onClick={() => setEditThread(thread)}
+        <>
+            {/* Page background */}
+            <div className="pt-24 pb-10 min-h-screen bg-black text-white">
+
+                {/* Centered card */}
+                <div className="max-w-7xl mx-auto bg-gray-800 p-6 sm:p-8 rounded-lg border border-gray-600 shadow-lg">
+
+                    {/* Thread header */}
+                    <div className="mb-10">
+                        <h2 className="text-3xl font-bold !text-blue-400 mb-6">{thread.header}</h2>
+                        <div className="flex flex-col md:flex-row md:justify-between items-start md:items-center bg-gray-700 p-4 rounded-lg shadow-md">
+                            <p className="text-gray-300 mb-4 md:mb-0">{thread.content}</p>
+                            <div className="flex items-center space-x-2">
+                                <p className="text-gray-400 text-sm">Kirjoittaja: {thread.author?.username && thread.author.username.trim() !== ""
+                                    ? thread.author.username
+                                    : "Forumin käyttäjä"}
+                                </p>
+                                {userId && thread.author && userId === thread.author.id && (
+                                    <>
+                                        <button
+                                            onClick={() => setEditThread(thread)}
+                                            className="!bg-gray-700 hover:!bg-gray-600 text-white px-3 py-1 rounded text-sm"
+                                        >
+                                            Muokkaa
+                                        </button>
+                                        <button
+                                            onClick={handleDeleteThread}
+                                            className="!bg-red-600 hover:!bg-red-700 text-white px-3 py-1 rounded text-sm ml-2"
+                                        >
+                                            Poista
+                                        </button>
+                                    </>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Replies Section */}
+                    <div className="bg-gray-700 p-6 rounded-lg shadow-md mb-6">
+                        <h3 className="text-2xl font-semibold !text-blue-400 mb-4">Vastaukset</h3>
+                        <ul className="space-y-6">
+                            {replies.length > 0 ? (
+                                replies.map((reply) => (
+                                    <li key={reply.id} className="border-b border-gray-600 pb-4">
+                                        <div className="flex flex-col md:flex-row md:justify-between items-start">
+                                            <div>
+                                                <p className="text-gray-400">
+                                                    Kirjoittaja: {reply.replier?.username && reply.replier.username.trim() !== ""
+                                                        ? reply.replier.username
+                                                        : "Forumin käyttäjä"}
+                                                </p>
+                                                <p className="text-gray-300 mt-1">{reply.content}</p>
+                                                <p className="text-gray-500 text-xs mt-1">
+                                                    Luotu: {new Date(reply.created).toLocaleString()}
+                                                </p>
+                                            </div>
+
+                                            {/* Näytä muokkaus- ja poistonapit vian jos käyttäjä on kirjoittaja */}
+                                            {userId === reply.replier?.id && editingReplyId !== reply.id && (
+                                                <div className="flex space-x-2 mt-4 md:mt-0">
+                                                    <button
+                                                        onClick={() => {
+                                                            setEditingReplyId(reply.id);
+                                                            setEditingReplyContent(reply.content);
+                                                            setIsReplyModalOpen(true);
+                                                        }}
+                                                        className="text-sm px-3 py-1 rounded !bg-gray-700 hover:!bg-gray-600 text-white"
+                                                    >
+                                                        Muokkaa
+                                                    </button>
+                                                    <button
+                                                        onClick={() => handleDeleteReply(reply.id)}
+                                                        className="text-sm px-3 py-1 rounded !bg-red-600 hover:!bg-red-700 text-white"
+                                                    >
+                                                        Poista
+                                                    </button>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </li>
+                                ))
+                            ) : (
+                                <p className="text-gray-400 text-center">Ei vielä vastauksia.</p>
+                            )}
+                        </ul>
+                    </div>
+
+                    {/* New reply form */}
+                    {userId !== null && (
+                        <form onSubmit={handleReplySubmit} className="bg-gray-700 p-6 rounded-lg shadow-md">
+                            <textarea
+                                value={newReply}
+                                onChange={(e) => setNewReply(e.target.value)}
+                                placeholder="Kirjoita vastaus..."
+                                className="w-full p-2 mb-4 text-gray-900 bg-white rounded-md border-none"
+                                rows="3"
+                            />
+                            <button
+                                type="submit"
+                                disabled={isSubmitting}
+                                className="w-full !bg-blue-500 hover:!bg-blue-600 text-white px-4 py-2 rounded-md transition"
                             >
-                                Muokkaa
+                                Lähetä uusi vastaus
                             </button>
-                            <button className="!bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded ml-2"
-                                onClick={handleDeleteThread}
-                            >
-                                Poista
-                            </button>
-                        </>
+                        </form>
                     )}
+
                 </div>
             </div>
-    
-            <h5 className="text-xl text-blue-400 mb-4">Vastaukset:</h5>
-            <div className="bg-gray-800 p-4 rounded-lg shadow-md mb-6">
-                <ul className="space-y-4">
-                    {replies.length > 0 ? (
-                        replies.map((reply) => (
-                            <li key={reply.id} className="border-b border-gray-700 py-3">
-                                <div className="flex justify-between items-start">
-                                    <div>
-                                        <p className="text-gray-400">
-                                            Kirjoittaja: {reply.replier?.username && reply.replier.username.trim() !== "" 
-                                                ? reply.replier.username 
-                                                : "Forumin käyttäjä"}
-                                        </p>
-                                        <p className="text-gray-300">{reply.content}</p>
-                                        <p className="text-gray-500 text-xs">Luotu: {new Date(reply.created).toLocaleString()}</p>
-                                    </div>
-                                    
-                                    {/* Näytä muokkaus- ja poistonapit vian jos käyttäjä on kirjoittaja */}
-                                    {userId === reply.replier?.id && editingReplyId !== reply.id && (
-                                    <div className="space-x-2">
-                                        <button 
-                                        className="text-sm px-3 py-1 rounded !bg-gray-700 hover:bg-gray-600 text-white"
-                                        onClick={() => {
-                                            setEditingReplyId(reply.id);
-                                            setEditingReplyContent(reply.content);
-                                            setIsReplyModalOpen(true);
-                                        }}
-                                        >
-                                        Muokkaa
-                                        </button>
-                                        <button 
-                                        className="text-sm px-3 py-1 rounded !bg-red-600 hover:bg-red-700 text-white"
-                                        onClick={() => handleDeleteReply(reply.id)}
-                                        >
-                                        Poista
-                                        </button>
-                                    </div>
-                                    )}
-                                </div>
-                            </li>
-                        ))
-                    ) : (
-                        <p className="text-gray-400">Ei vielä vastauksia.</p>
-                    )}
-                </ul>
-            </div>
-            
-            {userId !== null && (
-                <form onSubmit={handleReplySubmit} className="mb-4">
-                    <div className="border border-gray-300 rounded-md p-2 w-1/2">
-                        <textarea
-                            value={newReply}
-                            onChange={(e) => setNewReply(e.target.value)}
-                            placeholder="Kirjoita vastaus..."
-                            className="w-full p-2 text-gray-900 bg-white rounded-md border-none"
-                            rows="2"
-                        />
-                        <button
-                            type="submit" 
-                            disabled={isSubmitting}
-                            className="mt-2 w-full !bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
-                        >
-                            Lähetä uusi vastaus
-                        </button>
-                    </div>
-                </form>
-            )}
 
             {/*Uuden ketjun luonti modaali*/}
             {isModalOpen && (
-                <NewThreadForm 
-                    topicId={thread.id} 
-                    userId={userId} 
-                    closeModal={() => setIsModalOpen(false)} 
-                    onThreadCreated={fetchData} 
+                <NewThreadForm
+                    topicId={thread.id}
+                    userId={userId}
+                    closeModal={() => setIsModalOpen(false)}
+                    onThreadCreated={fetchData}
                 />
             )}
 
             {/*Ketjun muokkaus lomake*/}
             {editThread && (
                 <EditThreadForm
-                    thread={editThread} 
-                    userId={userId} 
-                    onUpdate={onThreadUpdated} 
-                    onClose={() => setEditThread(null)} 
+                    thread={editThread}
+                    userId={userId}
+                    onUpdate={onThreadUpdated}
+                    onClose={() => setEditThread(null)}
                 />
             )}
 
@@ -284,13 +299,13 @@ const ThreadView = () => {
                     initialContent={editingReplyContent}
                     onSave={(newContent) => handleSaveEditedReply(editingReplyId, newContent)}
                     onCancel={() => {
-                    setIsReplyModalOpen(false);
-                    setEditingReplyId(null);
-                    setEditingReplyContent("");
+                        setIsReplyModalOpen(false);
+                        setEditingReplyId(null);
+                        setEditingReplyContent("");
                     }}
                 />
             )}
-        </div>
+        </>
     );
 };
 
