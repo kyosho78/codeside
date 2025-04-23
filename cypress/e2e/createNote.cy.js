@@ -28,7 +28,9 @@ describe("Create Note Test", () => {
     cy.get("#noteContent").type("Tämä on create-testi");
 
     // Tallennus
-    cy.contains("💾 Tallenna").should("be.visible").click();
+    // cy.contains("💾 Tallenna").should("be.visible").click();
+    cy.contains("button", "Tallenna").should("be.visible").click();
+
 
     cy.wait("@createNote");
 
