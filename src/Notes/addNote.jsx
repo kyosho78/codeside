@@ -79,12 +79,14 @@
                         <button
                             type="button"
                             onClick={() => navigate("/notes")}
+                            style={{color: "black", backgroundColor: "white"}} //Lisätty 24.4
                             className="bg-[#56afe6] text-white text-sm px-3 py-1 rounded-md hover:bg-blue-600 transition duration-200"
                         >
                             ❌ Peruuta
                         </button>
                         <button
                             type="submit"
+                            style={{color: "black", backgroundColor: "white"}} //Lisätty 24.4
                             className="bg-[#56afe6] text-white text-sm px-3 py-1 rounded-md hover:bg-blue-600 transition duration-200"
                         >
                             💾 Tallenna
