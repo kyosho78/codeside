@@ -5,26 +5,29 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useContext } from "react";
-// import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthContext";
 
+// Navigointipalkin komponentti
 const Navbar = () => {
+  // Haetaan kirjautumistila kontekstista
   const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
+
+   // Tilamuuttujat valikoiden aukioloihin ja viestien näyttämiseen
   const [isOpen, setIsOpen] = useState(false);
   const [isAlustatOpen, setIsAlustatOpen] = useState(false);
   const [isMobileAlustatOpen, setIsMobileAlustatOpen] = useState(false);
   const [isOhjelmointiOpen, setIsOhjelmointiOpen] = useState(false);
   const [isMobileOhjelmointiOpen, setIsMobileOhjelmointiOpen] = useState(false);
   const [message, setMessage] = useState("");
-  // const navigate = useNavigate();
 
 
 
-
+// Tulostetaan kirjautumistila aina, kun se muuttuu (debuggausta varten)
   useEffect(() => {
     console.log("Navbar päivittyi, isAuthenticated:", isAuthenticated);
   }, [isAuthenticated]);
 
+    // Poistetaan ilmoitus viestin näyttämisen jälkeen
   useEffect(() => {
     if (message) {
       const timer = setTimeout(() => setMessage(""), 3000);
@@ -33,14 +36,15 @@ const Navbar = () => {
   }, [message]);
 
   const location = useLocation(); // 🔹 Tarkistetaan, missä sivulla ollaan
+
+    // Ei näytetä navbaria tietyillä sivuilla
   if (
-    // location.pathname === "/login" ||
     location.pathname.startsWith("/edit-note/") // 🔹 Tarkistaa, alkaako polku "/edit-note/"
   ) {
     return null;
   }
 
-
+  // Uloskirjautumisfunktio
 const handleLogout = async () => {
   try {
     const response = await fetch("https://projekti2025backend-e0dubhd7e5h6akcw.swedencentral-01.azurewebsites.net/api/logout/", {
@@ -56,13 +60,13 @@ const handleLogout = async () => {
       document.cookie = "access_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
       document.cookie = "refresh_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
 
+      // Tyhjennetään paikalliset tallennukset
       localStorage.clear();
       sessionStorage.clear();
 
       // 🔹 Navigoi etusivulle.Päivittää sivun
       setTimeout(() => {
       window.location.href = "/";
-      //navigate("/");
       }, 1500);
 
     } else {
@@ -76,14 +80,14 @@ const handleLogout = async () => {
 
   return (
     <nav className="fixed w-full bg-black bg-opacity-100 z-50">
-      {/* 🔹 Näytetään ilmoitus */}
+      {/* 🔹 Näytetään ilmoitus esim sisään/uloskirjauksen yhteydessä*/}
       {message && (
         <div className="fixed top-5 right-5 bg-blue-500 text-white px-6 py-4 rounded-lg shadow-xl">
           {message}
         </div>
       )}
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8">
-        {/* Left Section: Logo */}
+        {/* Yläpalkki: Logo, valikot ja kirjautuminen */}
         <Link to="/" className="p-2 flex-shrink-0 group " onClick={() => setIsOpen(false)}> 
           <img
             src="/coding.svg"
@@ -92,7 +96,7 @@ const handleLogout = async () => {
           />
         </Link>
 
-        {/* Mobile Menu Button */}
+        {/* Mobiilivalikon avauspainike*/}
         <button
           className="md:hidden text-white text-3xl"
           onClick={() => setIsOpen(!isOpen)}
@@ -100,7 +104,7 @@ const handleLogout = async () => {
           ☰
         </button>
 
-        {/* Center Section: Desktop Navigation */}
+        {/* Työpöytänäkymän keskiosa: päävalikot  */}
         <div className="hidden md:flex flex-1 justify-center space-x-6 relative">
           {/* Ohjelmointi Dropdown */}
           <div
@@ -115,7 +119,7 @@ const handleLogout = async () => {
               Ohjelmointi
             </Link>
 
-            {/* Dropdown Menu - Two Columns with Icons */}
+            {/* Dropdown Menu  */}
             {isOhjelmointiOpen && (
               <div
                 className="absolute top-full left-0 mt-0 w-64 bg-gray-800 bg-opacity-90 border border-gray-500 shadow-md rounded-lg p-3 dropdown-menu transition-opacity duration-300 opacity-90"
@@ -187,7 +191,7 @@ const handleLogout = async () => {
               Alustat
             </Link>
 
-            {/* Dropdown Menu - Two Columns with Icons */}
+            {/* Dropdown Menu */}
             {isAlustatOpen && (
               <div
                 className="absolute top-full left-0 mt-0 w-64 bg-gray-800 bg-opacity-100 border border-gray-500 shadow-md rounded-lg p-3 dropdown-menu transition-opacity duration-300 opacity-90"
@@ -256,7 +260,7 @@ const handleLogout = async () => {
           </Link>
         </div>
 
-        {/* Right Section: Login & Signup */}
+        {/* Työpöytänäkymän oikea osa: Login/Logout ja Signup  */}
         <div className="hidden md:flex space-x-4">
         {isAuthenticated ? (
           <Link
@@ -283,13 +287,13 @@ const handleLogout = async () => {
         </div>
       </div>
 
-      {/* Mobile Navigation Menu */}
+      {/* Mobiili navigointi Menu */}
       <div
         className={`md:hidden ${
           isOpen ? "block" : "hidden"
         } bg-black bg-opacity-95 p-4 flex flex-col space-y-4 text-center`}
       >
-        {/* Mobile Ohjelmointi Dropdown */}
+        {/* Mobiili Ohjelmointi Dropdown */}
         <div className="relative">
           <button
             className="nav-link w-full text-center flex justify-center items-center px-4 py-2 bg-gray-800 rounded"
@@ -370,7 +374,7 @@ const handleLogout = async () => {
           )}
         </div>
 
-        {/* Mobile Alustat Dropdown */}
+        {/* Mobiili Alustat Dropdown */}
         <div className="relative">
           <button
             className="nav-link w-full text-center flex justify-center items-center px-4 py-2 bg-gray-800 rounded"
@@ -464,7 +468,7 @@ const handleLogout = async () => {
           Muistiinpanot
         </Link>
 
-        {/* Mobile Login/Signup */}
+        {/* Mobiili Login/Signup */}
         <div className="flex flex-col space-y-2">
         {isAuthenticated ? (
           <Link
