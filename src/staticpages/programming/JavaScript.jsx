@@ -79,7 +79,7 @@ const JavaScript = () => {
                 <Link to="/javascript-condition"onClick={scrollToTop}>Esimerkki ehtolausekkeesta</Link>
               </li>
               <li>
-                <Link to="/csharp-loop"onClick={scrollToTop}>Esimerkki silmukasta</Link>
+                <Link to="/javascript-loop"onClick={scrollToTop}>Esimerkki silmukasta</Link>
               </li>
             </ul>
           </div>
