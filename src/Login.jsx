@@ -28,7 +28,7 @@ const Login = () => {
     setMessage("");
 
     try {
-      const response = await fetch("https://projekti2025backend-e0dubhd7e5h6akcw.swedencentral-01.azurewebsites.net/api/login/", {
+      const response = await fetch("https://codesite-hjhtdvghcjb4apbv.swedencentral-01.azurewebsites.net/api/login/", {
         method: "POST",
         credentials: "include", // ✅ Käyttää sessioevästettä
         headers: { "Content-Type": "application/json" },

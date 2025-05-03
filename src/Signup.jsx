@@ -22,7 +22,7 @@ const Signup = () => {
 
     try {
       // Send a POST request to the backend with the user's email, username, and password
-      const response = await fetch("https://projekti2025backend-e0dubhd7e5h6akcw.swedencentral-01.azurewebsites.net/api/signup/", {
+      const response = await fetch("https://codesite-hjhtdvghcjb4apbv.swedencentral-01.azurewebsites.net/api/signup/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, username, password }), // Convert the data to JSON format

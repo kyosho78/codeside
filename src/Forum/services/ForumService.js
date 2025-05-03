@@ -2,7 +2,7 @@
 
 import { fetchWithAuth as api } from "../../api.js";
 
-const API_BASE_URL = "https://projekti2025backend-e0dubhd7e5h6akcw.swedencentral-01.azurewebsites.net/api";
+const API_BASE_URL = "https://codesite-hjhtdvghcjb4apbv.swedencentral-01.azurewebsites.net/api";
 
 // GET: Profiilin haku
 export const fetchUserProfile = async () => {
