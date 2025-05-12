@@ -43,7 +43,7 @@ const ThreadsList = () => {
 
     return (
         <>
-          {/* Page background */}
+          {/* Page background  */}
           <div className="pt-24 pb-10 min-h-screen bg-black text-white">
             
             {/* Centered card */}

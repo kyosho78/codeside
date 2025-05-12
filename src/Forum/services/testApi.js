@@ -1,5 +1,5 @@
-{/*Testi jolla testataan datan haku , voidaan ajaa Powershellissä -  Jani*/}
-
+{/*Testi jolla testataan datan haku , aja komennolla node.testApi.js -  Jani*/}
+//Käytetty Axios kirjastoa testaukseen
 import axios from "axios";
 
 const API_BASE_URL = "hhttps://codesite-hjhtdvghcjb4apbv.swedencentral-01.azurewebsites.net/api/";

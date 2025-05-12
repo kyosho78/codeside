@@ -1,5 +1,5 @@
 {/*Ketjun vastaukset -  Jani*/}
-
+{/*Siirretty koodi ketjuYksittäinen tiedostoon - ei käytössä*/}
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { deleteReply, fetchReplies } from "./services/ForumService";

@@ -12,10 +12,12 @@ const ForumList = () => {
   const [error, setError] = useState(null);
   const [isCreating, setIsCreating] = useState(false);
  
+  //Datan haku UseEffect funk
   useEffect(() => {
     fetchTopics().then(setTopics);     
     fetchUserProfile()
       .then(user => setIsSuperUser(user.is_superuser))
+      //Näytetään ilmoitus jos ei kirjautunut
       .catch(err => setError("Tervetuloa Codesite Foorumille ! Luo tunnukset tai kirjaudu jos haluat osallistua keskusteluun"));
     fetchAllThreads(null).then(setThreads);
   }, []);
@@ -34,13 +36,13 @@ const ForumList = () => {
 
   return (
     <>
-      {/* Page background */}
+      {/* Page background W */}
       <div className="pt-24 pb-10 min-h-screen bg-black text-white">
         
-        {/* Centered forum card */}
+        {/* Centered forum card  W */}
         <div className="max-w-7xl mx-auto bg-gray-800 p-6 sm:p-8 rounded-lg border border-gray-600 shadow-lg">
           
-          {/* Header */}
+          {/* Header W */}
           <div className="text-center mb-10">
             <h1
               className="text-3xl font-bold text-center mb-6"
@@ -50,12 +52,12 @@ const ForumList = () => {
             </h1>
           </div>
 
-          {/* Topics Section */}
+          {/* Topics Section  W */}
           <div className="bg-gray-700 p-6 rounded-lg shadow-md mb-6">
             <h2 className="text-2xl font-semibold !text-blue-400 mb-6">Foorumin aihealueet</h2>
 
 
-            {/* Admin Create Topic */}
+            {/* Admin Create Topic W */}
             {isSuperUser && (
               <div className="mb-6">
                 <button
@@ -98,11 +100,11 @@ const ForumList = () => {
           {topics.map((topic) => {
               const threadCount = threads.filter((thread) => thread.aihealue === topic.id).length;
 
-              // Haetaan kolme viimeisintä ketjua kyseisestä aiheesta
+              // Haetaan kolme viimeisintä ketjua kyseisestä aiheesta Jani
               const recentThreads = threads
                 .filter((thread) => thread.aihealue === topic.id)
-                .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) // Järjestetään aikajärjestykseen
-                .slice(0, 3); // Valitaan kolme viimeisintä ketjua
+                .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) // Järjestetään aikajärjestykseen Jani
+                .slice(0, 3); // Valitaan kolme viimeisintä ketjua Jani
 
                 return (
                   <li key={topic.id} className="border-b border-gray-600 pb-4">
@@ -115,7 +117,7 @@ const ForumList = () => {
                     <div className="text-gray-400 text-sm mt-1">
                       Ketjuja: {threadCount}
                     </div>
-
+                                              {/*Näytetään kolme viimeisintä ketjua Jani*/}
                     {recentThreads.length > 0 && (
                       <ul className="mt-2 ml-4 space-y-1 text-sm text-gray-300">
                         {recentThreads.map((thread) => (
@@ -133,14 +135,14 @@ const ForumList = () => {
             </ul>
 
 
-            {/* Error */}
+            {/* Error  W */}
             {error && <div className="text-red-400 mt-6">{error}</div>}
           </div>
 
         </div>
       </div>
 
-      {/* Footer */}
+      {/* Footer  W*/}
       <footer className="mt-10 py-4 bg-gray-800 text-center text-gray-400">
         <p>&copy; 2025 Codesite. Kaikki oikeudet pidätetään.</p>
       </footer>
