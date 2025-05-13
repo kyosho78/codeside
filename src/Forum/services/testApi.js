@@ -2,7 +2,7 @@
 //Käytetty Axios kirjastoa testaukseen
 import axios from "axios";
 
-const API_BASE_URL = "hhttps://codesite-hjhtdvghcjb4apbv.swedencentral-01.azurewebsites.net/api/";
+const API_BASE_URL = "https://codesite-hjhtdvghcjb4apbv.swedencentral-01.azurewebsites.net/api/";
 
 const testApi = async () => {
     try {
