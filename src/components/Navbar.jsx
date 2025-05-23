@@ -43,7 +43,7 @@ const Navbar = () => {
 
 const handleLogout = async () => {
   try {
-    const response = await fetch("https://projekti2025backend-e0dubhd7e5h6akcw.swedencentral-01.azurewebsites.net/api/logout/", {
+    const response = await fetch("https://codesite-hjhtdvghcjb4apbv.swedencentral-01.azurewebsites.net/api/logout/", {
       method: "POST",
       credentials: "include",
     });

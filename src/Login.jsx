@@ -55,7 +55,7 @@ const Login = () => {
   // **Tarkistaa onko käyttäjä jo kirjautunut**
   const checkAuth = async () => {
     try {
-      const response = await fetch("https://projekti2025backend-e0dubhd7e5h6akcw.swedencentral-01.azurewebsites.net/api/profile/", {
+      const response = await fetch("https://codesite-hjhtdvghcjb4apbv.swedencentral-01.azurewebsites.net/api/profile/", {
         method: "GET",
         credentials: "include", 
       });
